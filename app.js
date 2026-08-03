@@ -126,6 +126,12 @@ function openSong(index){
     audio.src = song.audio;
 
     audio.load();
+    
+    progress.value = 0;
+
+currentTime.textContent = "0:00";
+
+duration.textContent = "0:00";
 
     player.classList.remove("hidden");
 
