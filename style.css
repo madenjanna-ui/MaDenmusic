@@ -47,13 +47,18 @@ body{
     inset:0;
 
     background:
-    radial-gradient(circle at top,#304b82 0%,#050814 65%);
+    radial-gradient(circle at top,
+    #3357b5 0%,
+    #152347 35%,
+    #09111f 70%,
+    #03050b 100%);
 
-    z-index:-2;
+    z-index:-3;
+
+    overflow:hidden;
 
 }
-
-.background::after{
+.background::before{
 
     content:"";
 
@@ -62,13 +67,40 @@ body{
     inset:0;
 
     background-image:
+
     radial-gradient(white 1px,transparent 1px);
 
     background-size:90px 90px;
 
-    opacity:.18;
+    opacity:.25;
 
 }
+.background::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+
+    height:500px;
+
+    border-radius:50%;
+
+    background:#5aa9ff;
+
+    filter:blur(180px);
+
+    top:-200px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    opacity:.35;
+
+}
+
 
 /* =========================
    Header
@@ -90,11 +122,15 @@ header{
 
 header h1{
 
-    font-size:38px;
+    font-size:44px;
 
-    margin-bottom:18px;
+    font-weight:800;
 
-    font-weight:700;
+    letter-spacing:1px;
+
+    text-shadow:
+
+    0 0 20px rgba(120,180,255,.45);
 
 }
 
@@ -146,21 +182,35 @@ main{
 
     gap:18px;
 
-    padding:16px;
+    margin-bottom:20px;
 
-    margin-bottom:16px;
+    padding:18px;
 
-    border-radius:24px;
+    border-radius:30px;
 
-    background:var(--glass);
+    background:rgba(255,255,255,.08);
 
-    border:1px solid var(--glassBorder);
+    border:1px solid rgba(255,255,255,.12);
 
     backdrop-filter:blur(20px);
 
-    cursor:pointer;
+    box-shadow:
 
-    transition:.25s;
+    0 10px 30px rgba(0,0,0,.35);
+
+    transition:.35s;
+
+}
+.song:hover{
+
+    transform:translateY(-3px);
+
+    background:rgba(255,255,255,.12);
+
+}
+.song:active{
+
+    transform:scale(.97);
 
 }
 
@@ -172,13 +222,17 @@ main{
 
 .song img{
 
-    width:74px;
+    width:90px;
 
-    height:74px;
+    height:90px;
 
     border-radius:50%;
 
     object-fit:cover;
+
+    box-shadow:
+
+    0 0 25px rgba(110,170,255,.4);
 
 }
 
