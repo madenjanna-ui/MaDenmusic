@@ -1,0 +1,8 @@
+body{margin:0;font-family:Arial;background:#111;color:#fff}
+header{position:sticky;top:0;background:#1a1a1a;padding:16px}
+#search{width:100%;padding:10px}
+#songList{padding:16px;display:grid;gap:12px}
+.song{padding:12px;border:1px solid #333;border-radius:12px;cursor:pointer}
+#player{position:fixed;inset:0;background:#111;padding:20px;overflow:auto}
+.hidden{display:none}
+#cover{width:220px;max-width:100%;border-radius:16px}
