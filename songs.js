@@ -9,7 +9,7 @@ const songs = [
 
     audio:"ты лилия (nordic remix).mp3",
 
-    cover:"Ты лилия.jpg",
+    cover:"IMG_1576.jpeg",
 
     lyrics:`
 Здесь будет текст песни
@@ -43,7 +43,7 @@ const songs = [
 
     audio:"сегодня мы считаем звёзды.mp3",
 
-    cover:"Сегодня мы считаем звёзды.jpg",
+    cover:"IMG_3387.jpeg",
 
     lyrics:`
 Здесь будет текст песни
