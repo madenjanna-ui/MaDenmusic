@@ -51,55 +51,7 @@ body{
     z-index:-5;
 
 }
-.background::before{
 
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-
-    radial-gradient(circle,#ffffff 1px,transparent 1.5px) 0 0/80px 80px,
-
-    radial-gradient(circle,#ffffff 2px,transparent 2.5px) 40px 30px/160px 160px,
-
-    radial-gradient(circle,#9fd7ff 1.5px,transparent 2px) 20px 50px/120px 120px,
-
-    radial-gradient(circle,#ffffff 1px,transparent 2px) 60px 10px/140px 140px;
-
-    opacity:.7;
-
-    animation:starsMove 90s linear infinite;
-
-}
-
-.background::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:500px;
-
-    height:500px;
-
-    border-radius:50%;
-
-    background:#5aa9ff;
-
-    filter:blur(180px);
-
-    top:-200px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    opacity:.35;
-
-}
 
 
 /* =========================
