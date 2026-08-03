@@ -1,8 +1,404 @@
-body{margin:0;font-family:Arial;background:#111;color:#fff}
-header{position:sticky;top:0;background:#1a1a1a;padding:16px}
-#search{width:100%;padding:10px}
-#songList{padding:16px;display:grid;gap:12px}
-.song{padding:12px;border:1px solid #333;border-radius:12px;cursor:pointer}
-#player{position:fixed;inset:0;background:#111;padding:20px;overflow:auto}
-.hidden{display:none}
-#cover{width:220px;max-width:100%;border-radius:16px}
+/* =========================
+   MaDenMusic
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --bg:#050814;
+    --glass:rgba(96,123,180,.28);
+    --glassBorder:rgba(255,255,255,.12);
+
+    --white:#ffffff;
+    --gray:#cfcfcf;
+
+    --accent:#79b8ff;
+
+}
+
+body{
+
+    font-family:-apple-system,BlinkMacSystemFont,
+    "Segoe UI",Roboto,sans-serif;
+
+    background:var(--bg);
+
+    color:white;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+}
+
+/* =========================
+   Фон
+========================= */
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    radial-gradient(circle at top,#304b82 0%,#050814 65%);
+
+    z-index:-2;
+
+}
+
+.background::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+    radial-gradient(white 1px,transparent 1px);
+
+    background-size:90px 90px;
+
+    opacity:.18;
+
+}
+
+/* =========================
+   Header
+========================= */
+
+header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:50;
+
+    padding:24px;
+
+    backdrop-filter:blur(18px);
+
+}
+
+header h1{
+
+    font-size:38px;
+
+    margin-bottom:18px;
+
+    font-weight:700;
+
+}
+
+/* =========================
+   Поиск
+========================= */
+
+#search{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    outline:none;
+
+    font-size:17px;
+
+}
+
+#search::placeholder{
+
+    color:#bdbdbd;
+
+}
+
+/* =========================
+   Каталог
+========================= */
+
+main{
+
+    padding:20px;
+
+}
+
+.song{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:16px;
+
+    margin-bottom:16px;
+
+    border-radius:24px;
+
+    background:var(--glass);
+
+    border:1px solid var(--glassBorder);
+
+    backdrop-filter:blur(20px);
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.song:active{
+
+    transform:scale(.98);
+
+}
+
+.song img{
+
+    width:74px;
+
+    height:74px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.info{
+
+    flex:1;
+
+}
+
+.info h2{
+
+    font-size:24px;
+
+    font-weight:500;
+
+}
+
+.info p{
+
+    color:var(--gray);
+
+    margin-top:4px;
+
+}
+
+.playIcon{
+
+    font-size:34px;
+
+}
+
+/* =========================
+   Плеер
+========================= */
+
+.player{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#050814;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    padding:25px;
+
+    z-index:100;
+
+    overflow:auto;
+
+    transition:.35s;
+
+}
+
+.hidden{
+
+    transform:translateY(100%);
+
+    opacity:0;
+
+    pointer-events:none;
+
+}
+
+.cover{
+
+    width:min(82vw,360px);
+
+    aspect-ratio:1;
+
+    object-fit:cover;
+
+    border-radius:28px;
+
+    margin-top:30px;
+
+    box-shadow:
+    0 30px 60px rgba(0,0,0,.45);
+
+}
+
+#songTitle{
+
+    margin-top:30px;
+
+    font-size:34px;
+
+    text-align:center;
+
+}
+
+#songArtist{
+
+    color:var(--gray);
+
+    margin-top:8px;
+
+    font-size:20px;
+
+}
+
+#closePlayer{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    font-size:24px;
+
+}
+
+.controls{
+
+    margin-top:28px;
+
+    display:flex;
+
+    gap:30px;
+
+}
+
+.controls button{
+
+    width:70px;
+
+    height:70px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    font-size:28px;
+
+}
+
+#play{
+
+    width:82px;
+
+    height:82px;
+
+    background:var(--accent);
+
+    color:black;
+
+    font-size:34px;
+
+}
+
+.progress{
+
+    width:100%;
+
+    margin-top:28px;
+
+}
+
+#progress{
+
+    width:100%;
+
+}
+
+.time{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:8px;
+
+    color:#cfcfcf;
+
+}
+
+.lyrics{
+
+    width:100%;
+
+    margin-top:36px;
+
+}
+
+.lyrics h3{
+
+    margin-bottom:18px;
+
+}
+
+#lyrics{
+
+    white-space:pre-wrap;
+
+    line-height:1.8;
+
+    color:#efefef;
+
+    padding-bottom:60px;
+
+}
