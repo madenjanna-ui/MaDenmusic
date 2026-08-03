@@ -24,9 +24,9 @@ const songs = [
 
     artist:"MaDen",
 
-    audio:"История Любви.mp3",
+    audio:"История любви.mp3",
 
-    cover:"История Любви.jpg",
+    cover:"История любви.jpg",
 
     lyrics:`
 Здесь будет текст песни
