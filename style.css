@@ -46,12 +46,13 @@ body{
 
     inset:0;
 
-    background:url("stars.webp") center center / cover no-repeat fixed;
+    background:
+        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.65)),
+        url("stars.webp") center center / cover no-repeat fixed;
 
     z-index:-5;
 
 }
-
 
 
 /* =========================
@@ -409,18 +410,3 @@ main{
 
 }
 
-@keyframes starsMove{
-
-    from{
-
-        transform:translateY(0);
-
-    }
-
-    to{
-
-        transform:translateY(300px);
-
-    }
-
-}
