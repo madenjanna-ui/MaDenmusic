@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <title>MaDenMusic</title>
+
+    <meta name="theme-color" content="#111111">
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="background"></div>
+
+<header class="header">
+
+    <div class="logo">
+        🎵 MaDenMusic
+    </div>
+
+    <input
+            id="search"
+            type="text"
+            placeholder="Поиск песен..."
+    >
+
+</header>
+
+<main>
+
+<section id="songList" class="song-list">
+
+<!-- Карточки песен создаются автоматически -->
+
+</section>
+
+</main>
+
+<div id="player" class="player hidden">
+
+<div class="player-cover">
+
+<img
+        id="cover"
+        src=""
+        alt="cover">
+
+</div>
+
+<h2 id="title"></h2>
+
+<p id="artist">
+Денис
+</p>
+
+<audio id="audio"></audio>
+
+<input
+        id="progress"
+        type="range"
+        value="0"
+        min="0"
+        max="100">
+
+<div class="controls">
+
+<button id="prev">
+⏮
+</button>
+
+<button id="play">
+▶
+</button>
+
+<button id="next">
+⏭
+</button>
+
+</div>
+
+<div class="time">
+
+<span id="current">
+0:00
+</span>
+
+<span>
+/
+</span>
+
+<span id="duration">
+0:00
+</span>
+
+</div>
+
+<section class="lyrics">
+
+<h3>
+Текст песни
+</h3>
+
+<div id="lyrics"></div>
+
+</section>
+
+</div>
+
+<script src="songs.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
