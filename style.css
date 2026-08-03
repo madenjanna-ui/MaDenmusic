@@ -46,16 +46,9 @@ body{
 
     inset:0;
 
-    background:
-    radial-gradient(circle at top,
-    #3357b5 0%,
-    #152347 35%,
-    #09111f 70%,
-    #03050b 100%);
+    background:url("stars.webp") center center / cover no-repeat fixed;
 
-    z-index:-3;
-
-    overflow:hidden;
+    z-index:-5;
 
 }
 .background::before{
