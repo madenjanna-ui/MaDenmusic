@@ -62,7 +62,7 @@ const songs = [
 
     audio:"Комета.mp3",
 
-    cover:"Комета.jpg",
+    cover:"comet.png",
 
     lyrics:`
 Здесь будет текст песни "Комета"
