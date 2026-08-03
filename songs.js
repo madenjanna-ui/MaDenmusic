@@ -13,7 +13,7 @@ const songs = [
 
     lyrics:`
 Здесь будет текст песни
-"Ты лилия (Nordic Remix)"
+"ты лилия (Nordic Remix)"
 `
 },
 
@@ -24,7 +24,7 @@ const songs = [
 
     artist:"MaDen",
 
-    audio:"История любви.mp3",
+    audio:"история любви.mp3",
 
     cover:"История любви.jpg",
 
