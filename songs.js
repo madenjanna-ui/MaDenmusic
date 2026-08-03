@@ -26,7 +26,7 @@ const songs = [
 
     audio:"История любви.mp3",
 
-    cover:"2026-07-16 14-00-46.HEIC",
+    cover:"Screenshot_20260803-134440-display-0.png.png",
 
     lyrics:`
 Здесь будет текст песни
