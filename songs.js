@@ -76,10 +76,10 @@ const songs = [
 
     artist:"MaDen",
 
-    audio:"Мой ангел.mp3",
+    audio:"Moy angel.mp3",
 
-    cover:"Мой ангел.jpg",
-
+    cover:"Together.png",
+    
     lyrics:`
 Здесь будет текст песни "Мой ангел"
 `
@@ -94,8 +94,8 @@ const songs = [
 
     audio:"Moy svet.mp3",
 
-    cover:"Мой свет, гори.jpg",
-
+    cover:"Together.png",
+    
     lyrics:`
 Здесь будет текст песни "Мой свет, гори 🔥"
 `
@@ -110,8 +110,7 @@ const songs = [
 
     audio:"Моя – Жизнь моей души.mp3",
 
-    cover:"Моя – Жизнь моей души.jpg",
-
+    cover:"Together.png",
     lyrics:`
 Здесь будет текст песни "Жизнь моей души"
 `
@@ -127,8 +126,8 @@ const songs = [
 
     audio:"Моя – Эсфирь.mp3",
 
-    cover:"Моя – Эсфирь.jpg",
-
+    cover:"Together.png",
+    
     lyrics:`
 Здесь будет текст песни "Эсфирь"
 `
@@ -143,7 +142,7 @@ const songs = [
 
     audio:"Папина дочка.mp3",
 
-    cover:"Папина дочка.jpg",
+    cover:"Папина дочка.png",
 
     lyrics:`
 Здесь будет текст песни "Папина дочка"
@@ -159,8 +158,8 @@ const songs = [
 
     audio:"tvoy vzglayd.mp3",
 
-    cover:"Твой взгляд.jpg",
-
+    cover:"Together.png",
+    
     lyrics:`
 Здесь будет текст песни "Твой взгляд"
 `
