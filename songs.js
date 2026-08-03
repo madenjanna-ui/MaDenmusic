@@ -7,7 +7,7 @@ const songs = [
 
     artist:"MaDen",
 
-    audio:"Ты лилия (nordic remix).mp3",
+    audio:"ты лилия (nordic remix).mp3",
 
     cover:"Ты лилия.jpg",
 
