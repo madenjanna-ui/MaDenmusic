@@ -386,3 +386,26 @@ transform:rotate(360deg);
     padding-bottom:60px;
 
 }
+.close-player{
+
+    position:absolute;
+
+    top:25px;
+    right:25px;
+
+    width:48px;
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+}
