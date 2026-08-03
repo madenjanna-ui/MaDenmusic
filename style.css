@@ -66,15 +66,22 @@ body{
 
     inset:0;
 
-    background-image:
+    background:
 
-    radial-gradient(white 1px,transparent 1px);
+    radial-gradient(circle,#ffffff 1px,transparent 1.5px) 0 0/80px 80px,
 
-    background-size:90px 90px;
+    radial-gradient(circle,#ffffff 2px,transparent 2.5px) 40px 30px/160px 160px,
 
-    opacity:.25;
+    radial-gradient(circle,#9fd7ff 1.5px,transparent 2px) 20px 50px/120px 120px,
+
+    radial-gradient(circle,#ffffff 1px,transparent 2px) 60px 10px/140px 140px;
+
+    opacity:.7;
+
+    animation:starsMove 90s linear infinite;
 
 }
+
 .background::after{
 
     content:"";
@@ -454,5 +461,21 @@ main{
     color:#efefef;
 
     padding-bottom:60px;
+
+}
+
+@keyframes starsMove{
+
+    from{
+
+        transform:translateY(0);
+
+    }
+
+    to{
+
+        transform:translateY(300px);
+
+    }
 
 }
