@@ -121,7 +121,11 @@ function openSong(index){
 
     lyrics.textContent = song.lyrics;
 
+    audio.pause();
+
     audio.src = song.audio;
+
+    audio.load();
 
     player.classList.remove("hidden");
 
@@ -174,7 +178,13 @@ nextBtn.addEventListener("click", () => {
 
     openSong(currentSong);
 
+    audio.addEventListener("canplay", function playSong() {
+
     audio.play();
+
+    audio.removeEventListener("canplay", playSong);
+
+}, { once: true });
 
 });
 
@@ -195,7 +205,13 @@ prevBtn.addEventListener("click", () => {
 
     openSong(currentSong);
 
+    audio.addEventListener("canplay", function playSong() {
+
     audio.play();
+
+    audio.removeEventListener("canplay", playSong);
+
+}, { once: true });
 
 });
 
