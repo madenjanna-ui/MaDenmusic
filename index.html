@@ -1,19 +1,131 @@
-<!doctype html>
-<html lang="ru"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>MaDenMusic</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-<header><h1>🎵 MaDenMusic</h1><input id="search" placeholder="Поиск"></header>
-<main id="songList"></main>
-<div id="player" class="hidden">
-<button id="close">✕</button>
-<img id="cover" alt="">
-<h2 id="title"></h2>
-<audio id="audio" controls></audio>
-<pre id="lyrics"></pre>
+
+<div class="background"></div>
+
+<header>
+
+<h1>🎵 MaDenMusic</h1>
+
+<input
+id="search"
+type="text"
+placeholder="Поиск песен...">
+
+</header>
+
+
+<main id="songList">
+
+<!-- карточки создаются автоматически -->
+
+</main>
+
+
+
+<div id="player" class="player hidden">
+
+<button id="closePlayer">
+✕
+</button>
+
+<img
+id="cover"
+class="cover"
+src=""
+alt="">
+
+
+<h2 id="songTitle"></h2>
+
+<p id="songArtist">
+MaDen
+</p>
+
+
+
+<audio
+id="audio">
+</audio>
+
+
+
+<div class="progress">
+
+<input
+type="range"
+id="progress"
+value="0"
+min="0"
+max="100">
+
+<div class="time">
+
+<span id="currentTime">
+0:00
+</span>
+
+<span id="duration">
+0:00
+</span>
+
 </div>
+
+</div>
+
+
+
+<div class="controls">
+
+<button id="prev">
+⏮
+</button>
+
+<button id="play">
+▶
+</button>
+
+<button id="next">
+⏭
+</button>
+
+</div>
+
+
+
+<section class="lyrics">
+
+<h3>
+Текст песни
+</h3>
+
+<pre id="lyrics"></pre>
+
+</section>
+
+</div>
+
+
+
 <script src="songs.js"></script>
+
 <script src="app.js"></script>
-</body></html>
+
+</body>
+
+</html>
