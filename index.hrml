@@ -49,7 +49,9 @@
 <div id="player" class="player hidden">
 
 <div class="player-cover">
-
+<button id="closePlayer" class="close-player">
+    ✕
+</button>
 <img
         id="cover"
         src=""
