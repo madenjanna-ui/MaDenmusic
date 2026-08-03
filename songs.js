@@ -92,7 +92,7 @@ const songs = [
 
     artist:"MaDen",
 
-    audio:"Not svet.mp3",
+    audio:"Moy svet.mp3",
 
     cover:"Мой свет, гори.jpg",
 
