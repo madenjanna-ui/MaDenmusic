@@ -1,5 +1,5 @@
 /* =========================
-   MaDenMusic
+   MaDenMusic 2.0
 ========================= */
 
 *{
@@ -11,13 +11,15 @@
 :root{
 
     --bg:#050814;
-    --glass:rgba(96,123,180,.28);
-    --glassBorder:rgba(255,255,255,.12);
-
-    --white:#ffffff;
-    --gray:#cfcfcf;
+    --card:rgba(255,255,255,.08);
+    --cardHover:rgba(255,255,255,.12);
+    --border:rgba(255,255,255,.10);
 
     --accent:#79b8ff;
+
+    --text:#ffffff;
+
+    --gray:#bfc6d8;
 
 }
 
@@ -26,13 +28,11 @@ body{
     font-family:-apple-system,BlinkMacSystemFont,
     "Segoe UI",Roboto,sans-serif;
 
-    background:var(--bg);
+    background:#050814;
 
     color:white;
 
     min-height:100vh;
-
-    overflow-x:hidden;
 
 }
 
@@ -46,14 +46,11 @@ body{
 
     inset:0;
 
-    background:
-        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.65)),
-        url("IMG_3442.jpeg") center center / cover no-repeat fixed;
+    background:#050814;
 
     z-index:-5;
 
 }
-
 
 /* =========================
    Header
@@ -67,29 +64,23 @@ header{
 
     z-index:50;
 
-    padding:24px;
+    padding:22px;
 
     backdrop-filter:blur(18px);
+
+    background:rgba(5,8,20,.45);
 
 }
 
 header h1{
 
-    font-size:44px;
+    font-size:42px;
 
     font-weight:800;
 
-    letter-spacing:1px;
-
-    text-shadow:
-
-    0 0 20px rgba(120,180,255,.45);
+    margin-bottom:18px;
 
 }
-
-/* =========================
-   Поиск
-========================= */
 
 #search{
 
@@ -101,19 +92,81 @@ header h1{
 
     border-radius:18px;
 
-    background:rgba(255,255,255,.08);
+    background:var(--card);
 
     color:white;
 
-    outline:none;
-
     font-size:17px;
+
+    outline:none;
 
 }
 
 #search::placeholder{
 
-    color:#bdbdbd;
+    color:#b7bfd3;
+
+}
+
+/* =========================
+   Главная
+========================= */
+
+main{
+
+    padding:22px;
+
+}
+
+.sectionTitle{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    margin-bottom:22px;
+
+}
+
+.hiddenPage{
+
+    display:none;
+
+}
+
+/* =========================
+   Кнопка Все песни
+========================= */
+
+.bigButton{
+
+    width:100%;
+
+    margin-top:28px;
+
+    padding:20px;
+
+    border:none;
+
+    border-radius:22px;
+
+    background:var(--accent);
+
+    color:black;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.bigButton:active{
+
+    transform:scale(.98);
 
 }
 
@@ -121,11 +174,48 @@ header h1{
    Каталог
 ========================= */
 
-main{
+.catalogHeader{
 
-    padding:20px;
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:22px;
 
 }
+
+#backHome{
+
+    border:none;
+
+    background:none;
+
+    color:white;
+
+    font-size:18px;
+
+}
+
+#sortSongs{
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:var(--card);
+
+    color:white;
+
+}
+/* =========================
+   Карточки песен
+========================= */
 
 .song{
 
@@ -135,35 +225,21 @@ main{
 
     gap:18px;
 
-    margin-bottom:20px;
-
     padding:18px;
 
-    border-radius:30px;
+    margin-bottom:18px;
 
-    background:rgba(255,255,255,.08);
+    border-radius:24px;
 
-    border:1px solid rgba(255,255,255,.12);
+    background:var(--card);
 
-    backdrop-filter:blur(20px);
+    border:1px solid var(--border);
 
-    box-shadow:
+    backdrop-filter:blur(18px);
 
-    0 10px 30px rgba(0,0,0,.35);
+    transition:.25s;
 
-    transition:.35s;
-
-}
-.song:hover{
-
-    transform:translateY(-3px);
-
-    background:rgba(255,255,255,.12);
-
-}
-.song:active{
-
-    transform:scale(.97);
+    cursor:pointer;
 
 }
 
@@ -173,19 +249,23 @@ main{
 
 }
 
+.song:hover{
+
+    background:var(--cardHover);
+
+}
+
 .song img{
 
-    width:90px;
+    width:88px;
 
-    height:90px;
+    height:88px;
 
-    border-radius:50%;
+    border-radius:20px;
 
     object-fit:cover;
 
-    box-shadow:
-
-    0 0 25px rgba(110,170,255,.4);
+    flex-shrink:0;
 
 }
 
@@ -197,9 +277,11 @@ main{
 
 .info h2{
 
-    font-size:24px;
+    font-size:22px;
 
-    font-weight:500;
+    font-weight:700;
+
+    margin-bottom:6px;
 
 }
 
@@ -207,7 +289,7 @@ main{
 
     color:var(--gray);
 
-    margin-top:4px;
+    font-size:15px;
 
 }
 
@@ -233,15 +315,11 @@ main{
 
     flex-direction:column;
 
-    align-items:center;
-
-    padding:25px;
+    padding:24px;
 
     z-index:100;
 
     overflow:auto;
-
-    transition:.35s;
 
 }
 
@@ -252,6 +330,8 @@ main{
     opacity:0;
 
     pointer-events:none;
+
+    transition:.35s;
 
 }
 
@@ -265,30 +345,35 @@ main{
 
     border-radius:28px;
 
-    margin-top:30px;
+    margin:40px auto 0;
 
     box-shadow:
-    0 30px 60px rgba(0,0,0,.45);
+
+    0 20px 60px rgba(0,0,0,.45);
 
 }
 
 #songTitle{
 
-    margin-top:30px;
-
-    font-size:34px;
+    margin-top:28px;
 
     text-align:center;
+
+    font-size:32px;
+
+    font-weight:700;
 
 }
 
 #songArtist{
 
+    text-align:center;
+
     color:var(--gray);
 
     margin-top:8px;
 
-    font-size:20px;
+    font-size:18px;
 
 }
 
@@ -296,9 +381,9 @@ main{
 
     position:absolute;
 
-    top:18px;
-
     right:18px;
+
+    top:18px;
 
     width:48px;
 
@@ -308,61 +393,17 @@ main{
 
     border-radius:50%;
 
-    background:rgba(255,255,255,.08);
+    background:var(--card);
 
     color:white;
 
-    font-size:24px;
-
-}
-
-.controls{
-
-    margin-top:28px;
-
-    display:flex;
-
-    gap:30px;
-
-}
-
-.controls button{
-
-    width:70px;
-
-    height:70px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.08);
-
-    color:white;
-
-    font-size:28px;
-
-}
-
-#play{
-
-    width:82px;
-
-    height:82px;
-
-    background:var(--accent);
-
-    color:black;
-
-    font-size:34px;
+    font-size:22px;
 
 }
 
 .progress{
 
-    width:100%;
-
-    margin-top:28px;
+    margin-top:30px;
 
 }
 
@@ -378,23 +419,67 @@ main{
 
     justify-content:space-between;
 
+    color:var(--gray);
+
     margin-top:8px;
 
-    color:#cfcfcf;
+}
+
+.controls{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:28px;
+
+    margin-top:28px;
+
+}
+
+.controls button{
+
+    width:68px;
+
+    height:68px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--card);
+
+    color:white;
+
+    font-size:28px;
+
+}
+
+#play{
+
+    width:84px;
+
+    height:84px;
+
+    background:var(--accent);
+
+    color:black;
+
+    font-size:34px;
 
 }
 
 .lyrics{
 
-    width:100%;
-
     margin-top:36px;
+
+    padding-bottom:60px;
 
 }
 
 .lyrics h3{
 
-    margin-bottom:18px;
+    margin-bottom:16px;
 
 }
 
@@ -404,9 +489,38 @@ main{
 
     line-height:1.8;
 
-    color:#efefef;
-
-    padding-bottom:60px;
-
 }
 
+/* =========================
+   Адаптация
+========================= */
+
+@media (max-width:500px){
+
+    header h1{
+
+        font-size:34px;
+
+    }
+
+    .sectionTitle{
+
+        font-size:24px;
+
+    }
+
+    .song img{
+
+        width:74px;
+
+        height:74px;
+
+    }
+
+    .info h2{
+
+        font-size:19px;
+
+    }
+
+}
