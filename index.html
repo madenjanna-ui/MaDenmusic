@@ -20,28 +20,82 @@ content="width=device-width, initial-scale=1.0">
 
 <header>
 
-<h1>🎵 MaDenMusic</h1>
+<h1>MaDenMusic</h1>
 
 <input
 id="search"
 type="text"
-placeholder="Поиск песен...">
+placeholder="Поиск песни...">
 
 </header>
 
+<main>
 
-<main id="songList">
+<section id="homePage">
 
-<!-- карточки создаются автоматически -->
+<h2 class="sectionTitle">
+✨ Новые релизы
+</h2>
+
+<div id="newSongs"></div>
+
+<button
+id="showAllSongs"
+class="bigButton">
+
+🎵 Все песни
+
+</button>
+
+</section>
+
+
+<section
+id="catalogPage"
+class="hiddenPage">
+
+<div class="catalogHeader">
+
+<button id="backHome">
+
+← Главная
+
+</button>
+
+<select id="sortSongs">
+
+<option value="new">
+🆕 Сначала новые
+</option>
+
+<option value="old">
+📅 Сначала старые
+</option>
+
+<option value="name">
+🔤 По названию
+</option>
+
+</select>
+
+</div>
+
+<div id="songList"></div>
+
+</section>
 
 </main>
 
+<!-- Плеер -->
 
-
-<div id="player" class="player hidden">
+<div
+id="player"
+class="player hidden">
 
 <button id="closePlayer">
+
 ✕
+
 </button>
 
 <img
@@ -50,77 +104,74 @@ class="cover"
 src=""
 alt="">
 
-
 <h2 id="songTitle"></h2>
 
-<p id="songArtist">
-MaDen
-</p>
-
-
-
-<audio
-id="audio">
-</audio>
-
-
+<p id="songArtist"></p>
 
 <div class="progress">
 
 <input
-type="range"
 id="progress"
-value="0"
+type="range"
 min="0"
-max="100">
+max="100"
+value="0">
 
 <div class="time">
 
 <span id="currentTime">
+
 0:00
+
 </span>
 
 <span id="duration">
+
 0:00
+
 </span>
 
 </div>
 
 </div>
-
-
 
 <div class="controls">
 
 <button id="prev">
+
 ⏮
+
 </button>
 
 <button id="play">
-▶
+
+▶️
+
 </button>
 
 <button id="next">
+
 ⏭
+
 </button>
 
 </div>
 
-
-
-<section class="lyrics">
+<div class="lyrics">
 
 <h3>
+
 Текст песни
+
 </h3>
 
-<pre id="lyrics"></pre>
-
-</section>
+<p id="lyrics"></p>
 
 </div>
 
+<audio id="audio"></audio>
 
+</div>
 
 <script src="songs.js"></script>
 
