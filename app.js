@@ -1,111 +1,54 @@
-// ===============================
-// MaDenMusic
-// app.js
-// Часть 1
-// ===============================
+// =========================
+// MaDenMusic 2.0
+// =========================
 
+const newSongs = document.getElementById("newSongs");
 const songList = document.getElementById("songList");
+
 const search = document.getElementById("search");
+
+const homePage = document.getElementById("homePage");
+const catalogPage = document.getElementById("catalogPage");
+
+const showAllSongs = document.getElementById("showAllSongs");
+const backHome = document.getElementById("backHome");
+
+const sortSongs = document.getElementById("sortSongs");
+
+// ===== Плеер =====
 
 const player = document.getElementById("player");
 
 const audio = document.getElementById("audio");
 
 const cover = document.getElementById("cover");
+
 const songTitle = document.getElementById("songTitle");
+
 const songArtist = document.getElementById("songArtist");
+
 const lyrics = document.getElementById("lyrics");
 
 const playBtn = document.getElementById("play");
+
 const prevBtn = document.getElementById("prev");
+
 const nextBtn = document.getElementById("next");
 
-const closeBtn = document.getElementById("closePlayer");
+const closePlayer = document.getElementById("closePlayer");
 
 const progress = document.getElementById("progress");
 
 const currentTime = document.getElementById("currentTime");
-const duration = document.getElementById("duration");
 
+const duration = document.getElementById("duration");
 
 let currentSong = 0;
 
-
-// =====================================
-// Создание карточек
-// =====================================
-
-function renderSongs(list = songs){
-
-    songList.innerHTML = "";
-
-    list.forEach(song=>{
-
-        const card = document.createElement("div");
-
-        card.className = "song";
-
-        card.innerHTML = `
-
-        <img src="${song.cover}" alt="">
-
-        <div class="info">
-
-            <h2>${song.title}</h2>
-
-            <p>${song.artist}</p>
-
-        </div>
-
-        <div class="playIcon">
-
-            ▶
-
-        </div>
-
-        `;
-
-        card.addEventListener("click",()=>{
-
-            const index = songs.findIndex(s=>s.id===song.id);
-
-            openSong(index);
-
-        });
-
-        songList.appendChild(card);
-
-    });
-
-}
-
-
-// =====================================
-// Поиск
-// =====================================
-
-search.addEventListener("input",()=>{
-
-    const value = search.value
-    .toLowerCase()
-    .trim();
-
-    const filtered = songs.filter(song=>
-
-        song.title
-        .toLowerCase()
-        .includes(value)
-
-    );
-
-    renderSongs(filtered);
-
-});
-
-
-// =====================================
-// Открыть песню
-// =====================================
+let playing = false;
+// =========================
+// Открытие песни
+// =========================
 
 function openSong(index){
 
@@ -126,53 +69,275 @@ function openSong(index){
     audio.src = song.audio;
 
     audio.load();
-    
+
     progress.value = 0;
 
-currentTime.textContent = "0:00";
+    currentTime.textContent = "0:00";
 
-duration.textContent = "0:00";
+    duration.textContent = "0:00";
+
+    playBtn.textContent = "▶️";
+
+    playing = false;
 
     player.classList.remove("hidden");
 
 }
 
-// =====================================
-// Play / Pause
-// =====================================
+// =========================
+// Карточка песни
+// =========================
 
-playBtn.addEventListener("click", () => {
+function createSongCard(song,index){
 
-    if (audio.paused) {
+    const card = document.createElement("div");
 
-        audio.play();
+    card.className = "song";
 
-    } else {
+    card.innerHTML = `
 
-        audio.pause();
+        <img src="${song.cover}" alt="">
+
+        <div class="info">
+
+            <h2>${song.title}</h2>
+
+            <p>${song.artist}</p>
+
+        </div>
+
+        <div class="playIcon">▶️</div>
+
+    `;
+
+    card.onclick = ()=>{
+
+        openSong(index);
+
+    };
+
+    return card;
+
+}
+
+// =========================
+// Рендер списка
+// =========================
+
+function renderSongs(list,container){
+
+    container.innerHTML = "";
+
+    list.forEach(song=>{
+
+        const index = songs.findIndex(s=>s.id===song.id);
+
+        container.appendChild(
+
+            createSongCard(song,index)
+
+        );
+
+    });
+
+}
+// =========================
+// Новые релизы
+// =========================
+
+function getNewSongs(){
+
+    const now = new Date();
+
+    return songs.filter(song=>{
+
+        if(!song.release){
+
+            return false;
+
+        }
+
+        const release = new Date(song.release);
+
+        const days =
+
+        (now-release)/(1000*60*60*24);
+
+        return days<=14;
+
+    });
+
+}
+
+// =========================
+// Главная
+// =========================
+
+function renderHome(){
+
+    renderSongs(
+
+        getNewSongs(),
+
+        newSongs
+
+    );
+
+}
+
+// =========================
+// Каталог
+// =========================
+
+function renderCatalog(){
+
+    let list=[...songs];
+
+    switch(sortSongs.value){
+
+        case "old":
+
+            list.sort((a,b)=>
+
+                new Date(a.release)-
+
+                new Date(b.release)
+
+            );
+
+            break;
+
+        case "name":
+
+            list.sort((a,b)=>
+
+                a.title.localeCompare(
+
+                    b.title,
+
+                    "ru"
+
+                )
+
+            );
+
+            break;
+
+        default:
+
+            list.sort((a,b)=>
+
+                new Date(b.release)-
+
+                new Date(a.release)
+
+            );
 
     }
 
-});
+    renderSongs(
 
-audio.addEventListener("play", () => {
+        list,
 
-    playBtn.textContent = "⏸";
+        songList
 
-});
+    );
 
-audio.addEventListener("pause", () => {
+}
 
-    playBtn.textContent = "▶";
+// =========================
+// Переходы
+// =========================
 
-});
+showAllSongs.onclick=()=>{
 
+    homePage.classList.add("hiddenPage");
 
-// =====================================
+    catalogPage.classList.remove(
+
+        "hiddenPage"
+
+    );
+
+    renderCatalog();
+
+};
+
+backHome.onclick=()=>{
+
+    catalogPage.classList.add(
+
+        "hiddenPage"
+
+    );
+
+    homePage.classList.remove(
+
+        "hiddenPage"
+
+    );
+
+};
+
+// =========================
+// Поиск
+// =========================
+
+search.oninput=()=>{
+
+    const value=
+
+    search.value.toLowerCase();
+
+    const filtered=songs.filter(song=>
+
+        song.title.toLowerCase().includes(value) ||
+
+        song.artist.toLowerCase().includes(value)
+
+    );
+
+    renderSongs(filtered,songList);
+
+};
+
+sortSongs.onchange=renderCatalog;
+
+// =========================
+// Первый запуск
+// =========================
+
+// =========================
+// Воспроизведение
+// =========================
+
+playBtn.onclick = () => {
+
+    if (playing) {
+
+        audio.pause();
+
+        playBtn.textContent = "▶️";
+
+        playing = false;
+
+    } else {
+
+        audio.play();
+
+        playBtn.textContent = "⏸";
+
+        playing = true;
+
+    }
+
+};
+
+// =========================
 // Следующая песня
-// =====================================
+// =========================
 
-nextBtn.addEventListener("click", () => {
+nextBtn.onclick = () => {
 
     currentSong++;
 
@@ -184,22 +349,13 @@ nextBtn.addEventListener("click", () => {
 
     openSong(currentSong);
 
-    audio.addEventListener("canplay", function playSong() {
+};
 
-    audio.play();
-
-    audio.removeEventListener("canplay", playSong);
-
-}, { once: true });
-
-});
-
-
-// =====================================
+// =========================
 // Предыдущая песня
-// =====================================
+// =========================
 
-prevBtn.addEventListener("click", () => {
+prevBtn.onclick = () => {
 
     currentSong--;
 
@@ -211,144 +367,128 @@ prevBtn.addEventListener("click", () => {
 
     openSong(currentSong);
 
-    audio.addEventListener("canplay", function playSong() {
+};
 
-    audio.play();
+// =========================
+// Закрыть плеер
+// =========================
 
-    audio.removeEventListener("canplay", playSong);
+closePlayer.onclick = () => {
 
-}, { once: true });
+    audio.pause();
+
+    playing = false;
+
+    playBtn.textContent = "▶️";
+
+    player.classList.add("hidden");
+
+};
+
+// =========================
+// Конец песни
+// =========================
+
+audio.onended = () => {
+
+    playing = false;
+
+    playBtn.textContent = "▶️";
+
+};
+// =========================
+// Загрузка длительности
+// =========================
+
+audio.addEventListener("loadedmetadata", () => {
+
+    progress.max = Math.floor(audio.duration);
+
+    duration.textContent = formatTime(audio.duration);
 
 });
 
+// =========================
+// Во время воспроизведения
+// =========================
 
-// =====================================
-// Закрыть плеер
-// =====================================
+audio.addEventListener("timeupdate", () => {
 
-closeBtn.addEventListener("click", () => {
+    progress.value = Math.floor(audio.currentTime);
 
-    audio.pause();
+    currentTime.textContent = formatTime(audio.currentTime);
+
+});
+
+// =========================
+// Перемотка
+// =========================
+
+progress.addEventListener("input", () => {
+
+    audio.currentTime = progress.value;
+
+});
+
+// =========================
+// Формат времени
+// =========================
+
+function formatTime(sec) {
+
+    if (isNaN(sec)) return "0:00";
+
+    const min = Math.floor(sec / 60);
+
+    const seconds = Math.floor(sec % 60);
+
+    return `${min}:${seconds.toString().padStart(2, "0")}`;
+
+}
+// =========================
+// Автоматическое обновление
+// =========================
+
+audio.addEventListener("play", () => {
+
+    playing = true;
+
+    playBtn.textContent = "⏸";
+
+});
+
+audio.addEventListener("pause", () => {
+
+    playing = false;
+
+    playBtn.textContent = "▶️";
+
+});
+
+// =========================
+// Обновление поиска
+// =========================
+
+search.addEventListener("focus", () => {
+
+    if (!catalogPage.classList.contains("hiddenPage")) {
+
+        renderCatalog();
+
+    }
+
+});
+
+// =========================
+// Первый запуск
+// =========================
+
+window.addEventListener("load", () => {
+
+    renderHome();
+
+    renderCatalog();
 
     player.classList.add("hidden");
 
 });
-
-
-// =====================================
-// Формат времени
-// =====================================
-
-function formatTime(seconds) {
-
-    if (isNaN(seconds)) return "0:00";
-
-    const min = Math.floor(seconds / 60);
-
-    const sec = Math.floor(seconds % 60);
-
-    return `${min}:${sec.toString().padStart(2, "0")}`;
-
-}
-
-// =====================================
-// Обновление прогресса
-// =====================================
-
-audio.addEventListener("timeupdate", () => {
-
-    if (!audio.duration) return;
-
-    progress.value =
-        (audio.currentTime / audio.duration) * 100;
-
-    currentTime.textContent =
-        formatTime(audio.currentTime);
-
-});
-
-
-// =====================================
-// Когда песня загрузилась
-// =====================================
-
-audio.addEventListener("loadedmetadata", () => {
-
-    duration.textContent =
-        formatTime(audio.duration);
-
-});
-
-
-// =====================================
-// Перемотка
-// =====================================
-
-progress.addEventListener("input", () => {
-
-    if (!audio.duration) return;
-
-    audio.currentTime =
-        (progress.value / 100) * audio.duration;
-
-});
-
-
-// =====================================
-// Следующая песня после окончания
-// =====================================
-
-audio.addEventListener("ended", () => {
-
-    currentSong++;
-
-    if (currentSong >= songs.length) {
-
-        currentSong = 0;
-
-    }
-
-    openSong(currentSong);
-
-    audio.play();
-
-});
-
-
-// =====================================
-// Запуск приложения
-// =====================================
-
-renderSongs();
-
-
-// =====================================
-// Горячие клавиши
-// =====================================
-
-document.addEventListener("keydown", (e) => {
-
-    if (e.code === "Space") {
-
-        e.preventDefault();
-
-        playBtn.click();
-
-    }
-
-    if (e.code === "ArrowRight") {
-
-        nextBtn.click();
-
-    }
-
-    if (e.code === "ArrowLeft") {
-
-        prevBtn.click();
-
-    }
-
-});
-
-
-console.log("🎵 MaDenMusic готов к работе");
