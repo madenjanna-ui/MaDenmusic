@@ -31,7 +31,7 @@ const songs = [
 
     audio:"kofe.mp3",
 
-    cover:"kofe.png",
+    cover:"kofe.jpg",
 
     lyrics:`
 Здесь будет текст песни
