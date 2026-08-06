@@ -50,7 +50,7 @@ let playing = false;
 // Открытие песни
 // =========================
 
-function openSong(index){
+function openSong(index, autoPlay = false){
 
     currentSong = index;
 
@@ -81,7 +81,16 @@ function openSong(index){
     playing = false;
 
     player.classList.remove("hidden");
+    
+    if (autoPlay) {
 
+    audio.play();
+
+    playing = true;
+
+    playBtn.textContent = "⏸";
+
+}
 }
 
 // =========================
@@ -391,9 +400,15 @@ closePlayer.onclick = () => {
 
 audio.onended = () => {
 
-    playing = false;
+    currentSong++;
 
-    playBtn.textContent = "▶️";
+    if (currentSong >= songs.length) {
+
+        currentSong = 0;
+
+    }
+
+    openSong(currentSong, true);
 
 };
 // =========================
