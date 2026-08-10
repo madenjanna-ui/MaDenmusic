@@ -2,55 +2,37 @@ const songs = [
 
 {
     id:13,
-
     title:"Мы растворяемся вдвоем",
-
     artist:"MaDen",
-
     release:"2026-08-06",
-
     audio:"Растворяемся вдвоем.mp3",
-
     cover:"растворяемся.png",
-
     lyrics:`
 Здесь будет текст песни
 "Мы растворяемся вдвоем"
 `
 },
-    
+
 {
     id:12,
-
     title:"Одним воздухом дышать",
-
     artist:"MaDen",
-
     release:"2026-08-05",
-
     audio:"Одним воздухом дышать.mp3",
-
     cover:"Одним воздухом дышать.png",
-
     lyrics:`
 Здесь будет текст песни
 "Одним воздухом дышать"
 `
 },
-    
+
 {
     id:11,
-
     title:"Ты мой кофе",
-
     artist:"MaDen",
-
     release:"2026-08-05",
-
     audio:"kofe.mp3",
-
     cover:"kofe.jpg",
-
     lyrics:`
 Здесь будет текст песни
 "Ты мой кофе"
@@ -59,17 +41,11 @@ const songs = [
 
 {
     id:10,
-
     title:"Твой взгляд",
-
     artist:"MaDen",
-
     release:"2026-08-05",
-
     audio:"tvoy vzglayd.mp3",
-
     cover:"Together.png",
-
     lyrics:`
 Здесь будет текст песни
 "Твой взгляд"
@@ -78,17 +54,11 @@ const songs = [
 
 {
     id:9,
-
     title:"Папина дочка",
-
     artist:"MaDen",
-
     release:"2026-08-04",
-
     audio:"Папина дочка.mp3",
-
     cover:"Папина дочка.png",
-
     lyrics:`
 Здесь будет текст песни
 "Папина дочка"
@@ -97,17 +67,11 @@ const songs = [
 
 {
     id:8,
-
     title:"Эсфирь",
-
     artist:"MaDen",
-
     release:"2026-08-03",
-
     audio:"Моя – Эсфирь.mp3",
-
     cover:"Together.png",
-
     lyrics:`
 Здесь будет текст песни
 "Эсфирь"
@@ -116,17 +80,11 @@ const songs = [
 
 {
     id:7,
-
     title:"Жизнь моей души",
-
     artist:"MaDen",
-
     release:"2026-08-02",
-
     audio:"Моя – Жизнь моей души.mp3",
-
     cover:"Together.png",
-
     lyrics:`
 Здесь будет текст песни
 "Жизнь моей души"
@@ -135,17 +93,11 @@ const songs = [
 
 {
     id:6,
-
     title:"Мой свет, гори 🔥",
-
     artist:"MaDen",
-
     release:"2026-08-01",
-
     audio:"Moy svet.mp3",
-
     cover:"Together.png",
-
     lyrics:`
 Здесь будет текст песни
 "Мой свет, гори 🔥"
@@ -154,17 +106,11 @@ const songs = [
 
 {
     id:5,
-
     title:"Мой ангел",
-
     artist:"MaDen",
-
     release:"2026-07-31",
-
     audio:"Moy angel.mp3",
-
     cover:"Together.png",
-
     lyrics:`
 Здесь будет текст песни
 "Мой ангел"
@@ -173,17 +119,11 @@ const songs = [
 
 {
     id:4,
-
     title:"Комета",
-
     artist:"MaDen",
-
     release:"2026-07-30",
-
     audio:"Комета.mp3",
-
     cover:"Comet.png",
-
     lyrics:`
 Здесь будет текст песни
 "Комета"
@@ -192,17 +132,11 @@ const songs = [
 
 {
     id:3,
-
     title:"Сегодня мы считаем звёзды",
-
     artist:"MaDen",
-
     release:"2026-07-20",
-
     audio:"сегодня мы считаем звёзды.mp3",
-
     cover:"IMG_3387.jpeg",
-
     lyrics:`
 Здесь будет текст песни
 "Сегодня мы считаем звёзды"
@@ -211,17 +145,11 @@ const songs = [
 
 {
     id:2,
-
     title:"История Любви",
-
     artist:"MaDen",
-
     release:"2026-07-10",
-
     audio:"История любви.mp3",
-
     cover:"Screenshot_20260803-134440-display-0.png.png",
-
     lyrics:`
 Здесь будет текст песни
 "История Любви"
@@ -230,17 +158,11 @@ const songs = [
 
 {
     id:1,
-
     title:"Ты лилия (Nordic Remix)",
-
     artist:"MaDen",
-
     release:"2026-07-01",
-
     audio:"ты лилия (nordic remix).mp3",
-
     cover:"IMG_1576.jpeg",
-
     lyrics:`
 Здесь будет текст песни
 "Ты лилия (Nordic Remix)"

@@ -1,526 +1,141 @@
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050714;--card:rgba(255,255,255,.075);--cardHover:rgba(255,255,255,.12);--border:rgba(255,255,255,.12);--accent:#8bbcff;--accent2:#d98cff;--text:#fff;--gray:#b9c1d5}
+html{background:var(--bg)}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--text);min-height:100vh;background:radial-gradient(circle at 15% 15%,rgba(87,113,255,.18),transparent 32%),radial-gradient(circle at 85% 35%,rgba(205,92,255,.14),transparent 30%),#050714;overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;inset:-20%;pointer-events:none;z-index:-4;filter:blur(70px);opacity:.35}
+body:before{background:radial-gradient(circle at 30% 25%,#5d7cff,transparent 20%)}
+body:after{background:radial-gradient(circle at 75% 70%,#b65cff,transparent 20%)}
+.background{position:fixed;inset:0;background-image:radial-gradient(circle at 20% 20%,rgba(255,255,255,.65) 0 1px,transparent 1.5px),radial-gradient(circle at 70% 35%,rgba(255,255,255,.45) 0 1px,transparent 1.5px),radial-gradient(circle at 45% 80%,rgba(255,255,255,.5) 0 1px,transparent 1.5px);background-size:170px 190px,230px 240px,310px 270px;opacity:.5;z-index:-3}
+header{position:sticky;top:0;z-index:50;padding:22px max(22px,calc((100vw - 760px)/2 + 22px));backdrop-filter:blur(22px);background:linear-gradient(to bottom,rgba(5,7,20,.78),rgba(5,7,20,.42));border-bottom:1px solid rgba(255,255,255,.06)}
+header h1{font-size:42px;font-weight:800;letter-spacing:-1.5px;margin-bottom:18px;text-shadow:0 0 28px rgba(120,170,255,.4)}
+#search{width:100%;padding:16px 18px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(255,255,255,.075);color:white;font-size:17px;outline:none;backdrop-filter:blur(14px);box-shadow:inset 0 1px rgba(255,255,255,.05)}
+#search:focus{border-color:rgba(139,188,255,.5);box-shadow:0 0 0 4px rgba(139,188,255,.08)}
+#search::placeholder{color:#aeb6ca}
+main{width:min(760px,100%);margin:auto;padding:28px 22px 60px}.sectionHeading{display:flex;align-items:end;justify-content:space-between;gap:10px;margin-bottom:20px}.sectionTitle{font-size:28px;font-weight:750}.sectionHint{color:#8993aa;font-size:13px}.hiddenPage{display:none}
+.bigButton{width:100%;margin-top:24px;padding:18px;border:1px solid rgba(255,255,255,.12);border-radius:22px;background:linear-gradient(135deg,rgba(139,188,255,.95),rgba(203,137,255,.92));color:#071020;font-size:18px;font-weight:800;box-shadow:0 14px 35px rgba(81,91,190,.25);cursor:pointer}.bigButton:active{transform:scale(.985)}
+.catalogHeader{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}.textButton,.filterButton{border:1px solid var(--border);background:var(--card);color:white;border-radius:14px;padding:11px 14px;font-size:15px}.textButton{background:transparent;border-color:transparent;padding-left:0}#sortSongs{max-width:190px;padding:11px 12px;border:1px solid var(--border);border-radius:14px;background:#11152a;color:white}.catalogTools{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.filterButton.active{background:rgba(255,105,170,.18);border-color:rgba(255,130,190,.42);color:#ffafd2}.catalogTools span{font-size:13px;color:#8f98ae}
+.song{position:relative;display:flex;align-items:center;gap:16px;padding:14px;margin-bottom:14px;border-radius:24px;background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.045));border:1px solid var(--border);backdrop-filter:blur(18px);transition:.25s;cursor:pointer;overflow:hidden}.song:hover{background:var(--cardHover);transform:translateY(-2px)}.song:active{transform:scale(.985)}.song img{width:82px;height:82px;border-radius:19px;object-fit:cover;flex-shrink:0;box-shadow:0 10px 25px rgba(0,0,0,.3)}.info{flex:1;min-width:0}.info h2{font-size:20px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:5px}.info p{color:var(--gray);font-size:14px}.songDate{color:#7f8aa2;font-size:12px;margin-top:6px}.playIcon{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);color:#fff;font-size:0;flex-shrink:0}.playIcon svg,.heartButton svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.heartButton{width:42px;height:42px;border:0;border-radius:50%;display:grid;place-items:center;background:transparent;color:#aab3c7;cursor:pointer;flex-shrink:0}.heartButton.active{color:#ff73ad}.heartButton.active svg{fill:currentColor;stroke:currentColor}
+.player{position:fixed;inset:0;z-index:100;padding:24px max(24px,calc((100vw - 620px)/2 + 24px));overflow:auto;display:flex;flex-direction:column;align-items:center;background:#060817;isolation:isolate}.player:before{content:"";position:absolute;inset:-45px;background-image:linear-gradient(rgba(4,6,18,.55),rgba(4,6,18,.88)),var(--player-bg);background-position:center;background-size:cover;filter:blur(35px);transform:scale(1.12);opacity:.7;z-index:-2}.player:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 25%,rgba(139,188,255,.14),transparent 38%),linear-gradient(to bottom,transparent 0%,rgba(4,6,18,.45) 55%,rgba(4,6,18,.95) 100%);z-index:-1}.hidden{transform:translateY(100%);opacity:0;pointer-events:none;transition:.35s}.playerTop{width:min(100%,440px);display:flex;align-items:center;justify-content:space-between;color:#9ea8bd;font-size:13px;margin:28px 0 14px}.roundButton{position:absolute;right:18px;top:18px;width:46px;height:46px;border:1px solid rgba(255,255,255,.12);border-radius:50%;background:rgba(255,255,255,.08);color:#fff;font-size:27px;z-index:3}.favoritePlayer{width:42px;height:42px;border:0;background:transparent;color:#aab3c7;font-size:29px;line-height:1}.favoritePlayer.active{color:#ff73ad}.cover{
+width:min(82vw,360px);
+aspect-ratio:1;
+object-fit:cover;
+border-radius:50%;
+margin:0 auto;
+box-shadow:0 30px 80px rgba(0,0,0,.5);
+border:1px solid rgba(255,255,255,.14);
+transition:box-shadow .6s ease, transform .35s ease;
+}
+
+.cover.playing{
+animation:madenVinylSpin 12s linear infinite;
+box-shadow:
+0 0 0 8px rgba(139,188,255,.05),
+0 0 35px rgba(139,188,255,.28),
+0 0 80px rgba(217,140,255,.18),
+0 30px 80px rgba(0,0,0,.5);
+}
+
+@keyframes madenVinylSpin{
+from{transform:rotate(0deg)}
+to{transform:rotate(360deg)}
+}#songTitle{width:min(100%,560px);margin-top:25px;text-align:center;font-size:32px;line-height:1.15}#songArtist{text-align:center;color:var(--gray);margin-top:8px;font-size:17px}.progress{width:min(100%,560px);margin-top:28px}#progress{width:100%;accent-color:#a8c9ff}.time{display:flex;justify-content:space-between;color:#aeb6ca;margin-top:8px;font-size:13px}.modeControls{display:flex;gap:28px;margin-top:18px}.modeButton,.controlButton,.playButton{border:0;color:white;display:grid;place-items:center;cursor:pointer}.modeButton{position:relative;width:42px;height:42px;border-radius:50%;background:transparent;color:#aab3c7}.modeButton.active{color:#a8c9ff;background:rgba(139,188,255,.12)}.modeButton svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.modeButton span{position:absolute;right:4px;bottom:3px;font-size:9px;font-weight:800}.controls{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:8px}.controlButton{width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08)}.controlButton svg,.playButton svg{width:27px;height:27px;fill:currentColor;stroke:currentColor;stroke-width:1.2;stroke-linejoin:round}.playButton{width:82px;height:82px;border-radius:50%;background:linear-gradient(135deg,#a9ccff,#d798ff);color:#081020;box-shadow:0 12px 35px rgba(128,145,255,.28)}.playButton svg{width:31px;height:31px}.lyrics{width:min(100%,560px);margin-top:36px;padding-bottom:70px}.lyrics h3{font-size:18px;margin-bottom:14px}.lyrics p{white-space:pre-wrap;line-height:1.85;color:#edf0f7}.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);padding:12px 16px;border-radius:14px;background:rgba(20,24,42,.92);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(18px);color:white;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:200}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:500px){header{padding:18px 16px}header h1{font-size:34px}main{padding:22px 16px 50px}.sectionTitle{font-size:24px}.sectionHint{display:none}.song{padding:12px;gap:12px}.song img{width:70px;height:70px}.info h2{font-size:18px}.playIcon,.heartButton{width:38px;height:38px}.player{padding:18px 18px 0}.cover{width:min(80vw,330px)}#songTitle{font-size:27px}.controls{gap:18px}.controlButton{width:58px;height:58px}.playButton{width:76px;height:76px}}
+
+
+
+
 /* =========================
-   MaDenMusic 2.0
+   Мини-плеер
 ========================= */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-:root{
-
-    --bg:#050814;
-    --card:rgba(255,255,255,.08);
-    --cardHover:rgba(255,255,255,.12);
-    --border:rgba(255,255,255,.10);
-
-    --accent:#79b8ff;
-
-    --text:#ffffff;
-
-    --gray:#bfc6d8;
-
-}
-
-body{
-
-    font-family:-apple-system,BlinkMacSystemFont,
-    "Segoe UI",Roboto,sans-serif;
-
-    background:#050814;
-
-    color:white;
-
-    min-height:100vh;
-
-}
-
-/* =========================
-   Фон
-========================= */
-
-.background{
-
+.mini-player{
     position:fixed;
-
-    inset:0;
-
-    background:#050814;
-
-    z-index:-5;
-
-}
-
-/* =========================
-   Header
-========================= */
-
-header{
-
-    position:sticky;
-
-    top:0;
-
-    z-index:50;
-
-    padding:22px;
-
-    backdrop-filter:blur(18px);
-
-    background:rgba(5,8,20,.45);
-
-}
-
-header h1{
-
-    font-size:42px;
-
-    font-weight:800;
-
-    margin-bottom:18px;
-
-}
-
-#search{
-
-    width:100%;
-
-    padding:16px;
-
-    border:none;
-
-    border-radius:18px;
-
-    background:var(--card);
-
-    color:white;
-
-    font-size:17px;
-
-    outline:none;
-
-}
-
-#search::placeholder{
-
-    color:#b7bfd3;
-
-}
-
-/* =========================
-   Главная
-========================= */
-
-main{
-
-    padding:22px;
-
-}
-
-.sectionTitle{
-
-    font-size:28px;
-
-    font-weight:700;
-
-    margin-bottom:22px;
-
-}
-
-.hiddenPage{
-
-    display:none;
-
-}
-
-/* =========================
-   Кнопка Все песни
-========================= */
-
-.bigButton{
-
-    width:100%;
-
-    margin-top:28px;
-
-    padding:20px;
-
-    border:none;
-
-    border-radius:22px;
-
-    background:var(--accent);
-
-    color:black;
-
-    font-size:20px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-}
-
-.bigButton:active{
-
-    transform:scale(.98);
-
-}
-
-/* =========================
-   Каталог
-========================= */
-
-.catalogHeader{
-
+    left:12px;
+    right:12px;
+    bottom:14px;
+    z-index:90;
     display:flex;
-
-    justify-content:space-between;
-
     align-items:center;
-
-    gap:14px;
-
-    margin-bottom:22px;
-
-}
-
-#backHome{
-
-    border:none;
-
-    background:none;
-
-    color:white;
-
-    font-size:18px;
-
-}
-
-#sortSongs{
-
-    padding:12px;
-
-    border:none;
-
-    border-radius:14px;
-
-    background:var(--card);
-
-    color:white;
-
-}
-/* =========================
-   Карточки песен
-========================= */
-
-.song{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:18px;
-
-    padding:18px;
-
-    margin-bottom:18px;
-
-    border-radius:24px;
-
-    background:var(--card);
-
-    border:1px solid var(--border);
-
-    backdrop-filter:blur(18px);
-
-    transition:.25s;
-
-    cursor:pointer;
-
-}
-
-.song:active{
-
-    transform:scale(.98);
-
-}
-
-.song:hover{
-
-    background:var(--cardHover);
-
-}
-
-.song img{
-
-    width:88px;
-
-    height:88px;
-
+    gap:12px;
+    padding:10px 12px;
     border-radius:20px;
-
-    object-fit:cover;
-
-    flex-shrink:0;
-
+    background:rgba(12,18,38,.82);
+    border:1px solid rgba(255,255,255,.14);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+    box-shadow:0 14px 40px rgba(0,0,0,.42);
+    transform:translateY(0);
+    opacity:1;
+    transition:transform .3s ease, opacity .3s ease;
 }
 
-.info{
-
-    flex:1;
-
-}
-
-.info h2{
-
-    font-size:22px;
-
-    font-weight:700;
-
-    margin-bottom:6px;
-
-}
-
-.info p{
-
-    color:var(--gray);
-
-    font-size:15px;
-
-}
-
-.playIcon{
-
-    font-size:34px;
-
-}
-
-/* =========================
-   Плеер
-========================= */
-
-.player{
-
-    position:fixed;
-
-    inset:0;
-
-    background:#050814;
-
-    display:flex;
-
-    flex-direction:column;
-
-    padding:24px;
-
-    z-index:100;
-
-    overflow:auto;
-
-}
-
-.hidden{
-
-    transform:translateY(100%);
-
+.hidden-mini{
+    transform:translateY(130%);
     opacity:0;
-
     pointer-events:none;
-
-    transition:.35s;
-
 }
 
-.cover{
-
-    width:min(82vw,360px);
-
-    aspect-ratio:1;
-
-    object-fit:cover;
-
-    border-radius:28px;
-
-    margin:40px auto 0;
-
-    box-shadow:
-
-    0 20px 60px rgba(0,0,0,.45);
-
-}
-
-#songTitle{
-
-    margin-top:28px;
-
-    text-align:center;
-
-    font-size:32px;
-
-    font-weight:700;
-
-}
-
-#songArtist{
-
-    text-align:center;
-
-    color:var(--gray);
-
-    margin-top:8px;
-
-    font-size:18px;
-
-}
-
-#closePlayer{
-
-    position:absolute;
-
-    right:18px;
-
-    top:18px;
-
+.mini-cover{
     width:48px;
-
     height:48px;
+    flex:0 0 48px;
+    object-fit:cover;
+    border-radius:14px;
+    box-shadow:0 0 18px rgba(139,188,255,.2);
+}
 
-    border:none;
+.mini-info{
+    min-width:0;
+    flex:1;
+}
 
+.mini-title{
+    font-size:15px;
+    font-weight:700;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.mini-artist{
+    margin-top:2px;
+    font-size:12px;
+    color:#bfc7da;
+}
+
+.mini-button{
+    width:40px;
+    height:40px;
+    flex:0 0 40px;
+    border:0;
     border-radius:50%;
-
-    background:var(--card);
-
     color:white;
+    background:rgba(255,255,255,.09);
+    display:grid;
+    place-items:center;
+    font-size:17px;
+    cursor:pointer;
+}
 
+.mini-button:active{
+    transform:scale(.93);
+}
+
+.mini-open{
     font-size:22px;
-
 }
 
-.progress{
-
-    margin-top:30px;
-
-}
-
-#progress{
-
-    width:100%;
-
-}
-
-.time{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    color:var(--gray);
-
-    margin-top:8px;
-
-}
-
-.controls{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:28px;
-
-    margin-top:28px;
-
-}
-
-.controls button{
-
-    width:68px;
-
-    height:68px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:var(--card);
-
-    color:white;
-
-    font-size:28px;
-
-}
-
-#play{
-
-    width:84px;
-
-    height:84px;
-
-    background:var(--accent);
-
-    color:black;
-
-    font-size:34px;
-
-}
-
-.lyrics{
-
-    margin-top:36px;
-
-    padding-bottom:60px;
-
-}
-
-.lyrics h3{
-
-    margin-bottom:16px;
-
-}
-
-#lyrics{
-
-    white-space:pre-wrap;
-
-    line-height:1.8;
-
-}
-
-/* =========================
-   Адаптация
-========================= */
-
-@media (max-width:500px){
-
-    header h1{
-
-        font-size:34px;
-
+@media (max-width:520px){
+    .mini-player{
+        bottom:10px;
+        left:8px;
+        right:8px;
+        padding:8px 10px;
     }
 
-    .sectionTitle{
-
-        font-size:24px;
-
+    .mini-cover{
+        width:44px;
+        height:44px;
+        flex-basis:44px;
     }
-
-    .song img{
-
-        width:74px;
-
-        height:74px;
-
-    }
-
-    .info h2{
-
-        font-size:19px;
-
-    }
-
 }
