@@ -165,3 +165,282 @@ to{transform:rotate(360deg)}
         bottom:max(10px,calc(env(safe-area-inset-bottom) + 8px));
     }
 }
+
+
+/* =====================================================
+   MaDenMusic 2.5 — новый мобильный плеер
+   ===================================================== */
+
+.player{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    padding:
+        calc(env(safe-area-inset-top) + 16px)
+        18px
+        calc(env(safe-area-inset-bottom) + 28px);
+    background:#050711;
+    overflow-y:auto;
+    isolation:isolate;
+}
+
+.player-backdrop{
+    position:absolute;
+    inset:-12%;
+    z-index:-2;
+    background-position:center;
+    background-size:cover;
+    filter:blur(48px) saturate(1.18);
+    transform:scale(1.12);
+    opacity:.30;
+    transition:background-image .6s ease, opacity .6s ease;
+}
+
+.player::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:
+        radial-gradient(circle at 50% 16%, rgba(166,102,255,.20), transparent 34%),
+        linear-gradient(180deg, rgba(4,6,16,.42), #050711 78%);
+    pointer-events:none;
+}
+
+.player-content{
+    width:min(100%, 560px);
+    min-height:100%;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+}
+
+.now-playing-label{
+    margin:4px 0 16px 8px;
+    color:#aab0c5;
+    font-size:16px;
+    font-weight:500;
+    letter-spacing:.2px;
+}
+
+.player-close{
+    position:absolute;
+    top:calc(env(safe-area-inset-top) + 16px);
+    right:16px;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.07);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    color:white;
+    z-index:5;
+    display:grid;
+    place-items:center;
+    box-shadow:0 0 28px rgba(173,91,255,.12);
+}
+
+.player-close span,
+.player-close span::after{
+    content:"";
+    display:block;
+    width:25px;
+    height:3px;
+    border-radius:3px;
+    background:white;
+    position:absolute;
+}
+
+.player-close span{transform:rotate(45deg)}
+.player-close span::after{transform:rotate(90deg)}
+
+.cover{
+    width:min(78vw, 390px);
+    aspect-ratio:1;
+    margin:8px auto 24px;
+    border-radius:50%;
+    object-fit:cover;
+    border:1px solid rgba(255,255,255,.16);
+    box-shadow:
+        0 0 0 8px rgba(157,100,255,.035),
+        0 0 38px rgba(157,100,255,.28),
+        0 28px 70px rgba(0,0,0,.48);
+    transition:box-shadow .5s ease;
+}
+
+.cover.playing{
+    animation:madenVinylSpin 12s linear infinite;
+    box-shadow:
+        0 0 0 8px rgba(157,100,255,.05),
+        0 0 46px rgba(157,100,255,.40),
+        0 0 100px rgba(216,103,255,.18),
+        0 28px 70px rgba(0,0,0,.48);
+}
+
+@keyframes madenVinylSpin{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
+}
+
+.track-head{
+    margin:0 4px;
+}
+
+.track-title-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+#songTitle{
+    flex:1;
+    margin:0;
+    font-size:clamp(25px, 6vw, 38px);
+    line-height:1.08;
+    font-weight:800;
+    text-align:left;
+}
+
+#songArtist{
+    margin:8px 0 0;
+    color:#c58cff;
+    font-size:20px;
+}
+
+.favorite-player{
+    width:48px;
+    height:48px;
+    flex:0 0 48px;
+    border:0;
+    background:transparent;
+    color:#c06cff;
+    font-size:40px;
+    line-height:1;
+    cursor:pointer;
+}
+
+.favorite-player.active{
+    color:#c06cff;
+}
+
+.progress{
+    width:100%;
+    margin-top:28px;
+}
+
+#progress{
+    width:100%;
+    height:5px;
+    accent-color:#b867ff;
+}
+
+.time{
+    margin-top:8px;
+    color:#bfc4d5;
+    font-size:14px;
+}
+
+.player-controls{
+    display:grid;
+    grid-template-columns:48px 64px 92px 64px 48px;
+    justify-content:center;
+    align-items:center;
+    gap:16px;
+    margin:30px auto 28px;
+}
+
+.player-controls button{
+    border:0;
+    color:white;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+}
+
+.mode-btn{
+    width:48px;
+    height:48px;
+    background:transparent;
+    color:#b8b8c9 !important;
+    font-size:28px;
+}
+
+.mode-btn.active{
+    color:#bf67ff !important;
+    text-shadow:0 0 18px rgba(191,103,255,.55);
+}
+
+.control-btn{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.12) !important;
+    font-size:24px;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+}
+
+.play-btn{
+    width:92px;
+    height:92px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#a9a4ff,#dc8cff);
+    color:#0b0713 !important;
+    font-size:34px;
+    box-shadow:
+        0 0 30px rgba(173,109,255,.32),
+        0 0 70px rgba(173,109,255,.12);
+}
+
+.lyrics{
+    width:100%;
+    margin-top:8px;
+    padding-bottom:70px;
+}
+
+.lyrics h3{
+    margin:0 0 16px;
+    font-size:25px;
+}
+
+#lyrics{
+    white-space:pre-wrap;
+    line-height:1.8;
+    color:#e9e9f1;
+}
+
+@media (max-width:520px){
+    .player{
+        padding-left:18px;
+        padding-right:18px;
+    }
+
+    .cover{
+        width:min(78vw, 360px);
+        margin-top:12px;
+        margin-bottom:22px;
+    }
+
+    .player-controls{
+        grid-template-columns:42px 58px 82px 58px 42px;
+        gap:10px;
+        margin-top:26px;
+    }
+
+    .control-btn{width:58px;height:58px}
+    .play-btn{width:82px;height:82px}
+    .mode-btn{width:42px;height:42px}
+}
+
+@media (max-height:720px){
+    .cover{
+        width:min(58vh, 300px);
+        margin-bottom:16px;
+    }
+
+    .player-controls{
+        margin-top:20px;
+        margin-bottom:18px;
+    }
+}

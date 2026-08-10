@@ -60,22 +60,47 @@
 </div>
 
 <div id="player" class="player hidden">
-  <div class="playerGlow"></div>
-  <button id="closePlayer" class="roundButton" aria-label="Закрыть">×</button>
+    <div class="player-backdrop"></div>
 
-  <div class="playerTop">
-    <span>Сейчас играет</span>
-    <button id="favoritePlayer" class="favoritePlayer" type="button" aria-label="Добавить в любимые">♡</button>
-  </div>
+    <button id="closePlayer" class="player-close" aria-label="Закрыть плеер">
+        <span></span>
+    </button>
 
-  <img id="cover" class="cover" src="" alt="">
-  <h2 id="songTitle"></h2>
-  <p id="songArtist"></p>
+    <div class="player-content">
+        <div class="now-playing-label">Сейчас играет</div>
 
-  <div class="progress">
-    <input id="progress" type="range" min="0" max="100" value="0" aria-label="Позиция песни">
-    <div class="time"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
-  </div>
+        <img id="cover" class="cover" src="" alt="Обложка">
+
+        <div class="track-head">
+            <div class="track-title-row">
+                <h2 id="songTitle">—</h2>
+                <button id="favoritePlayer" class="favorite-player" aria-label="Добавить в любимые">♡</button>
+            </div>
+            <p id="songArtist">MaDen</p>
+        </div>
+
+        <div class="progress">
+            <input id="progress" type="range" min="0" max="0" value="0">
+            <div class="time">
+                <span id="currentTime">0:00</span>
+                <span id="duration">0:00</span>
+            </div>
+        </div>
+
+        <div class="player-controls">
+            <button id="shuffle" class="mode-btn" aria-label="Случайное воспроизведение">↝</button>
+            <button id="prev" class="control-btn" aria-label="Предыдущая песня">◀|</button>
+            <button id="play" class="play-btn" aria-label="Воспроизвести">▶</button>
+            <button id="next" class="control-btn" aria-label="Следующая песня">|▶</button>
+            <button id="repeat" class="mode-btn" aria-label="Повтор">↻</button>
+        </div>
+
+        <section class="lyrics">
+            <h3>Текст песни</h3>
+            <div id="lyrics"></div>
+        </section>
+    </div>
+</div>
 
   <div class="modeControls">
     <button id="shuffle" class="modeButton" type="button" aria-label="Случайное воспроизведение" title="Случайное воспроизведение">

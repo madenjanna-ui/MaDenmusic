@@ -31,6 +31,8 @@ const repeatBadge = document.getElementById("repeatBadge");
 const progress = document.getElementById("progress");
 const currentTime = document.getElementById("currentTime");
 const duration = document.getElementById("duration");
+
+const playerBackdrop = document.querySelector(".player-backdrop");
 const toast = document.getElementById("toast");
 
 let currentSong = 0;
