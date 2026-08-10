@@ -15,7 +15,7 @@ main{width:min(760px,100%);margin:auto;padding:28px 22px 60px}.sectionHeading{di
 .bigButton{width:100%;margin-top:24px;padding:18px;border:1px solid rgba(255,255,255,.12);border-radius:22px;background:linear-gradient(135deg,rgba(139,188,255,.95),rgba(203,137,255,.92));color:#071020;font-size:18px;font-weight:800;box-shadow:0 14px 35px rgba(81,91,190,.25);cursor:pointer}.bigButton:active{transform:scale(.985)}
 .catalogHeader{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}.textButton,.filterButton{border:1px solid var(--border);background:var(--card);color:white;border-radius:14px;padding:11px 14px;font-size:15px}.textButton{background:transparent;border-color:transparent;padding-left:0}#sortSongs{max-width:190px;padding:11px 12px;border:1px solid var(--border);border-radius:14px;background:#11152a;color:white}.catalogTools{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.filterButton.active{background:rgba(255,105,170,.18);border-color:rgba(255,130,190,.42);color:#ffafd2}.catalogTools span{font-size:13px;color:#8f98ae}
 .song{position:relative;display:flex;align-items:center;gap:16px;padding:14px;margin-bottom:14px;border-radius:24px;background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.045));border:1px solid var(--border);backdrop-filter:blur(18px);transition:.25s;cursor:pointer;overflow:hidden}.song:hover{background:var(--cardHover);transform:translateY(-2px)}.song:active{transform:scale(.985)}.song img{width:82px;height:82px;border-radius:19px;object-fit:cover;flex-shrink:0;box-shadow:0 10px 25px rgba(0,0,0,.3)}.info{flex:1;min-width:0}.info h2{font-size:20px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:5px}.info p{color:var(--gray);font-size:14px}.songDate{color:#7f8aa2;font-size:12px;margin-top:6px}.playIcon{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);color:#fff;font-size:0;flex-shrink:0}.playIcon svg,.heartButton svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.heartButton{width:42px;height:42px;border:0;border-radius:50%;display:grid;place-items:center;background:transparent;color:#aab3c7;cursor:pointer;flex-shrink:0}.heartButton.active{color:#ff73ad}.heartButton.active svg{fill:currentColor;stroke:currentColor}
-.player{position:fixed;inset:0;z-index:100;padding:24px max(24px,calc((100vw - 620px)/2 + 24px));overflow:auto;display:flex;flex-direction:column;align-items:center;background:#060817;isolation:isolate}.player:before{content:"";position:absolute;inset:-45px;background-image:linear-gradient(rgba(4,6,18,.55),rgba(4,6,18,.88)),var(--player-bg);background-position:center;background-size:cover;filter:blur(35px);transform:scale(1.12);opacity:.7;z-index:-2}.player:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 25%,rgba(139,188,255,.14),transparent 38%),linear-gradient(to bottom,transparent 0%,rgba(4,6,18,.45) 55%,rgba(4,6,18,.95) 100%);z-index:-1}.hidden{transform:translateY(100%);opacity:0;pointer-events:none;transition:.35s}.playerTop{width:min(100%,440px);display:flex;align-items:center;justify-content:space-between;color:#9ea8bd;font-size:13px;margin:28px 0 14px}.roundButton{position:absolute;right:18px;top:18px;width:46px;height:46px;border:1px solid rgba(255,255,255,.12);border-radius:50%;background:rgba(255,255,255,.08);color:#fff;font-size:27px;z-index:3}.favoritePlayer{width:42px;height:42px;border:0;background:transparent;color:#aab3c7;font-size:29px;line-height:1}.favoritePlayer.active{color:#ff73ad}.cover{
+.player{position:fixed;inset:0;z-index:100;padding:24px max(24px,calc((100vw - 620px)/2 + 24px));overflow:auto;display:flex;flex-direction:column;align-items:center;background:#060817;isolation:isolate}.player:before{content:"";position:absolute;inset:-45px;background-image:linear-gradient(rgba(4,6,18,.55),rgba(4,6,18,.88)),var(--player-bg);background-position:center;background-size:cover;filter:blur(35px);transform:scale(1.12);opacity:.7;z-index:-2}.player:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 25%,rgba(139,188,255,.14),transparent 38%),linear-gradient(to bottom,transparent 0%,rgba(4,6,18,.45) 55%,rgba(4,6,18,.95) 100%);z-index:-1}.hidden{transform:translateY(100%);opacity:0;pointer-events:none;transition:.35s}.playerTop{width:min(100%,440px);display:flex;align-items:center;justify-content:space-between;color:#9ea8bd;font-size:13px;margin:28px 0 14px}.roundButton{position:absolute;right:18px;top:max(58px,calc(env(safe-area-inset-top) + 18px));width:50px;height:50px;border:1px solid rgba(255,255,255,.12);border-radius:50%;background:rgba(255,255,255,.08);color:#fff;font-size:27px;z-index:3}.favoritePlayer{width:42px;height:42px;border:0;background:transparent;color:#aab3c7;font-size:29px;line-height:1}.favoritePlayer.active{color:#ff73ad}.cover{
 width:min(82vw,360px);
 aspect-ratio:1;
 object-fit:cover;
@@ -137,5 +137,31 @@ to{transform:rotate(360deg)}
         width:44px;
         height:44px;
         flex-basis:44px;
+    }
+}
+
+
+/* Телефон: кнопка закрытия ниже статус-бара и удобнее для пальца */
+.roundButton{
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+    box-shadow:0 8px 24px rgba(0,0,0,.28);
+}
+
+@media (max-width:520px){
+    .player{
+        padding-top:max(24px, env(safe-area-inset-top));
+    }
+
+    .roundButton{
+        right:18px;
+        top:max(62px,calc(env(safe-area-inset-top) + 20px));
+        width:52px;
+        height:52px;
+        font-size:29px;
+    }
+
+    .mini-player{
+        bottom:max(10px,calc(env(safe-area-inset-bottom) + 8px));
     }
 }
