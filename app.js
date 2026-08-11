@@ -377,6 +377,7 @@ prevBtn.addEventListener("click",()=>{
 // ВАЖНО: закрытие большого плеера НЕ останавливает audio.
 // Показываем мини-плеер вместо него.
 closePlayer.addEventListener("click",()=>{
+    // Музыка НЕ останавливается.
     player.classList.add("hidden");
     updateMiniPlayer();
 });
@@ -547,5 +548,9 @@ updateRepeatButton();
 player.classList.add("hidden");
 miniPlayer.classList.add("hidden-mini");
 
+homePage.classList.remove("hiddenPage");
+catalogPage.classList.add("hiddenPage");
+songsTab.classList.add("active");
+favoritesTab.classList.remove("active");
+
 renderHome();
-renderCatalog();

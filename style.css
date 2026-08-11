@@ -521,18 +521,12 @@ main{
     box-shadow:0 0 28px rgba(170,88,255,.16);
 }
 
-.player-close span,
-.player-close span::after{
-    position:absolute;
-    width:25px;
-    height:3px;
-    border-radius:3px;
-    background:white;
-    content:"";
+.player-close{
+    font-size:34px;
+    line-height:1;
+    font-weight:300;
+    padding:0 0 4px 0;
 }
-
-.player-close span{transform:rotate(45deg)}
-.player-close span::after{transform:rotate(90deg)}
 
 .cover{
     width:min(78vw,390px);
@@ -753,4 +747,12 @@ main{
         margin-top:20px;
         margin-bottom:20px;
     }
+}
+
+/* Общий класс скрытия полноэкранного плеера */
+.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateY(100%);
 }
