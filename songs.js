@@ -1,5 +1,30 @@
 const songs = [
+    
+{
+    id: 15,
+    title: "Мы растворяемся вдвоём (Remix)",
+    artist: "MaDen",
+    release: "2026-08-13",
+    audio: "мы растворяемся вдвоём (remix).mp3",
+    cover: "мы растворяемся вдвоём (remix).jpg",
+    lyrics: `
+Здесь будет текст песни
+"Мы растворяемся вдвоём (Remix)"
+`
+},
 
+{
+    id: 14,
+    title: "История любви (Nordic Remix)",
+    artist: "MaDen",
+    release: "2026-08-13",
+    audio: "история любви (nordic remix).mp3",
+    cover: "история любви (nordic remix).jpg",
+    lyrics: `
+Здесь будет текст песни
+"История любви (Nordic Remix)"
+`
+},
 {
     id:13,
     title:"Мы растворяемся вдвоем",
