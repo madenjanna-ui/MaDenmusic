@@ -6,7 +6,7 @@ const songs = [
         artist: "MaDen",
         release: "2026-08-13",
         audio: "13.08-2.mp3",
-        cover: "album_remixes.jpg",
+        cover: "album_remixes.png",
         lyrics: `
 Здесь будет текст песни "Одним воздухом дышать (Remix)"
         `
