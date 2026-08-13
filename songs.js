@@ -1,5 +1,16 @@
 const songs = [
-    
+
+       {
+        id: 27,
+        title: "Одним воздухом дышать (Remix)",
+        artist: "MaDen",
+        release: "2026-08-13",
+        audio: "13.08-2.mp3",
+        cover: "album_remixes.jpg",
+        lyrics: `
+Здесь будет текст песни "Одним воздухом дышать (Remix)"
+        `
+    },
 {
     id: 15,
     title: "Мы растворяемся вдвоём (Remix)",
