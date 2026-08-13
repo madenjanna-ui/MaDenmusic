@@ -5,7 +5,7 @@ const songs = [
     title: "Мы растворяемся вдвоём (Remix)",
     artist: "MaDen",
     release: "2026-08-13",
-    audio: "мы растворяемся вдвоём (remix).mp3",
+    audio: "12.08.mp3",
     cover: "мы растворяемся вдвоём (remix).jpg",
     lyrics: `
 Здесь будет текст песни
