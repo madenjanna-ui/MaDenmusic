@@ -1,5 +1,16 @@
 const songs = [
+{
+id:35,
 
+  title:'Одно сердце на двоих',
+
+  artist:'MaDen',
+  release: "2026-08-21",
+  audio:'songs/odno-serdtse-na-dvoih.mp3',
+  cover:'odno-serdtse-na-dvoih.png',
+  lyrics:'Здесь будет текст песни "Одно сердце на двоих"'
+
+     },
 {
         id: 34,
         title: "Целуй меня нежно...",
