@@ -1,5 +1,15 @@
 const songs = [
-
+  {
+    id: 39,
+    title: "От Эдема ... remix",
+    artist: "MaDen",
+    release: "2026-08-28",
+    audio: "songs/От Эдема (remix).mp3",
+    cover: "covers/От Эдема (remix).png",
+    lyrics: `
+Здесь будет текст песни "От Эдема ... remix"
+`
+  },
   {
     id: 38,
     title: "Твой взгляд (dance remix 70')",
