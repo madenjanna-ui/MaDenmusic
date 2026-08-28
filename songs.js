@@ -1,6 +1,17 @@
 const songs = [
 
   {
+id:38,
+
+  title:'Твой взгляд (dance remix 70')”',
+  artist:'MaDen',
+  release: "2026-08-28",
+  audio:'songs/Твой взгляд (dance remix 70).mp3',
+  cover:'covers/Твой взгляд (dance remix 70).png',
+  lyrics:'Здесь будет текст песни "Твой взгляд (dance remix 70')"'
+
+     },
+  {
 id:37,
 
   title:'От Эдема до Нового дня',
