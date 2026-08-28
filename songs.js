@@ -8,7 +8,7 @@ id:38,
   release: "2026-08-28",
   audio:'songs/Твой взгляд (dance remix 70).mp3',
   cover:'covers/Твой взгляд (dance remix 70).png',
-  lyrics:'Здесь будет текст песни "Твой взгляд (dance remix 70')"'
+  lyrics:'Здесь будет текст песни "Твой взгляд (dance remix 70)"'
 
      },
   {
