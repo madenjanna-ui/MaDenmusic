@@ -4,8 +4,8 @@ const songs = [
     title: "От Эдема ... remix",
     artist: "MaDen",
     release: "2026-08-28",
-    audio: "songs/От Эдема (remix).mp3",
-    cover: "covers/От Эдема (remix).png",
+    audio: "songs/От Эдема (ремикс).mp3",
+    cover: "covers/От Эдема (ремикс).png",
     lyrics: `
 Здесь будет текст песни "От Эдема ... remix"
 `
