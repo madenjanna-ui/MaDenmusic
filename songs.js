@@ -1,5 +1,16 @@
 const songs = [
   {
+    id: 40,
+    title: "Ты - мой кофе - remix",
+    artist: "MaDen",
+    release: "2026-09-01",
+    audio: "songs/My coffe ремикс.mp3",
+    cover: "covers/My coffe ремикс.png",
+    lyrics: `
+Здесь будет текст песни "Ты - мой кофе - remix"
+`
+  },
+  {
     id: 39,
     title: "От Эдема ... remix",
     artist: "MaDen",
