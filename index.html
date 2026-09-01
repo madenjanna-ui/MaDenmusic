@@ -13,156 +13,98 @@
 <link rel="stylesheet" href="style.css">
 <title>MaDenMusic</title>
 </head>
-
 <body>
-
 <div class="background"></div>
-
 <header class="site-header">
     <div class="header-inner">
         <div class="brand-row">
-            <h1>MaDenMusic</h1>
-            <span class="brand-note">♪</span>
+            <h1>MaDenMusic</h1><span class="brand-note">♪</span>
         </div>
-
-        <div class="search-wrap">
-            <span class="search-icon">⌕</span>
-            <input id="search" type="search" placeholder="Поиск песни..." autocomplete="off">
-        </div>
+        <div class="search-wrap"><span class="search-icon">⌕</span><input id="search" type="search" placeholder="Поиск песни..." autocomplete="off"></div>
     </div>
 </header>
 
 <main>
-
     <nav class="page-tabs" aria-label="Разделы">
         <button id="songsTab" class="page-tab active" type="button">Песни</button>
+        <button id="albumsTab" class="page-tab" type="button">Альбомы</button>
         <button id="favoritesTab" class="page-tab" type="button">Любимые</button>
     </nav>
 
     <section id="homePage">
-
-        <div class="section-heading">
-            <div>
-                <h2>Новые релизы</h2>
-                <p>Свежая музыка MaDen</p>
-            </div>
-            <span class="release-badge">14 дней</span>
-        </div>
-
+        <div class="section-heading"><div><h2>Новые релизы</h2><p>Свежая музыка MaDen</p></div><span class="release-badge">30 дней</span></div>
         <div id="newSongs" class="song-list"></div>
+        <div class="section-heading albums-heading"><div><h2>Альбомы</h2><p>Музыка по историям и настроениям</p></div></div>
+        <div id="albumsHome" class="album-grid"></div>
+    </section>
 
-        <button id="showAllSongs" class="all-songs-button" type="button">
-            <span>Все песни</span>
-            <span>›</span>
-        </button>
+    <section id="albumCatalogPage" class="hiddenPage">
+        <div class="catalog-top"><button id="backHome" class="back-button" type="button">‹ Главная</button></div>
+        <div class="section-heading"><div><h2>Альбомы</h2><p>MaDenMusic</p></div></div>
+        <div id="albumsList" class="album-grid"></div>
+    </section>
 
+    <section id="albumPage" class="hiddenPage">
+        <div class="catalog-top"><button id="backAlbums" class="back-button" type="button">‹ Альбомы</button></div>
+        <div class="album-hero">
+            <img id="albumHeroCover" src="" alt="">
+            <div class="album-hero-info"><h2 id="albumTitle">—</h2><p id="albumSubtitle">—</p><button id="playAlbum" class="album-play-button" type="button">▶ Играть всё</button></div>
+        </div>
+        <section id="lumeyaWelcome" class="lumeya-welcome hiddenPage">
+            <div class="lumeya-kicker">ОСОБЫЙ ПРОЕКТ</div>
+            <h2>Добро пожаловать в Люмейю</h2>
+            <p>Представим мир, где людям неведомы горе и беды. Мир, в котором звёзды напоминают о свете, а единство и любовь становятся языком сердца.</p>
+            <button id="lumeyaEnter" class="lumeya-button" type="button" aria-expanded="false">Войти в Люмейю →</button>
+            <div id="lumeyaInside" class="lumeya-inside hiddenPage" aria-hidden="true">
+                <div class="lumeya-intro"><h3>Язык звёзд и сердца</h3><p>У народа Люмейи есть свой язык — язык звёзд и сердца.</p></div>
+                <div class="lumeya-dictionary">
+                    <button class="lumeya-word" type="button"><span>Luma</span><b class="lumeya-word-arrow">+</b><small>свет</small></button>
+                    <button class="lumeya-word" type="button"><span>Nori</span><b class="lumeya-word-arrow">+</b><small>звезда</small></button>
+                    <button class="lumeya-word" type="button"><span>Kaeli</span><b class="lumeya-word-arrow">+</b><small>небо</small></button>
+                    <button class="lumeya-word" type="button"><span>Seli</span><b class="lumeya-word-arrow">+</b><small>единство</small></button>
+                    <button class="lumeya-word" type="button"><span>Vei</span><b class="lumeya-word-arrow">+</b><small>путь, идти</small></button>
+                    <button class="lumeya-word" type="button"><span>Mora</span><b class="lumeya-word-arrow">+</b><small>дорога</small></button>
+                    <button class="lumeya-word" type="button"><span>Kela</span><b class="lumeya-word-arrow">+</b><small>сердце</small></button>
+                    <button class="lumeya-word" type="button"><span>Navai</span><b class="lumeya-word-arrow">+</b><small>душа</small></button>
+                    <button class="lumeya-word" type="button"><span>Lorei</span><b class="lumeya-word-arrow">+</b><small>красота</small></button>
+                    <button class="lumeya-word" type="button"><span>Aveniluma</span><b class="lumeya-word-arrow">+</b><small>свет жизни</small></button>
+                    <button class="lumeya-word" type="button"><span>Rena</span><b class="lumeya-word-arrow">+</b><small>вечность</small></button>
+                    <button class="lumeya-word" type="button"><span>Alya</span><b class="lumeya-word-arrow">+</b><small>внутренняя сущность</small></button>
+                </div>
+            </div>
+        </section>
+        <div id="albumSongList" class="song-list"></div>
+        <p class="source-note">Песни, для которых ещё нет MP3, отмечены «Скоро будет» и не участвуют в воспроизведении.</p>
     </section>
 
     <section id="catalogPage" class="hiddenPage">
-
-        <div class="catalog-top">
-            <button id="backHome" class="back-button" type="button">‹ Главная</button>
-
-            <select id="sortSongs" aria-label="Сортировка">
-                <option value="new">Сначала новые</option>
-                <option value="old">Сначала старые</option>
-                <option value="name">По названию</option>
-            </select>
-        </div>
-
-        <div class="catalog-tools">
-            <span id="catalogLabel">Все песни</span>
-            <span id="catalogCount"></span>
-        </div>
-
+        <div class="catalog-top"><button id="backHome" class="back-button" type="button">‹ Главная</button><select id="sortSongs" aria-label="Сортировка"><option value="new">Сначала новые</option><option value="old">Сначала старые</option><option value="name">По названию</option></select></div>
+        <div class="catalog-tools"><span id="catalogLabel">Все песни</span><span id="catalogCount"></span></div>
         <div id="songList" class="song-list"></div>
-
     </section>
-
 </main>
 
-<!-- Мини-плеер. Он НЕ останавливает audio при закрытии большого плеера. -->
 <div id="miniPlayer" class="mini-player hidden-mini">
-    <img id="miniCover" class="mini-cover" src="" alt="">
-    <div class="mini-info">
-        <div id="miniTitle" class="mini-title">—</div>
-        <div id="miniArtist" class="mini-artist">MaDen</div>
-    </div>
-    <button id="miniPlay" class="mini-action" type="button" aria-label="Пауза">▶</button>
-    <button id="miniOpen" class="mini-action mini-expand" type="button" aria-label="Открыть плеер">⌃</button>
+    <img id="miniCover" class="mini-cover" src="" alt=""><div class="mini-info"><div id="miniTitle" class="mini-title">—</div><div id="miniArtist" class="mini-artist">MaDen</div></div>
+    <button id="miniPlay" class="mini-action" type="button" aria-label="Воспроизвести">▶</button><button id="miniOpen" class="mini-action mini-expand" type="button" aria-label="Открыть плеер">⌃</button>
 </div>
 
-<!-- Полноэкранный плеер -->
 <div id="player" class="player hidden">
-
-    <div class="player-bg" aria-hidden="true"></div>
-    <div class="player-shade" aria-hidden="true"></div>
-
+    <div class="player-bg" aria-hidden="true"></div><div class="player-shade" aria-hidden="true"></div>
     <button id="closePlayer" class="player-close" type="button" aria-label="Закрыть плеер">×</button>
-
     <div class="player-inner">
-
         <div class="now-playing">Сейчас играет</div>
-
         <img id="cover" class="cover" src="" alt="">
-
-        <div class="track-head">
-            <div class="track-title-row">
-                <h2 id="songTitle">—</h2>
-                <button id="favoritePlayer" class="favorite-player" type="button" aria-label="Добавить в любимые">♡</button>
-            </div>
-            <p id="songArtist">MaDen</p>
-        </div>
-
-        <div class="progress">
-            <input id="progress" type="range" min="0" max="0" value="0" aria-label="Позиция песни">
-            <div class="time">
-                <span id="currentTime">0:00</span>
-                <span id="duration">0:00</span>
-            </div>
-        </div>
-
-        <div class="player-controls">
-
-            <button id="shuffle" class="mode-button" type="button" aria-label="Случайное воспроизведение">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M16 3h5v5M4 7h2.5c3.5 0 5 2 7 5s3.5 5 7 5H21M16 21h5v-5M4 17h2.5c1.8 0 3.1-.6 4.2-1.7M13.2 8.7C15 6.8 16.2 5 18.5 5H21"/>
-                </svg>
-            </button>
-
-            <button id="prev" class="skip-button" type="button" aria-label="Предыдущая песня">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5v14M19 6l-10 6 10 6z"/></svg>
-            </button>
-
-            <button id="play" class="play-button" type="button" aria-label="Воспроизвести">
-                <svg id="playIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-
-            <button id="next" class="skip-button" type="button" aria-label="Следующая песня">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5v14M5 6l10 6-10 6z"/></svg>
-            </button>
-
-            <button id="repeat" class="mode-button" type="button" aria-label="Повтор">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 2l4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4M21 13v2a3 3 0 0 1-3 3H3"/></svg>
-                <span id="repeatBadge"></span>
-            </button>
-
-        </div>
-
-        <section class="lyrics">
-            <h3>Текст песни</h3>
-            <p id="lyrics"></p>
-        </section>
-
+        <div class="track-head"><div class="track-title-row"><h2 id="songTitle">—</h2><button id="favoritePlayer" class="favorite-player" type="button" aria-label="Добавить в любимые">♡</button></div><p id="songArtist">MaDen</p></div>
+        <div class="progress"><input id="progress" type="range" min="0" max="0" value="0" aria-label="Позиция песни"><div class="time"><span id="currentTime">0:00</span><span id="duration">0:00</span></div></div>
+        <div class="player-controls-main"><button id="prev" class="skip-button" type="button" aria-label="Предыдущая песня"><svg viewBox="0 0 24 24"><path d="M6 5v14M19 6l-10 6 10 6z"/></svg></button><button id="play" class="play-button" type="button" aria-label="Воспроизвести"><svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button><button id="next" class="skip-button" type="button" aria-label="Следующая песня"><svg viewBox="0 0 24 24"><path d="M18 5v14M5 6l10 6-10 6z"/></svg></button></div>
+        <div class="player-controls-modes"><button id="shuffle" class="mode-button" type="button" aria-label="Случайное воспроизведение"><svg viewBox="0 0 24 24"><path d="M16 3h5v5M4 7h2.5c3.5 0 5 2 7 5s3.5 5 7 5H21M16 21h5v-5M4 17h2.5c1.8 0 3.1-.6 4.2-1.7M13.2 8.7C15 6.8 16.2 5 18.5 5H21"/></svg></button><button id="repeat" class="mode-button" type="button" aria-label="Повтор"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4M21 13v2a3 3 0 0 1-3 3H3"/></svg><span id="repeatBadge"></span></button><button id="wordsBtn" class="mode-button words-button" type="button" aria-label="Слова"><span class="words-icon">♫</span><span>Слова</span></button></div>
     </div>
 </div>
 
+<div id="lyricsView" class="lyrics-view hidden"><div class="lyrics-view-top"><button id="closeLyrics" class="back-button" type="button">‹ Плеер</button><h2>Слова</h2></div><div class="lyrics-view-card"><h1 id="lyricsViewTitle">—</h1><pre id="lyricsViewText"></pre></div></div>
 <div id="toast" class="toast" aria-live="polite"></div>
-
 <audio id="audio" preload="metadata"></audio>
-
-<script src="songs.js"></script>
-<script src="app.js"></script>
-
+<script src="songs.js"></script><script src="app.js"></script>
 </body>
 </html>

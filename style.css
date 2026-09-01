@@ -533,7 +533,7 @@ main{
     aspect-ratio:1;
     margin:8px auto 24px;
     object-fit:cover;
-    border-radius:50%;
+    border-radius:22px;
     border:1px solid rgba(255,255,255,.14);
     box-shadow:
         0 0 0 8px rgba(170,100,255,.035),
@@ -543,6 +543,7 @@ main{
 }
 
 .cover.playing{
+    border-radius:50%;
     animation:madenSpin 12s linear infinite;
     box-shadow:
         0 0 0 8px rgba(178,100,255,.055),
@@ -756,3 +757,27 @@ main{
     pointer-events:none;
     transform:translateY(100%);
 }
+
+/* =========================
+   Album edition
+========================= */
+.albums-heading{margin-top:34px}
+.album-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.album-card{overflow:hidden;border-radius:22px;background:linear-gradient(135deg,rgba(25,23,40,.9),rgba(12,12,22,.76));border:1px solid rgba(255,255,255,.07);box-shadow:0 12px 38px rgba(0,0,0,.24);cursor:pointer;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.album-card:hover{transform:translateY(-3px);border-color:rgba(196,111,255,.22);box-shadow:0 18px 42px rgba(0,0,0,.3),0 0 24px rgba(176,93,255,.1)}
+.album-card img{display:block;width:100%;aspect-ratio:1;object-fit:cover;background:rgba(255,255,255,.03)}
+.album-card-body{padding:14px 14px 16px}.album-card-body h3{font-size:18px;font-weight:800}.album-card-body p{margin-top:5px;color:#8f91a5;font-size:12px}
+.album-hero{display:flex;align-items:center;gap:18px;margin:4px 0 24px;padding:14px;border:1px solid rgba(255,255,255,.08);border-radius:24px;background:linear-gradient(135deg,rgba(29,25,44,.9),rgba(12,12,22,.75));box-shadow:0 16px 45px rgba(0,0,0,.22)}
+.album-hero img{width:150px;height:150px;border-radius:20px;object-fit:cover;box-shadow:0 12px 32px rgba(0,0,0,.32)}
+.album-hero-info{min-width:0}.album-hero-info h2{font-size:30px;font-weight:850}.album-hero-info p{margin:6px 0 14px;color:#9295a8}
+.album-play-button{border:0;border-radius:999px;padding:11px 16px;background:linear-gradient(135deg,#aaa7ff,#dd8dff);color:#100918;font-weight:800;box-shadow:0 0 22px rgba(183,102,255,.22)}
+.song.unavailable{cursor:default;opacity:.72}.comingSoon{display:inline-flex;margin-top:7px;padding:4px 8px;border-radius:999px;background:rgba(255,170,80,.1);border:1px solid rgba(255,170,80,.16);color:#ffc17e;font-size:10px;font-weight:700}.song.unavailable .playIcon{color:#6b6d7f}
+.source-note{margin:16px 4px;color:#777a90;font-size:12px;line-height:1.5}
+.player-controls-main{display:flex;justify-content:center;align-items:center;gap:18px;margin:26px auto 14px}.player-controls-modes{display:flex;justify-content:center;align-items:center;gap:14px;margin:0 auto 30px}
+.player-controls-modes .mode-button{width:auto;min-width:46px;padding:0 8px;border-radius:14px}.words-button{display:flex;align-items:center;gap:7px;color:#b5b4c6}.words-button span:last-child{font-size:12px;font-weight:700}.words-icon{font-size:20px;line-height:1}
+.player-controls-modes .mode-button:hover{background:rgba(255,255,255,.06);color:#fff}.player-controls-modes .mode-button.active{background:rgba(192,109,255,.1);border:1px solid rgba(192,109,255,.14)}
+.lyrics-view{position:fixed;inset:0;z-index:140;background:#08070f;overflow-y:auto;padding:calc(env(safe-area-inset-top) + 16px) 16px calc(env(safe-area-inset-bottom) + 30px)}.lyrics-view-top{width:min(760px,100%);margin:auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}.lyrics-view-top h2{text-align:center}.lyrics-view-top .back-button{justify-self:start}.lyrics-view-card{width:min(760px,100%);margin:30px auto 0;padding:4px 8px 50px}.lyrics-view-card h1{font-size:clamp(28px,6vw,44px);line-height:1.1;margin-bottom:24px}.lyrics-view-card pre{white-space:pre-wrap;font:inherit;font-size:18px;line-height:1.85;color:#ececf3;margin:0}
+.lumeya-welcome{margin-bottom:20px;padding:24px;border-radius:26px;background:radial-gradient(circle at 30% 20%,rgba(112,147,255,.13),transparent 42%),linear-gradient(145deg,rgba(21,25,42,.88),rgba(12,13,25,.8));border:1px solid rgba(255,255,255,.08);box-shadow:0 18px 45px rgba(0,0,0,.24)}
+.lumeya-kicker{font-size:11px;letter-spacing:.18em;color:#c18aff;font-weight:800}.lumeya-welcome h2{margin-top:10px;font-size:clamp(28px,7vw,42px);line-height:1.04}.lumeya-welcome>p{max-width:62ch;margin-top:12px;color:#b8bac9;line-height:1.7}.lumeya-button{margin-top:18px;border:1px solid rgba(255,255,255,.12);padding:12px 16px;border-radius:999px;background:rgba(255,255,255,.06);color:#fff;font-weight:800}.lumeya-inside{margin-top:24px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08)}.lumeya-intro h3{font-size:23px}.lumeya-intro p{margin-top:7px;color:#999caf;line-height:1.55}.lumeya-dictionary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px}.lumeya-word{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;gap:0 10px;align-items:center;text-align:left;padding:13px 14px;border-radius:16px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.035);color:#f3f3f7;overflow:hidden;transition:border-color .35s ease,background .35s ease,box-shadow .35s ease,transform .25s ease}.lumeya-word:hover{transform:translateY(-1px)}.lumeya-word span{font-weight:800;letter-spacing:.01em}.lumeya-word small{display:block;grid-column:1;max-height:0;opacity:0;transform:translateY(-5px);overflow:hidden;margin:0;color:#a8a9bb;font-size:11px;line-height:1.45;transition:max-height .42s ease,opacity .34s ease,transform .42s ease,margin-top .42s ease}.lumeya-word-arrow{grid-row:1/3;grid-column:2;color:#c58cff;font-size:18px;transition:transform .35s ease,color .35s ease}.lumeya-word.open{border-color:rgba(196,111,255,.24);background:linear-gradient(135deg,rgba(196,111,255,.08),rgba(123,91,255,.045));box-shadow:0 8px 24px rgba(83,54,125,.14)}.lumeya-word.open small{max-height:60px;opacity:1;transform:translateY(0);margin-top:5px}.lumeya-word.open .lumeya-word-arrow{transform:rotate(45deg);color:#e2baff}
+@media(max-width:600px){.album-grid{grid-template-columns:1fr 1fr;gap:11px}.album-hero{align-items:flex-start}.album-hero img{width:118px;height:118px}.album-hero-info h2{font-size:24px}.player-controls-modes{gap:8px}.player-controls-modes .mode-button{min-width:44px}.words-button span:last-child{font-size:11px}.lumeya-dictionary{grid-template-columns:1fr}}
+@media(max-width:390px){.album-card-body{padding:11px}.album-card-body h3{font-size:16px}.album-hero{gap:12px}.album-hero img{width:104px;height:104px}.player-controls-main{gap:12px}}
