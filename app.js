@@ -17,6 +17,7 @@ const albumSongList = $("albumSongList");
 
 const search = $("search");
 const songsTab = $("songsTab");
+const allSongsTab = $("allSongsTab");
 const albumsTab = $("albumsTab");
 const favoritesTab = $("favoritesTab");
 const backHome = $("backHome");
@@ -24,6 +25,7 @@ const backAlbums = $("backAlbums");
 const albumTitle = $("albumTitle");
 const albumSubtitle = $("albumSubtitle");
 const albumHeroCover = $("albumHeroCover");
+const playAllHome = $("playAllHome");
 const playAlbum = $("playAlbum");
 const sortSongs = $("sortSongs");
 const catalogCount = $("catalogCount");
@@ -217,7 +219,11 @@ function getNewSongs() {
 
 function renderHome() {
     const list = getNewSongs();
-    renderSongList(list, newSongs, list);
+
+    // На главной карточки новых релизов запускаются,
+    // но очередь всегда строится из ВСЕХ доступных песен.
+    const homeQueue = getAvailable(songs);
+    renderSongList(list, newSongs, homeQueue);
 }
 
 function albumCard(album) {
@@ -284,7 +290,7 @@ function renderCatalog() {
 }
 
 function setActiveTab(tab) {
-    [songsTab, albumsTab, favoritesTab].forEach(button => button?.classList.remove("active"));
+    [songsTab, allSongsTab, albumsTab, favoritesTab].forEach(button => button?.classList.remove("active"));
     tab?.classList.add("active");
 }
 
@@ -312,7 +318,7 @@ function openAlbumsList() {
 function openCatalog() {
     hideAllPages();
     catalogPage.classList.remove("hiddenPage");
-    setActiveTab(favoritesOnly ? favoritesTab : songsTab);
+    setActiveTab(favoritesOnly ? favoritesTab : allSongsTab);
     renderCatalog();
 }
 
@@ -461,52 +467,41 @@ function updateMiniPlayer() {
 
 async function loadLyrics(song) {
     const token = ++lyricsToken;
+    const loadingText = "Загрузка текста…";
 
-    if (lyricsBox) lyricsBox.textContent = "Загрузка текста…";
-    if (lyricsViewText) lyricsViewText.textContent = "Загрузка текста…";
+    if (lyricsBox) lyricsBox.textContent = loadingText;
+    if (lyricsViewText) lyricsViewText.textContent = loadingText;
 
-    // Тексты лежат рядом с index.html в папке /lyrics/.
-    // Основной формат: lyrics/ID.txt — например, lyrics/55.txt
+    // Основной вариант: lyrics/ID.txt
+    // Дополнительный вариант: lyrics/Название песни.txt
     const candidates = [
         `lyrics/${song.id}.txt`,
-        `lyrics/${song.id}.TXT`
-    ];
+        song.title ? `lyrics/${encodeURIComponent(song.title)}.txt` : null
+    ].filter(Boolean);
 
-    let loadedText = "";
-
-    for (const relativePath of candidates) {
+    for (const path of candidates) {
         try {
-            // Используем document.baseURI, чтобы корректно работать
-            // и на GitHub Pages, и внутри подпапки репозитория.
-            const url = new URL(relativePath, document.baseURI).href;
-            const response = await fetch(url, {
-                cache: "no-store",
-                headers: { "Accept": "text/plain,*/*" }
-            });
-
+            const response = await fetch(path, { cache: "no-store" });
             if (!response.ok) continue;
 
-            const text = (await response.text()).replace(/^\uFEFF/, "").trim();
-            if (text) {
-                loadedText = text;
-                break;
+            const text = (await response.text()).trim();
+            const finalText = text || "Текст песни скоро появится";
+
+            if (token === lyricsToken) {
+                if (lyricsBox) lyricsBox.textContent = finalText;
+                if (lyricsViewText) lyricsViewText.textContent = finalText;
             }
-        } catch (error) {
-            console.warn("Не удалось загрузить текст:", relativePath, error);
+            return;
+        } catch {
+            // Пробуем следующий вариант, затем используем резерв из songs.js.
         }
     }
 
-    // Если файл нашли — показываем именно его.
-    // Если нет — используем резервный lyrics из songs.js.
-    const finalText =
-        loadedText ||
-        (typeof song.lyrics === "string" ? song.lyrics.trim() : "") ||
-        "Текст песни скоро появится";
-
-    if (token !== lyricsToken) return;
-
-    if (lyricsBox) lyricsBox.textContent = finalText;
-    if (lyricsViewText) lyricsViewText.textContent = finalText;
+    const fallback = (song.lyrics || "").trim() || "Текст песни скоро появится";
+    if (token === lyricsToken) {
+        if (lyricsBox) lyricsBox.textContent = fallback;
+        if (lyricsViewText) lyricsViewText.textContent = fallback;
+    }
 }
 
 function showLyricsView() {
@@ -517,7 +512,7 @@ function showLyricsView() {
     lyricsViewText.textContent = "Загрузка текста…";
     lyricsView.classList.remove("hidden");
 
-    // Загружаем lyrics/ID.txt, например lyrics/55.txt.
+    // Важно: отдельно загружаем текст для полноэкранного режима «Слова».
     loadLyrics(song);
 }
 
@@ -575,6 +570,7 @@ function updateMediaPosition() {
 }
 
 songsTab?.addEventListener("click", openHome);
+allSongsTab?.addEventListener("click", () => { favoritesOnly = false; search.value = ""; openCatalog(); });
 albumsTab?.addEventListener("click", openAlbumsList);
 favoritesTab?.addEventListener("click", () => {
     favoritesOnly = true;
@@ -583,6 +579,23 @@ favoritesTab?.addEventListener("click", () => {
 });
 backHome?.addEventListener("click", openHome);
 backAlbums?.addEventListener("click", openAlbumsList);
+
+playAllHome?.addEventListener("click", () => {
+    const queue = getAvailable(songs);
+    if (!queue.length) return;
+    setQueue(queue, queue[0].id);
+    const index = songs.findIndex(song => song.id === queue[0].id);
+    if (shuffleMode && queue.length > 1) {
+        // Первая песня тоже выбирается случайно при запуске с главной.
+        const random = Math.floor(Math.random() * queue.length);
+        queuePosition = random;
+        const randomIndex = songs.findIndex(song => song.id === queue[random].id);
+        openSong(randomIndex, true);
+    } else {
+        openSong(index, true);
+    }
+});
+
 playAlbum?.addEventListener("click", playAllAlbum);
 sortSongs?.addEventListener("change", renderCatalog);
 search?.addEventListener("input", () => {
@@ -652,8 +665,8 @@ function updateRepeatButton() {
     repeatBtn.setAttribute("aria-label", repeatMode === "off" ? "Повтор выключен" : repeatMode === "all" ? "Повтор списка" : "Повтор одной песни");
 }
 
-wordsBtn?.addEventListener("click", showLyricsView);
-closeLyrics?.addEventListener("click", hideLyricsView);
+wordsBtn.addEventListener("click", showLyricsView);
+closeLyrics.addEventListener("click", hideLyricsView);
 
 progress.addEventListener("input", () => {
     audio.currentTime = Number(progress.value);
