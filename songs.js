@@ -410,12 +410,12 @@ const songs = [
 `
   },
 {
-    id: 40,
+    id: 16,
     title: "Наша жизнь — это сила",
     artist: "MaDen",
-    release: null,
+    release: "2026-09-02",
     album: "Моя",
-    available: false,
+    available: true,
     audio: "songs/Наша жизнь — это сила.mp3",
     cover: "covers/moya.png",
     lyrics: `
