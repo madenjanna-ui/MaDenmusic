@@ -11,6 +11,28 @@
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="stylesheet" href="style.css">
+<style>
+/* Точечные дополнения MaDenMusic 2.7. Основной дизайн остаётся в style.css. */
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.section-play-button,.album-play-button{display:inline-flex;align-items:center;justify-content:center;gap:.58rem;border:1px solid rgba(255,255,255,.18);color:#fff;background:linear-gradient(135deg,rgba(164,93,255,.96),rgba(92,54,214,.96));box-shadow:0 10px 28px rgba(100,54,214,.32),inset 0 1px 0 rgba(255,255,255,.22);transition:transform .2s ease,box-shadow .2s ease,filter .2s ease}
+.section-play-button{width:46px;height:46px;padding:0;border-radius:50%}
+.album-play-button{min-height:48px;padding:0 1.15rem;border-radius:999px;font-weight:750;letter-spacing:.01em}
+.section-play-button:hover,.album-play-button:hover{transform:translateY(-2px);filter:brightness(1.07);box-shadow:0 14px 34px rgba(100,54,214,.4),inset 0 1px 0 rgba(255,255,255,.26)}
+.section-play-button:active,.album-play-button:active{transform:translateY(0) scale(.97)}
+.play-all-icon{width:20px;height:20px;fill:currentColor;filter:drop-shadow(0 2px 4px rgba(0,0,0,.22))}
+.section-play-button .play-all-icon{margin-left:2px}
+.mini-equalizer{width:24px;height:24px;display:flex;align-items:center;justify-content:center;gap:2px;flex:0 0 auto;color:#bd91ff;opacity:.82}
+.mini-equalizer span{display:block;width:3px;height:34%;border-radius:999px;background:currentColor;transform-origin:center;animation:mini-wave .76s ease-in-out infinite alternate;animation-play-state:paused}
+.mini-equalizer span:nth-child(2){height:68%;animation-duration:.58s;animation-delay:-.28s}
+.mini-equalizer span:nth-child(3){height:48%;animation-duration:.9s;animation-delay:-.46s}
+.mini-equalizer span:nth-child(4){height:78%;animation-duration:.66s;animation-delay:-.18s}
+.mini-equalizer.is-playing span{animation-play-state:running}
+@keyframes mini-wave{0%{transform:scaleY(.42);opacity:.56}100%{transform:scaleY(1.08);opacity:1}}
+.lumeya-word small{display:block!important;max-height:0;overflow:hidden;opacity:0;transform:translateY(-5px);margin:0;color:rgba(244,235,255,.78);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:.96rem;font-weight:450;line-height:1.55;letter-spacing:.035em;transition:max-height .32s ease,opacity .24s ease,transform .32s ease,margin .32s ease}
+.lumeya-word.is-open small{max-height:5em;opacity:1;transform:translateY(0);margin-top:.48rem}
+.lumeya-word.is-open{border-color:rgba(190,145,255,.38);background:linear-gradient(135deg,rgba(132,79,211,.18),rgba(255,255,255,.055))}
+@media (prefers-reduced-motion:reduce){.section-play-button,.album-play-button,.lumeya-word small{transition:none}.mini-equalizer span{animation:none}.mini-equalizer.is-playing span:nth-child(odd){transform:scaleY(.78)}}
+</style>
 <title>MaDenMusic</title>
 </head>
 <body>
@@ -33,14 +55,14 @@
     </nav>
 
     <section id="homePage">
-        <div class="section-heading home-release-heading"><div><h2>Новые релизы</h2><p>Свежая музыка MaDen</p></div><div class="heading-actions"><span class="release-badge">14 дней</span><button id="playAllHome" class="section-play-button" type="button">▶</button></div></div>
+        <div class="section-heading home-release-heading"><div><h2>Новые релизы</h2><p>Свежая музыка MaDen</p></div><div class="heading-actions"><span class="release-badge">14 дней</span><button id="playAllHome" class="section-play-button" type="button" aria-label="Играть все песни"><svg class="play-all-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 5.2a1 1 0 0 1 1.52-.85l10 6.8a1 1 0 0 1 0 1.7l-10 6.8a1 1 0 0 1-1.52-.85V5.2Z"/></svg><span class="visually-hidden">Играть всё</span></button></div></div>
         <div id="newSongs" class="song-list"></div>
         <div class="section-heading albums-heading"><div><h2>Альбомы</h2><p>Музыка по историям и настроениям</p></div></div>
         <div id="albumsHome" class="album-grid"></div>
     </section>
 
     <section id="albumCatalogPage" class="hiddenPage">
-        <div class="catalog-top"><button id="backHome" class="back-button" type="button">‹ Главная</button></div>
+        <div class="catalog-top"><button id="backHomeFromAlbums" class="back-button" type="button">‹ Главная</button></div>
         <div class="section-heading"><div><h2>Альбомы</h2><p>MaDenMusic</p></div></div>
         <div id="albumsList" class="album-grid"></div>
     </section>
@@ -49,7 +71,7 @@
         <div class="catalog-top"><button id="backAlbums" class="back-button" type="button">‹ Альбомы</button></div>
         <div class="album-hero">
             <img id="albumHeroCover" src="" alt="">
-            <div class="album-hero-info"><h2 id="albumTitle">—</h2><p id="albumSubtitle">—</p><button id="playAlbum" class="album-play-button" type="button">▶ Играть всё</button></div>
+            <div class="album-hero-info"><h2 id="albumTitle">—</h2><p id="albumSubtitle">—</p><button id="playAlbum" class="album-play-button" type="button"><svg class="play-all-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 5.2a1 1 0 0 1 1.52-.85l10 6.8a1 1 0 0 1 0 1.7l-10 6.8a1 1 0 0 1-1.52-.85V5.2Z"/></svg><span>Играть всё</span></button></div>
         </div>
         <section id="lumeyaWelcome" class="lumeya-welcome hiddenPage">
             <div class="lumeya-kicker">ОСОБЫЙ ПРОЕКТ</div>
@@ -79,7 +101,7 @@
     </section>
 
     <section id="catalogPage" class="hiddenPage">
-        <div class="catalog-top"><button id="backHome" class="back-button" type="button">‹ Главная</button><select id="sortSongs" aria-label="Сортировка"><option value="new">Сначала новые</option><option value="old">Сначала старые</option><option value="name">По названию</option></select></div>
+        <div class="catalog-top"><button id="backHomeFromCatalog" class="back-button" type="button">‹ Главная</button><select id="sortSongs" aria-label="Сортировка"><option value="new">Сначала новые</option><option value="old">Сначала старые</option><option value="name">По названию</option></select></div>
         <div class="catalog-tools"><span id="catalogLabel">Все песни</span><span id="catalogCount"></span></div>
         <div id="songList" class="song-list"></div>
     </section>
@@ -87,6 +109,7 @@
 
 <div id="miniPlayer" class="mini-player hidden-mini">
     <img id="miniCover" class="mini-cover" src="" alt=""><div class="mini-info"><div id="miniTitle" class="mini-title">—</div><div id="miniArtist" class="mini-artist">MaDen</div></div>
+    <div id="miniEqualizer" class="mini-equalizer" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
     <button id="miniPlay" class="mini-action" type="button" aria-label="Воспроизвести">▶</button><button id="miniOpen" class="mini-action mini-expand" type="button" aria-label="Открыть плеер">⌃</button>
 </div>
 
@@ -105,7 +128,7 @@
 
 <div id="lyricsView" class="lyrics-view hidden"><div class="lyrics-view-top"><button id="closeLyrics" class="back-button" type="button">‹ Плеер</button><h2>Слова</h2></div><div class="lyrics-view-card"><h1 id="lyricsViewTitle">—</h1><pre id="lyricsViewText"></pre></div></div>
 <div id="toast" class="toast" aria-live="polite"></div>
-<audio id="audio" preload="metadata"></audio>
+<audio id="audio" preload="metadata" playsinline></audio>
 <script src="songs.js"></script><script src="app.js"></script>
 </body>
 </html>
