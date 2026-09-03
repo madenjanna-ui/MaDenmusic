@@ -702,7 +702,7 @@ async function openSong(index, autoPlay = false, queue = null){
     }catch{
         audio.src = song.audio;
     }
-    audio.load();
+    
 
     progress.value = 0;
     progress.max = 0;
