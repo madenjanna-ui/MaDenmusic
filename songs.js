@@ -28,7 +28,7 @@ const songs = [
     release: "2026-08-20",
     album: "Новая веха",
     available: true,
-    audio: "songs/Как в океане.mp3",
+    audio: "songs/Как в океане .mp3",
     cover: "covers/Novaya veha.png",
     lyrics: `
 Здесь будет текст песни "Как в океане"
