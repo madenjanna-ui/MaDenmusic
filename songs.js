@@ -351,7 +351,7 @@ const songs = [
     release: "2026-07-31",
     album: "Мой ангел",
     available: true,
-    audio: "songs/Moy angel.mp3",
+    audio: "songs/Мой ангел.mp3",
     cover: "covers/Together.png",
     lyrics: `
 Здесь будет текст песни "Мой ангел"
