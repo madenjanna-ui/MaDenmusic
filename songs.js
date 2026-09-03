@@ -598,7 +598,7 @@ const songs = [
     release: "2026-07-01",
     album: "Люмейя",
     available: true,
-    audio: "songs/Soliah.mp3",
+    audio: "songs/soliah.mp3",
     cover: "covers/album_lumeya.jpeg",
     lyrics: `
 Здесь будет текст песни "Soliah"
