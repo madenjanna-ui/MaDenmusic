@@ -210,7 +210,7 @@ const songs = [
     release: "2026-08-05",
     album: "Новый",
     available: true,
-    audio: "songs/kofe.mp3",
+    audio: "kofe.mp3",
     cover: "covers/kofe.jpg",
     lyrics: `
 Здесь будет текст песни "Ты мой кофе"
