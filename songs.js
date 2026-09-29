@@ -34,11 +34,24 @@ const albumMeta = {
 
     "Люмейя": { cover: "covers/album_lumeya.jpeg", subtitle: "5 композиций" },
 
-    "Его невидимые качества": { cover: "covers/Качества.png", subtitle: "1 композиция" }
+    "Его невидимые качества": { cover: "covers/Качества.png", subtitle: "2 композиции" }
     
 };
 
 const songs = [
+    {
+    id: 57,
+    title: "Из глубины",
+    artist: "MaDen",
+    release: "2026-09-29",
+    album: "Его невидимые качества",
+    available: true,
+    audio: "songs/Из глубины.mp3",
+    cover: "covers/Из глубины.png",
+    lyrics: `
+    Здесь будет текст песни "Из глубины"
+`
+  },
 	  {
     id: 56,
     title: "Голос моря",
