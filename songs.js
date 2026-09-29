@@ -3,25 +3,56 @@
 // Недостающие позиции добавлены как available: false и отображаются в альбомах как «Скоро будет».
 
 const albumOrder = [
+
     "Моя",
+
     "Новый",
+
     "Мой ангел",
+
     "Новая веха",
+
     "Remixes",
-    "Люмейя"
+
+    "Люмейя",
+
+    "Его невидимые качества"
+
 ];
 
 const albumMeta = {
+
     "Моя": { cover: "covers/moya.png", subtitle: "6 композиций" },
+
     "Новый": { cover: "covers/novyi.png", subtitle: "7 композиций" },
+
     "Мой ангел": { cover: "covers/My angel.PNG", subtitle: "5 композиций" },
+
     "Новая веха": { cover: "covers/Novaya veha.png", subtitle: "10 композиций" },
+
     "Remixes": { cover: "covers/Remixes.png", subtitle: "8 композиций" },
-    "Люмейя": { cover: "covers/album_lumeya.jpeg", subtitle: "5 композиций" }
+
+    "Люмейя": { cover: "covers/album_lumeya.jpeg", subtitle: "5 композиций" },
+
+    "Его невидимые качества": { cover: "covers/Качества.png", subtitle: "1 композиция" }
+    
 };
 
 const songs = [
 	  {
+    id: 56,
+    title: "Голос моря",
+    artist: "MaDen",
+    release: "2026-09-29",
+    album: "Его невидимые качества",
+    available: true,
+    audio: "songs/Голос моря.mp3",
+    cover: "covers/IMG_3977.jpeg",
+    lyrics: `
+    Здесь будет текст песни "Голос моря"
+`
+  },
+  {
     id: 29,
     title: "Жизнь...сила - remix",
     artist: "MaDen",
