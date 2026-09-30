@@ -3,24 +3,19 @@
 // Недостающие позиции добавлены как available: false и отображаются в альбомах как «Скоро будет».
 
 const albumOrder = [
-
-    "Моя",
-
-    "Новый",
-
-    "Мой ангел",
-
-    "Новая веха",
-
+    "Его невидимые качества",
     "Remixes",
-
-    "Люмейя",
-
-    "Его невидимые качества"
-
+    "Моя",
+    "Новый",
+    "Мой ангел",
+    "Новая веха",
+    "Люмейя"
+    
 ];
 
 const albumMeta = {
+     "Его невидимые качества": { cover: "covers/Качества.png", subtitle: "2 композиции" },
+     "Remixes": { cover: "covers/Remixes.png", subtitle: "9 композиций" },
 
     "Моя": { cover: "covers/moya.png", subtitle: "6 композиций" },
 
@@ -30,15 +25,24 @@ const albumMeta = {
 
     "Новая веха": { cover: "covers/Novaya veha.png", subtitle: "10 композиций" },
 
-    "Remixes": { cover: "covers/Remixes.png", subtitle: "8 композиций" },
+    "Люмейя": { cover: "covers/album_lumeya.jpeg", subtitle: "5 композиций" }
 
-    "Люмейя": { cover: "covers/album_lumeya.jpeg", subtitle: "5 композиций" },
-
-    "Его невидимые качества": { cover: "covers/Качества.png", subtitle: "2 композиции" }
-    
 };
 
 const songs = [
+     {
+    id: 58,
+    title: "Из глубины - remix",
+    artist: "MaDen",
+    release: "2026-09-30",
+    album: "Remixes",
+    available: true,
+    audio: "songs/Из глубины - ремикс.mp3",
+    cover: "covers/Из глубины - ремикс.png",
+    lyrics: `
+    Здесь будет текст песни "Из глубины - remix"
+`
+  },
     {
     id: 57,
     title: "Из глубины",
