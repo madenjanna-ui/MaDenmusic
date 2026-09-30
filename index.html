@@ -7,6 +7,14 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="MaDenMusic">
+<script>
+// Apply the saved palette before the first paint.
+try{
+    const theme = localStorage.getItem("madenmusic_theme") === "mist" ? "mist" : "midnight";
+    document.documentElement.dataset.theme = theme;
+    document.querySelector('meta[name="theme-color"]').content = theme === "mist" ? "#f1edf5" : "#070611";
+}catch{ document.documentElement.dataset.theme = "midnight"; }
+</script>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -41,6 +49,7 @@
     <div class="header-inner">
         <div class="brand-row">
             <h1>MaDenMusic</h1><span class="brand-note">♪</span>
+            <button id="aboutOpen" class="about-open" type="button" aria-label="О MaDenMusic" aria-haspopup="dialog">ⓘ</button>
         </div>
         <div class="search-wrap"><span class="search-icon">⌕</span><input id="search" type="search" placeholder="Поиск песни..." autocomplete="off"></div>
     </div>
@@ -118,7 +127,11 @@
     <button id="closePlayer" class="player-close" type="button" aria-label="Закрыть плеер">×</button>
     <div class="player-inner">
         <div class="now-playing">Сейчас играет</div>
-        <img id="cover" class="cover" src="" alt="">
+        <div id="turntable" class="turntable">
+            <div class="vinyl-disc"><img id="cover" class="cover" src="" alt=""></div>
+            <span class="vinyl-spindle" aria-hidden="true"></span>
+            <svg class="tonearm" viewBox="0 0 100 100" aria-hidden="true"><g class="tonearm-moving"><path class="tonearm-shadow" d="M82 16 L82 52 L73 70"/><path class="tonearm-rod" d="M82 16 L82 52 L73 70"/><path class="tonearm-highlight" d="M81 17 L81 52 L72 69"/><path class="tonearm-head" d="M70 64 L78 68 L72 80 L65 76 Z"/><path class="tonearm-needle" d="M67 76 L65 80"/></g><circle class="tonearm-base" cx="82" cy="16" r="7"/><circle class="tonearm-pivot" cx="82" cy="16" r="3"/></svg>
+        </div>
         <div class="track-head"><div class="track-title-row"><h2 id="songTitle">—</h2><button id="favoritePlayer" class="favorite-player" type="button" aria-label="Добавить в любимые">♡</button></div><p id="songArtist">MaDen</p></div>
         <div class="progress"><input id="progress" type="range" min="0" max="0" value="0" aria-label="Позиция песни"><div class="time"><span id="currentTime">0:00</span><span id="duration">0:00</span></div></div>
         <div class="player-controls-main"><button id="prev" class="skip-button" type="button" aria-label="Предыдущая песня"><svg viewBox="0 0 24 24"><path d="M6 5v14M19 6l-10 6 10 6z"/></svg></button><button id="play" class="play-button" type="button" aria-label="Воспроизвести"><svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button><button id="next" class="skip-button" type="button" aria-label="Следующая песня"><svg viewBox="0 0 24 24"><path d="M18 5v14M5 6l10 6-10 6z"/></svg></button></div>
@@ -128,6 +141,47 @@
 
 <div id="lyricsView" class="lyrics-view hidden"><div class="lyrics-view-top"><button id="closeLyrics" class="back-button" type="button">‹ Плеер</button><h2>Слова</h2></div><div class="lyrics-view-card"><h1 id="lyricsViewTitle">—</h1><pre id="lyricsViewText"></pre></div></div>
 <div id="toast" class="toast" aria-live="polite"></div>
+<dialog id="aboutDialog" class="about-dialog" aria-labelledby="aboutTitle">
+    <div class="about-heading"><span class="about-mark" aria-hidden="true">♪</span><button id="aboutClose" class="about-close" type="button" aria-label="Закрыть окно" autofocus>×</button></div>
+    <p class="about-kicker">МУЗЫКАЛЬНЫЙ ПРОЕКТ MADEN</p>
+    <h2 id="aboutTitle">MaDenMusic <span class="about-version">2.8</span></h2>
+    <p class="about-intro">Все истории — в музыке.</p>
+    <section class="about-section"><h3 id="themeLabel">Оформление</h3><div class="theme-options" role="group" aria-labelledby="themeLabel"><button type="button" data-theme-choice="midnight" aria-pressed="true"><span class="theme-swatch swatch-midnight" aria-hidden="true"></span>Midnight<small>Тёмная</small></button><button type="button" data-theme-choice="mist" aria-pressed="false"><span class="theme-swatch swatch-mist" aria-hidden="true"></span>Mist<small>Дымчато-лиловая</small></button></div><p id="themeStatus" class="theme-status" role="status"></p></section>
+    <section class="about-section"><h3>О MaDen</h3><p>Я пишу стихи и музыку, а сами песни создаю с помощью искусственного интеллекта. Я сам ищу звучание, составляю промты, экспериментирую и корректирую их снова и снова — пока музыка действительно не начнёт радовать слух.</p><p>Но для меня главное — не технология, а то, что можно передать через музыку: мысли о любви и мечтах, чувства и моменты, которые хочется сохранить.</p><p>Я люблю красивую музыку — ту, которая трогает сердце, поднимает настроение и делает жизнь немного ярче.</p><p>MaDenMusic — это мои мысли, чувства и мечты, превращённые в песни.</p></section>
+   <section class="telegram-card" aria-labelledby="telegramTitle">
+
+    <div class="telegram-top">
+        <div class="telegram-icon" aria-hidden="true">
+            <span>➤</span>
+        </div>
+
+        <div class="telegram-heading">
+            <span class="telegram-label">MADEN • СВЯЗЬ</span>
+            <h3 id="telegramTitle">MaDenMusic в Telegram</h3>
+        </div>
+    </div>
+
+    <p class="telegram-description">
+        Новые песни и релизы, истории создания музыки
+        и новости проекта.
+    </p>
+
+    <p class="telegram-note">
+        Присоединяйтесь к каналу — там музыка продолжается.
+    </p>
+
+    <a class="telegram-link"
+       href="https://t.me/MaDenMusica"
+       target="_blank"
+       rel="noopener noreferrer">
+        <span>Открыть Telegram-канал</span>
+        <span class="telegram-arrow" aria-hidden="true">→</span>
+    </a>
+
+</section>
+    <details class="about-section about-install"><summary>Установить на экран «Домой»</summary><ol><li>Откройте MaDenMusic в Safari на iPhone.</li><li>Нажмите «Поделиться». В некоторых версиях Safari эта кнопка находится в меню страницы.</li><li>Выберите «На экран „Домой“». Если пункта нет, найдите его через «Править действия».</li><li>Если доступен переключатель «Открывать как веб-приложение», включите его и нажмите «Добавить».</li></ol><p>Запускайте MaDenMusic с появившегося значка. Для загрузки музыки нужен интернет.</p><a href="https://support.apple.com/guide/iphone/iphea86e5236/ios" target="_blank" rel="noopener noreferrer">Инструкция Apple ↗</a></details>
+    <div class="about-update"><button id="aboutRefresh" type="button">↻ Обновить MaDenMusic</button><p id="aboutRefreshStatus" role="status">Проверит новую версию и перезапустит приложение. Воспроизведение остановится, любимые песни сохранятся.</p></div>
+</dialog>
 <audio id="audio" preload="metadata" playsinline></audio>
 <script src="songs.js"></script><script src="app.js"></script>
 </body>

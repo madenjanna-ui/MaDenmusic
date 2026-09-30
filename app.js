@@ -1,7 +1,124 @@
-// MaDenMusic 2.7 — controlled player and interface update
+// MaDenMusic 2.8 — каталог и окно о проекте
 "use strict";
 
 const $ = (id) => document.getElementById(id);
+
+const themeButtons = document.querySelectorAll("[data-theme-choice]");
+function applyTheme(theme, save = false){
+    const selected = theme === "mist" ? "mist" : "midnight";
+    document.documentElement.dataset.theme = selected;
+    document.querySelector('meta[name="theme-color"]').content = selected === "mist" ? "#f1edf5" : "#070611";
+    themeButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.themeChoice === selected)));
+    if(save){
+        try{
+            localStorage.setItem("madenmusic_theme", selected);
+            $("themeStatus").textContent = `Выбрана тема ${selected === "mist" ? "Mist" : "Midnight"}.`;
+        }catch{
+            $("themeStatus").textContent = "Тема применена. Браузер не разрешает сохранить выбор.";
+        }
+    }
+}
+applyTheme(document.documentElement.dataset.theme);
+themeButtons.forEach(button => button.addEventListener("click", () => applyTheme(button.dataset.themeChoice, true)));
+window.addEventListener("storage", event => {
+    if(event.key === "madenmusic_theme" || event.key === null) applyTheme(event.newValue);
+});
+
+const aboutDialog = $("aboutDialog");
+const aboutOpen = $("aboutOpen");
+aboutOpen.addEventListener("click", () => {
+    if(aboutDialog.open) return;
+    aboutDialog.showModal();
+    document.body.classList.add("about-is-open");
+});
+$("aboutClose").addEventListener("click", () => aboutDialog.close());
+aboutDialog.addEventListener("close", () => {
+    document.body.classList.remove("about-is-open");
+    aboutOpen.focus();
+});
+// Native dialog handles Escape, focus trapping and the inert background.
+let aboutPointerOnBackdrop = false;
+function isAboutBackdrop(event){
+    const rect = aboutDialog.getBoundingClientRect();
+    return event.target === aboutDialog && (event.clientX < rect.left ||
+        event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom);
+}
+aboutDialog.addEventListener("pointerdown", (event) => {
+    aboutPointerOnBackdrop = isAboutBackdrop(event);
+});
+aboutDialog.addEventListener("click", (event) => {
+    if(aboutPointerOnBackdrop && isAboutBackdrop(event)) aboutDialog.close();
+    aboutPointerOnBackdrop = false;
+});
+// A waiting release is activated only by the update button.
+const swURL = new URL("sw.js", document.baseURI);
+let swRegistrationPromise;
+function registerMaDenWorker(){
+    if(!("serviceWorker" in navigator) || !window.isSecureContext) return Promise.resolve(null);
+    if(!swRegistrationPromise){
+        swRegistrationPromise = navigator.serviceWorker.register(swURL.href, {scope: "./", updateViaCache: "none"})
+            .catch(error => { swRegistrationPromise = null; throw error; });
+    }
+    return swRegistrationPromise;
+}
+function boundedUpdate(promise){
+    return new Promise((resolve, reject) => {
+        const timer = setTimeout(() => reject(new Error("Update timeout")), 45000);
+        promise.then(value => { clearTimeout(timer); resolve(value); }, error => { clearTimeout(timer); reject(error); });
+    });
+}
+function waitForWorker(worker, target){
+    return new Promise((resolve, reject) => {
+        const timer = setTimeout(() => finish(new Error("Обновление заняло слишком много времени. Повторите попытку.")), 45000);
+        function finish(error){
+            clearTimeout(timer);
+            worker.removeEventListener("statechange", check);
+            error ? reject(error) : resolve();
+        }
+        function check(){
+            if(worker.state === target || (target === "installed" && worker.state === "activated")) finish();
+            else if(worker.state === "redundant") finish(new Error("Не удалось загрузить новую версию. Текущая версия сохранена."));
+        }
+        worker.addEventListener("statechange", check);
+        check();
+    });
+}
+registerMaDenWorker().catch(() => {
+    $("aboutRefreshStatus").textContent = "Не удалось подготовить офлайн-запуск. Нажмите «Обновить MaDenMusic», когда появится интернет.";
+});
+$("aboutRefresh").addEventListener("click", async () => {
+    const button = $("aboutRefresh");
+    const status = $("aboutRefreshStatus");
+    if(!navigator.onLine){
+        status.textContent = "Нет подключения к интернету. Текущая офлайн-версия сохранена.";
+        return;
+    }
+    button.disabled = true;
+    status.textContent = "Проверяем новую версию…";
+    try{
+        const registration = await boundedUpdate(registerMaDenWorker());
+        if(!registration){
+            status.textContent = "Для обновления и офлайн-запуска откройте приложение по HTTPS на GitHub Pages.";
+            return;
+        }
+        await boundedUpdate(registration.update());
+        if(registration.installing) await waitForWorker(registration.installing, "installed");
+        const waiting = registration.waiting;
+        if(waiting){
+            status.textContent = "Новая версия загружена. Обновляем приложение…";
+            const activation = waitForWorker(waiting, "activated");
+            waiting.postMessage({type: "MADEN_SKIP_WAITING"});
+            await activation;
+        }
+        // The active worker serves its complete versioned shell after reload.
+        window.location.reload();
+    }catch(error){
+        status.textContent = "Не удалось обновить приложение. Текущая версия и любимые песни сохранены. Попробуйте ещё раз при стабильном интернете.";
+        console.warn("MaDenMusic update:", error);
+    }finally{
+        button.disabled = false;
+    }
+});
 
 const newSongs = $("newSongs");
 const songList = $("songList");
@@ -155,11 +272,22 @@ function albumNames(){
     return [...new Set(songs.map((song) => song.album).filter(Boolean))];
 }
 
+function formatCompositionCount(count){
+    const lastTwo = count % 100;
+    const lastDigit = count % 10;
+    let word = "композиций";
+    if(lastTwo < 11 || lastTwo > 14){
+        if(lastDigit === 1) word = "композиция";
+        else if(lastDigit >= 2 && lastDigit <= 4) word = "композиции";
+    }
+    return `${count} ${word}`;
+}
+
 function albumDetails(name){
     const metadata = typeof albumMeta !== "undefined" ? albumMeta[name] : null;
     return {
         cover: ALBUM_COVERS[name] || metadata?.cover || songs.find((song) => song.album === name)?.cover || "",
-        subtitle: metadata?.subtitle || `${songs.filter((song) => song.album === name).length} композиций`
+        subtitle: formatCompositionCount(albumSongs(name).length)
     };
 }
 
@@ -289,12 +417,11 @@ function renderCatalog(){
 
 function createAlbumCard(name){
     const details = albumDetails(name);
-    const count = albumSongs(name).length;
     const button = document.createElement("button");
     button.className = "album-card";
     button.type = "button";
     button.innerHTML = `
-        <div class="album-art"><img src="${escapeHTML(details.cover)}" alt="Альбом ${escapeHTML(name)}" loading="lazy"><span class="album-count">${count}</span></div>
+        <div class="album-art"><img src="${escapeHTML(details.cover)}" alt="Альбом ${escapeHTML(name)}" loading="lazy"></div>
         <div class="album-name">${escapeHTML(name)}</div>
         <div class="album-sub">${escapeHTML(details.subtitle)}</div>
     `;
@@ -417,7 +544,7 @@ function setPlayIcon(isPlaying){
 }
 
 function setCoverPlaying(isPlaying){
-    cover.classList.toggle("playing", isPlaying);
+    $("turntable").classList.toggle("is-playing", isPlaying);
 }
 
 function setMiniPlaying(isPlaying){
@@ -863,6 +990,7 @@ audio.addEventListener("seeked", () => {
 });
 
 audio.addEventListener("ended", () => {
+    setCoverPlaying(false);
     setMiniPlaying(false);
     const nextIndex = getNextIndex();
     if(nextIndex >= 0) openSong(nextIndex, true);
@@ -883,6 +1011,7 @@ audio.addEventListener("timeupdate", () => {
 });
 
 audio.addEventListener("error", () => {
+    setCoverPlaying(false);
     setMiniPlaying(false);
     if(audio.src) showToast("Не удалось загрузить аудиофайл");
 });

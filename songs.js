@@ -14,23 +14,17 @@ const albumOrder = [
 ];
 
 const albumMeta = {
-     "Его невидимые качества": { cover: "covers/Качества.png", subtitle: "2 композиции" },
-     "Remixes": { cover: "covers/Remixes.png", subtitle: "9 композиций" },
-
-    "Моя": { cover: "covers/moya.png", subtitle: "6 композиций" },
-
-    "Новый": { cover: "covers/novyi.png", subtitle: "7 композиций" },
-
-    "Мой ангел": { cover: "covers/My angel.PNG", subtitle: "5 композиций" },
-
-    "Новая веха": { cover: "covers/Novaya veha.png", subtitle: "10 композиций" },
-
-    "Люмейя": { cover: "covers/album_lumeya.jpeg", subtitle: "5 композиций" }
-
+    "Его невидимые качества": { "cover": "covers/Качества.png" },
+    "Remixes": { "cover": "covers/Remixes.png" },
+    "Моя": { "cover": "covers/moya.png" },
+    "Новый": { "cover": "covers/novyi.png" },
+    "Мой ангел": { "cover": "covers/My angel.PNG" },
+    "Новая веха": { "cover": "covers/Novaya veha.png" },
+    "Люмейя": { "cover": "covers/album_lumeya.jpeg" }
 };
 
 const songs = [
-     {
+  {
     id: 58,
     title: "Из глубины - remix",
     artist: "MaDen",
@@ -43,7 +37,7 @@ const songs = [
     Здесь будет текст песни "Из глубины - remix"
 `
   },
-    {
+  {
     id: 57,
     title: "Из глубины",
     artist: "MaDen",
@@ -56,7 +50,7 @@ const songs = [
     Здесь будет текст песни "Из глубины"
 `
   },
-	  {
+  {
     id: 56,
     title: "Голос моря",
     artist: "MaDen",
@@ -100,15 +94,15 @@ const songs = [
     title: "Ты - мой кофе - remix",
     artist: "MaDen",
     release: "2026-09-01",
-	album: "Remixes",
-	 available: true,
+    album: "Remixes",
+    available: true,
     audio: "songs/My coffe ремикс.mp3",
     cover: "covers/My coffe ремикс.png",
     lyrics: `
 Здесь будет текст песни "Ты - мой кофе - remix"
 `
   },
-{
+  {
     id: 39,
     title: "От Эдема ... remix",
     artist: "MaDen",
@@ -121,7 +115,7 @@ const songs = [
 Текст песни "От Эдема ... remix" [Intro]
 `
   },
-{
+  {
     id: 38,
     title: "Твой взгляд (dance remix 70')",
     artist: "MaDen",
@@ -134,7 +128,7 @@ const songs = [
 Здесь будет текст песни "Твой взгляд (dance remix 70')"
 `
   },
-{
+  {
     id: 37,
     title: "От Эдема до Нового дня",
     artist: "MaDen",
@@ -147,7 +141,7 @@ const songs = [
 Здесь будет текст песни "От Эдема до Нового дня"
 `
   },
-{
+  {
     id: 36,
     title: "Счастье нас обнимает",
     artist: "MaDen",
@@ -160,7 +154,7 @@ const songs = [
 Здесь будет текст песни "Счастье нас обнимает"
 `
   },
-{
+  {
     id: 35,
     title: "Одно сердце на двоих",
     artist: "MaDen",
@@ -173,7 +167,7 @@ const songs = [
 Здесь будет текст песни "Одно сердце на двоих"
 `
   },
-{
+  {
     id: 34,
     title: "Целуй меня нежно...",
     artist: "MaDen",
@@ -186,7 +180,7 @@ const songs = [
 Здесь будет текст песни "Целуй меня нежно..."
 `
   },
-{
+  {
     id: 27,
     title: "Одним воздухом дышать (Remix)",
     artist: "MaDen",
@@ -199,7 +193,7 @@ const songs = [
 Здесь будет текст песни "Одним воздухом дышать (Remix)"
 `
   },
-{
+  {
     id: 15,
     title: "Мы растворяемся вдвоём (Remix)",
     artist: "MaDen",
@@ -212,7 +206,7 @@ const songs = [
 Здесь будет текст песни "Мы растворяемся вдвоём (Remix)"
 `
   },
-{
+  {
     id: 14,
     title: "История любви (Nordic Remix)",
     artist: "MaDen",
@@ -225,7 +219,7 @@ const songs = [
 Здесь будет текст песни "История любви (Nordic Remix)"
 `
   },
-{
+  {
     id: 13,
     title: "Мы растворяемся вдвоем",
     artist: "MaDen",
@@ -238,7 +232,7 @@ const songs = [
 Здесь будет текст песни "Мы растворяемся вдвоем"
 `
   },
-{
+  {
     id: 12,
     title: "Одним воздухом дышать",
     artist: "MaDen",
@@ -251,7 +245,7 @@ const songs = [
 Здесь будет текст песни "Одним воздухом дышать"
 `
   },
-{
+  {
     id: 11,
     title: "Ты мой кофе",
     artist: "MaDen",
@@ -264,7 +258,7 @@ const songs = [
 Здесь будет текст песни "Ты мой кофе"
 `
   },
-{
+  {
     id: 10,
     title: "Твой взгляд",
     artist: "MaDen",
@@ -277,7 +271,7 @@ const songs = [
 Здесь будет текст песни "Твой взгляд"
 `
   },
-{
+  {
     id: 9,
     title: "Папина дочка",
     artist: "MaDen",
@@ -290,7 +284,7 @@ const songs = [
 Здесь будет текст песни "Папина дочка"
 `
   },
-{
+  {
     id: 8,
     title: "Эсфирь",
     artist: "MaDen",
@@ -303,7 +297,7 @@ const songs = [
 Здесь будет текст песни "Эсфирь"
 `
   },
-{
+  {
     id: 7,
     title: "Жизнь моей души",
     artist: "MaDen",
@@ -316,7 +310,7 @@ const songs = [
 Здесь будет текст песни "Жизнь моей души"
 `
   },
-{
+  {
     id: 6,
     title: "Мой свет, гори 🔥",
     artist: "MaDen",
@@ -329,7 +323,7 @@ const songs = [
 Здесь будет текст песни "Мой свет, гори 🔥"
 `
   },
-{
+  {
     id: 5,
     title: "Мой ангел",
     artist: "MaDen",
@@ -342,7 +336,7 @@ const songs = [
 Здесь будет текст песни "Мой ангел"
 `
   },
-{
+  {
     id: 4,
     title: "Комета",
     artist: "MaDen",
@@ -355,7 +349,7 @@ const songs = [
 Здесь будет текст песни "Комета"
 `
   },
-{
+  {
     id: 3,
     title: "Сегодня мы считаем звёзды",
     artist: "MaDen",
@@ -368,7 +362,7 @@ const songs = [
 Здесь будет текст песни "Сегодня мы считаем звёзды"
 `
   },
-{
+  {
     id: 2,
     title: "История Любви",
     artist: "MaDen",
@@ -381,7 +375,7 @@ const songs = [
 Здесь будет текст песни "История Любви"
 `
   },
-{
+  {
     id: 1,
     title: "Ты лилия (Nordic Remix)",
     artist: "MaDen",
@@ -394,7 +388,7 @@ const songs = [
 Здесь будет текст песни "Ты лилия (Nordic Remix)"
 `
   },
-{
+  {
     id: 16,
     title: "Наша жизнь — это сила",
     artist: "MaDen",
@@ -406,8 +400,8 @@ const songs = [
     lyrics: `
 Здесь будет текст песни "Наша жизнь — это сила"
 `
-},
-{
+  },
+  {
     id: 41,
     title: "Ты лилия",
     artist: "MaDen",
@@ -419,8 +413,8 @@ const songs = [
     lyrics: `
 Здесь будет текст песни "Ты лилия"
 `
-},
-{
+  },
+  {
     id: 42,
     title: "Смыслом жизнь полна",
     artist: "MaDen",
@@ -432,8 +426,8 @@ const songs = [
     lyrics: `
 Здесь будет текст песни "Смыслом жизнь полна"
 `
-},
-{
+  },
+  {
     id: 43,
     title: "10.01",
     artist: "MaDen",
@@ -445,8 +439,8 @@ const songs = [
     lyrics: `
 Здесь будет текст песни "10.01"
 `
-},
-{
+  },
+  {
     id: 44,
     title: "Танец жизни",
     artist: "MaDen",
@@ -458,8 +452,8 @@ const songs = [
     lyrics: `
 Здесь будет текст песни "Танец жизни"
 `
-},
-{
+  },
+  {
     id: 45,
     title: "Взрыв далёкой звезды",
     artist: "MaDen",
@@ -471,8 +465,8 @@ const songs = [
     lyrics: `
 Здесь будет текст песни "Взрыв далёкой звезды"
 `
-},
-{
+  },
+  {
     id: 46,
     title: "Целого мира мало",
     artist: "MaDen",
@@ -484,8 +478,8 @@ const songs = [
     lyrics: `
 Здесь будет текст песни "Целого мира мало"
 `
-},
-{
+  },
+  {
     id: 47,
     title: "Моих желаний аромат",
     artist: "MaDen",
@@ -497,8 +491,8 @@ const songs = [
     lyrics: `
 Здесь будет текст песни "Моих желаний аромат"
 `
-},
-{
+  },
+  {
     id: 48,
     title: "Петербург — город любви",
     artist: "MaDen",
@@ -510,8 +504,8 @@ const songs = [
     lyrics: `
 Здесь будет текст песни "Петербург — город любви"
 `
-},
-{
+  },
+  {
     id: 49,
     title: "Когда мы вместе",
     artist: "MaDen",
@@ -523,8 +517,8 @@ const songs = [
     lyrics: `
 Здесь будет текст песни "Когда мы вместе"
 `
-},
-{
+  },
+  {
     id: 50,
     title: "Гармония",
     artist: "MaDen",
@@ -536,12 +530,12 @@ const songs = [
     lyrics: `
 Здесь будет текст песни "Гармония"
 `
-},
-{
+  },
+  {
     id: 51,
     title: "Ритмы Люмейя",
     artist: "MaDen",
-     release: "2026-07-01",
+    release: "2026-07-01",
     album: "Люмейя",
     available: true,
     audio: "songs/Ритмы Люмейя.mp3",
@@ -549,12 +543,12 @@ const songs = [
     lyrics: `
 Здесь будет текст песни "Ритмы Люмейя"
 `
-},
-{
+  },
+  {
     id: 52,
     title: "Народ Люмейя",
     artist: "MaDen",
-     release: "2026-07-01",
+    release: "2026-07-01",
     album: "Люмейя",
     available: true,
     audio: "songs/Народ Люмейя.mp3",
@@ -562,12 +556,12 @@ const songs = [
     lyrics: `
 Здесь будет текст песни "Народ Люмейя"
 `
-},
-{
+  },
+  {
     id: 53,
     title: "Lum",
     artist: "MaDen",
-     release: "2026-07-01",
+    release: "2026-07-01",
     album: "Люмейя",
     available: true,
     audio: "songs/Lum.mp3",
@@ -575,8 +569,8 @@ const songs = [
     lyrics: `
 Здесь будет текст песни "Lum"
 `
-},
-{
+  },
+  {
     id: 54,
     title: "Soliah",
     artist: "MaDen",
@@ -588,8 +582,8 @@ const songs = [
     lyrics: `
 Здесь будет текст песни "Soliah"
 `
-},
-{
+  },
+  {
     id: 55,
     title: "Одно сердце",
     artist: "MaDen",
@@ -601,5 +595,5 @@ const songs = [
     lyrics: `
 Здесь будет текст песни "Одно сердце"
 `
-}
+  }
 ];

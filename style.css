@@ -1,3 +1,30 @@
+/* MaDenMusic 2.8 — окно о проекте */
+.about-open,.about-close{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;flex-shrink:0;border:1px solid rgba(207,170,255,.22);border-radius:50%;background:rgba(186,130,255,.08);color:#e5ceff;cursor:pointer;font-size:25px}
+.about-open{margin-left:auto}
+.about-open:hover,.about-close:hover{background:rgba(186,130,255,.18)}
+.about-dialog{box-sizing:border-box;margin:auto;width:min(520px,calc(100% - 28px));max-height:calc(100dvh - 40px);padding:26px;border:1px solid rgba(207,170,255,.22);border-radius:28px;background:radial-gradient(ellipse at top left,rgba(126,69,190,.22),transparent 65%),#12101d;color:#f4efff;box-shadow:0 24px 100px rgba(0,0,0,.55);overflow-y:auto;overscroll-behavior:contain}
+.about-dialog::backdrop{background:rgba(4,3,12,.76);backdrop-filter:blur(8px)}
+body.about-is-open{overflow:hidden}
+.about-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.about-mark{display:grid;place-items:center;width:54px;height:54px;border-radius:18px;background:linear-gradient(145deg,#d3a5ff,#8551cd);color:#160b26;font-size:36px}
+.about-dialog .about-kicker{color:#c49ce9;font-size:10px;font-weight:750;letter-spacing:.14em}
+.about-dialog h2{margin:10px 0 8px;font-size:clamp(24px,6vw,32px);letter-spacing:-.8px}
+.about-version{display:inline-block;vertical-align:middle;border:1px solid #6c4c89;border-radius:999px;padding:4px 9px;font-size:12px;letter-spacing:0;color:#dcc3f3}
+.about-dialog p,.about-dialog li{font-size:14px;line-height:1.65;color:#c0b8ce}
+.about-dialog .about-intro{margin-bottom:24px}
+.about-section{padding:18px 0;border-top:1px solid rgba(207,170,255,.13)}
+.about-section h3,.about-install summary{font-size:15px;font-weight:700;margin-bottom:10px}
+.about-install summary{cursor:pointer;margin-bottom:0;min-height:28px}
+.about-install[open] summary{margin-bottom:12px}
+.about-install ol{padding-left:22px;margin-bottom:12px}
+.about-install li+li{margin-top:8px}
+.about-install a{display:inline-block;color:#d7afff;font-size:13px;margin-top:12px}
+.about-update{padding-top:8px}
+.about-update button{width:100%;min-height:48px;border:1px solid rgba(207,170,255,.28);border-radius:15px;background:linear-gradient(135deg,#b68aec,#8252c1);color:#110a1d;font:inherit;font-weight:750;cursor:pointer}
+.about-update p{margin-top:10px;font-size:12px}
+.about-open:focus-visible,.about-dialog :focus-visible{outline:2px solid #d7afff;outline-offset:4px}
+@media(max-width:380px){.about-dialog{padding:20px}.brand-row .about-open{width:40px;height:44px}.brand-row h1{font-size:29px}}
+
 *{
     margin:0;
     padding:0;
@@ -781,3 +808,335 @@ main{
 .lumeya-kicker{font-size:11px;letter-spacing:.18em;color:#c18aff;font-weight:800}.lumeya-welcome h2{margin-top:10px;font-size:clamp(28px,7vw,42px);line-height:1.04}.lumeya-welcome>p{max-width:62ch;margin-top:12px;color:#b8bac9;line-height:1.7}.lumeya-button{margin-top:18px;border:1px solid rgba(255,255,255,.12);padding:12px 16px;border-radius:999px;background:rgba(255,255,255,.06);color:#fff;font-weight:800}.lumeya-inside{margin-top:24px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08)}.lumeya-intro h3{font-size:23px}.lumeya-intro p{margin-top:7px;color:#999caf;line-height:1.55}.lumeya-dictionary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:16px}.lumeya-word{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;gap:0 10px;align-items:center;text-align:left;padding:13px 14px;border-radius:16px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.035);color:#f3f3f7;overflow:hidden;transition:border-color .35s ease,background .35s ease,box-shadow .35s ease,transform .25s ease}.lumeya-word:hover{transform:translateY(-1px)}.lumeya-word span{font-weight:800;letter-spacing:.01em}.lumeya-word small{display:block;grid-column:1;max-height:0;opacity:0;transform:translateY(-5px);overflow:hidden;margin:0;color:#a8a9bb;font-size:11px;line-height:1.45;transition:max-height .42s ease,opacity .34s ease,transform .42s ease,margin-top .42s ease}.lumeya-word-arrow{grid-row:1/3;grid-column:2;color:#c58cff;font-size:18px;transition:transform .35s ease,color .35s ease}.lumeya-word.open{border-color:rgba(196,111,255,.24);background:linear-gradient(135deg,rgba(196,111,255,.08),rgba(123,91,255,.045));box-shadow:0 8px 24px rgba(83,54,125,.14)}.lumeya-word.open small{max-height:60px;opacity:1;transform:translateY(0);margin-top:5px}.lumeya-word.open .lumeya-word-arrow{transform:rotate(45deg);color:#e2baff}
 @media(max-width:600px){.album-grid{grid-template-columns:1fr 1fr;gap:11px}.album-hero{align-items:flex-start}.album-hero img{width:118px;height:118px}.album-hero-info h2{font-size:24px}.player-controls-modes{gap:8px}.player-controls-modes .mode-button{min-width:44px}.words-button span:last-child{font-size:11px}.lumeya-dictionary{grid-template-columns:1fr}}
 @media(max-width:390px){.album-card-body{padding:11px}.album-card-body h3{font-size:16px}.album-hero{gap:12px}.album-hero img{width:104px;height:104px}.player-controls-main{gap:12px}}
+
+/* MaDenMusic 2.8 — Midnight / Mist */
+:root{color-scheme:dark}
+.album-card{color:var(--text);text-align:left}
+.album-name{padding:13px 14px 0;font-size:17px;font-weight:750}
+.album-sub{padding:5px 14px 16px;font-size:12px;color:var(--muted)}
+.theme-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.theme-options button{display:grid;grid-template-columns:30px 1fr;align-items:center;gap:4px 9px;text-align:left;border:1px solid var(--line);border-radius:16px;padding:12px;background:var(--panel2);color:var(--text);font-weight:700;cursor:pointer;min-height:72px}
+.theme-options button[aria-pressed="true"]{border-color:var(--purple);box-shadow:inset 0 0 0 1px var(--purple)}
+.theme-options small{grid-column:2;font-size:11px;font-weight:400;color:var(--muted)}
+.theme-swatch{grid-row:1/3;width:28px;height:28px;border-radius:50%;border:1px solid rgba(128,100,160,.4)}
+.swatch-midnight{background:linear-gradient(135deg,#121020,#603883)}
+.swatch-mist{background:linear-gradient(135deg,#faf8fc,#cdbedc)}
+.about-dialog .theme-status{font-size:12px;margin-top:8px}
+.theme-status:empty{display:none}
+:root[data-theme="mist"]{color-scheme:light;--bg:#f1edf5;--panel:rgba(255,253,255,.9);--panel2:#e7dfef;--line:rgba(92,65,117,.22);--text:#30263d;--muted:#685b76;--purple:#7745a0;--purple2:#8250a8;--pink:#a52c6c}
+[data-theme="mist"] .background{background:radial-gradient(circle at 15% 10%,#e1d5ed,transparent 45%),#f1edf5}
+[data-theme="mist"] .background::before{opacity:.12}
+[data-theme="mist"] .site-header{background:linear-gradient(180deg,rgba(241,237,245,.97),rgba(241,237,245,.88));border-color:var(--line)}
+[data-theme="mist"] .brand-row h1,[data-theme="mist"] .brand-note{text-shadow:none}
+[data-theme="mist"] #search,[data-theme="mist"] #sortSongs{background:#faf7fc;color:var(--text)}
+[data-theme="mist"] #search::placeholder{color:var(--muted)}
+[data-theme="mist"] :is(.search-icon,.page-tab,.section-heading p,.info p,.songDate,.catalog-tools,.emptyState,.source-note,.album-hero-info p,.mini-artist,.now-playing,.time,.mode-button,.heartButton,.favorite-player){color:var(--muted)}
+[data-theme="mist"] :is(.page-tab.active,.back-button,.heartButton.active,.favorite-player.active,.mode-button.active,#songArtist,.mini-equalizer,.lumeya-kicker,.lumeya-word-arrow){color:var(--purple);text-shadow:none;filter:none}
+[data-theme="mist"] :is(.song,.album-card,.album-hero,.lumeya-welcome){background:linear-gradient(135deg,#fdfbff,#e9e1f0);border-color:var(--line);box-shadow:0 8px 24px rgba(65,40,86,.07)}
+[data-theme="mist"] :is(.page-tabs,.lumeya-inside){border-color:var(--line)}
+[data-theme="mist"] :is(.playIcon,.mini-action,.skip-button,.player-close,.lumeya-button,.all-songs-button){background:#e7dcee;color:var(--text);border-color:var(--line)}
+[data-theme="mist"] .all-songs-button span:last-child{color:var(--purple)}
+[data-theme="mist"] .release-badge{color:#653783;background:#e8dcf1;border-color:var(--line)}
+[data-theme="mist"] .comingSoon{color:#7b450f;background:#f8e7cb;border-color:#d6b98f}
+[data-theme="mist"] .song.unavailable{opacity:1}
+[data-theme="mist"] .mini-player{background:rgba(247,243,251,.96);border-color:#baa1ce;box-shadow:0 8px 32px rgba(65,40,86,.16)}
+[data-theme="mist"] :is(.player,.lyrics-view){background:var(--bg);color:var(--text)}
+[data-theme="mist"] .player-bg{opacity:.12}
+[data-theme="mist"] .player-shade{background:linear-gradient(180deg,rgba(241,237,245,.75),#f1edf5 88%)}
+[data-theme="mist"] .cover{box-shadow:0 16px 45px rgba(66,40,87,.2)}
+[data-theme="mist"] #progress{accent-color:var(--purple)}
+[data-theme="mist"] :is(.lyrics-view-card pre,.lyrics p){color:var(--text)}
+[data-theme="mist"] .player-controls-modes .mode-button:hover,[data-theme="mist"] .player-controls-modes .mode-button.active{background:#dfd0ec;color:#653783;border-color:var(--line)}
+[data-theme="mist"] :is(.lumeya-welcome>p,.lumeya-intro p,.lumeya-word small){color:var(--muted)}
+[data-theme="mist"] .lumeya-word{background:#f8f4fb;color:var(--text);border-color:var(--line)}
+[data-theme="mist"] .lumeya-word.is-open{background:#e6d9f0;border-color:#b89acf}
+[data-theme="mist"] .about-dialog{background:radial-gradient(ellipse at top left,#e8daf3,transparent 65%),#f8f4fb;color:var(--text);border-color:#cab8d8;box-shadow:0 24px 100px rgba(48,30,63,.25)}
+[data-theme="mist"] .about-dialog::backdrop{background:rgba(52,40,65,.4)}
+[data-theme="mist"] :is(.about-dialog p,.about-dialog li){color:var(--muted)}
+[data-theme="mist"] :is(.about-open,.about-close,.about-version){background:#e9def1;color:#663987;border-color:#b89bcc}
+[data-theme="mist"] :is(.about-dialog .about-kicker,.about-install a){color:#663987}
+[data-theme="mist"] .about-section{border-color:var(--line)}
+[data-theme="mist"] .about-open:focus-visible,[data-theme="mist"] .about-dialog :focus-visible{outline-color:#7745a0}
+[data-theme="mist"] .toast{background:#392747;color:#fff;border-color:#8b6ca4}
+@media(max-width:420px){.page-tabs{gap:10px;justify-content:space-between}.page-tab{font-size:14px;white-space:nowrap}}
+
+/* MaDenMusic 2.8 — виниловый проигрыватель */
+.turntable{position:relative;width:min(100%,430px);aspect-ratio:1;margin:8px auto 24px;flex-shrink:0;isolation:isolate}
+.vinyl-disc{position:absolute;left:3%;top:10%;width:82%;height:82%;border-radius:50%;background:repeating-radial-gradient(circle at center,transparent 0 2px,rgba(185,178,199,.12) 3px,transparent 4px),conic-gradient(from 30deg,#111017,#36323f 45deg,#121116 85deg,#08080c 160deg,#34303c 225deg,#111017 280deg,#08080c);border:2px solid #302c38;box-shadow:0 18px 32px rgba(0,0,0,.4),inset 0 0 0 5px #101015;animation:madenSpin 12s linear infinite;animation-play-state:paused}
+.turntable.is-playing .vinyl-disc{animation-play-state:running}
+.turntable .vinyl-disc .cover{position:absolute;inset:28%;width:44%;height:44%;margin:0;border-radius:50%;object-fit:cover;background:#403050;color:#f4eafb;font-size:12px;border:2px solid rgba(231,208,255,.25);box-shadow:0 0 0 5px #16131b,0 0 0 6px rgba(255,255,255,.09);animation:none}
+.vinyl-spindle{position:absolute;left:44%;top:51%;width:3.3%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#9993a2 48%,#3c3645 70%);border:2px solid #0a080e;box-shadow:0 0 0 4px #18131f,0 2px 5px #000;z-index:2}
+.tonearm{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:3}
+.tonearm-moving{transform-origin:82px 16px;transform:rotate(-18deg);transition:transform .7s cubic-bezier(.3,.1,.2,1)}
+.turntable.is-playing .tonearm-moving{transform:rotate(14deg)}
+.tonearm-shadow{fill:none;stroke:rgba(0,0,0,.4);stroke-width:4;transform:translate(1px,2px)}
+.tonearm-rod{fill:none;stroke:#aaa4b3;stroke-width:2.8;stroke-linejoin:round}
+.tonearm-highlight{fill:none;stroke:#eee9f5;stroke-width:.65;stroke-linejoin:round}
+.tonearm-head{fill:#686071;stroke:#c4bdcc;stroke-width:.5}
+.tonearm-needle{fill:none;stroke:#e5d4f4;stroke-width:.7}
+.tonearm-base{fill:#302837;stroke:#76697e;stroke-width:1}
+.tonearm-pivot{fill:#bfb6c9;stroke:#e9e2f0;stroke-width:.5}
+[data-theme="mist"] .vinyl-disc{box-shadow:0 16px 28px rgba(62,38,80,.24)}
+[data-theme="mist"] .tonearm-base{fill:#d4c6df;stroke:#8c759d}
+[data-theme="mist"] .tonearm-rod{stroke:#786884}
+[data-theme="mist"] .tonearm-head{fill:#62516e}
+@media(max-height:720px){.turntable{width:min(100%,48vh,350px);margin-bottom:16px}}
+@media(prefers-reduced-motion:reduce){.vinyl-disc{animation:none}.tonearm-moving{transition:none}}
+
+/* Обложка занимает весь вращающийся диск. */
+.vinyl-disc{background:#403050;border:0;box-shadow:0 18px 32px rgba(0,0,0,.32)}
+.turntable .vinyl-disc .cover{inset:0;width:100%;height:100%;border:1px solid rgba(231,208,255,.2);box-shadow:none;font-size:14px}
+
+/* MaDenMusic 2.8 — Telegram */
+.telegram-card{position:relative;margin:22px 0;padding:24px;border-radius:22px;border:1px solid var(--line);background:radial-gradient(ellipse at top right,rgba(68,164,222,.20),transparent 70%),var(--panel2)}
+.telegram-symbol{display:grid;place-items:center;width:42px;height:42px;margin-bottom:14px;border-radius:14px;background:linear-gradient(135deg,#2588bb,#3857a0);color:#fff;font-size:25px}
+.telegram-card h3{font-size:20px;line-height:1.3;color:var(--text)}
+.about-dialog .telegram-card p{margin:12px 0 20px;color:var(--muted);line-height:1.7}
+.telegram-link{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:13px 18px;border-radius:13px;background:linear-gradient(120deg,#196f9c,#4057a1);color:#fff;text-decoration:none;font-weight:700;line-height:1.4}
+.telegram-link:hover{filter:brightness(1.12)}
+.telegram-link:focus-visible{outline:3px solid var(--purple);outline-offset:4px}
+#aboutRefresh:disabled{opacity:.65;cursor:wait}
+@media(max-width:380px){.telegram-card{padding:18px}.telegram-link{display:flex;padding:12px;font-size:14px}}
+
+.about-section p + p{margin-top:12px}
+/* =========================================
+   MaDenMusic — Telegram card
+========================================= */
+
+.telegram-card{
+    position:relative;
+    margin:22px 0;
+    padding:20px;
+    overflow:hidden;
+
+    border:1px solid rgba(183,125,255,.20);
+    border-radius:24px;
+
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(165,96,255,.18),
+            transparent 38%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(38,31,58,.88),
+            rgba(18,16,31,.94)
+        );
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.24),
+        inset 0 1px 0 rgba(255,255,255,.06);
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+}
+
+.telegram-card::before{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    top:-90px;
+    right:-55px;
+
+    border-radius:50%;
+
+    background:rgba(184,108,255,.13);
+    filter:blur(12px);
+
+    pointer-events:none;
+}
+
+.telegram-top{
+    position:relative;
+    z-index:1;
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    margin-bottom:16px;
+}
+
+.telegram-icon{
+    width:52px;
+    height:52px;
+    flex:0 0 52px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #d3a5ff,
+            #8750cf
+        );
+
+    color:#160b26;
+
+    box-shadow:
+        0 10px 26px rgba(143,75,211,.30),
+        inset 0 1px 0 rgba(255,255,255,.35);
+
+    font-size:25px;
+    font-weight:800;
+}
+
+.telegram-icon span{
+    display:block;
+    transform:rotate(-20deg) translateX(-1px);
+}
+
+.telegram-heading{
+    min-width:0;
+}
+
+.telegram-label{
+    display:block;
+
+    margin-bottom:4px;
+
+    color:#b991dc;
+
+    font-size:10px;
+    font-weight:800;
+
+    letter-spacing:.14em;
+}
+
+.telegram-heading h3{
+    margin:0;
+
+    color:#f7f1ff;
+
+    font-size:18px;
+    line-height:1.2;
+    font-weight:760;
+
+    letter-spacing:-.25px;
+}
+
+.telegram-description{
+    position:relative;
+    z-index:1;
+
+    margin:0;
+
+    color:#c9c1d3 !important;
+
+    font-size:14px !important;
+    line-height:1.6 !important;
+}
+
+.telegram-note{
+    position:relative;
+    z-index:1;
+
+    margin:9px 0 0 !important;
+
+    color:#9d92ab !important;
+
+    font-size:12.5px !important;
+    line-height:1.5 !important;
+}
+
+.telegram-link{
+    position:relative;
+    z-index:1;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    width:100%;
+    min-height:52px;
+
+    margin-top:18px;
+    padding:0 17px;
+
+    border:1px solid rgba(221,190,255,.25);
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #bd8aef,
+            #8953c8
+        );
+
+    color:#160c22 !important;
+
+    text-decoration:none;
+
+    font-size:14px !important;
+    font-weight:800;
+
+    box-shadow:
+        0 10px 28px rgba(115,62,171,.25),
+        inset 0 1px 0 rgba(255,255,255,.30);
+
+    transition:
+        transform .18s ease,
+        filter .18s ease,
+        box-shadow .18s ease;
+}
+
+.telegram-link:hover{
+    filter:brightness(1.06);
+
+    box-shadow:
+        0 14px 34px rgba(115,62,171,.32),
+        inset 0 1px 0 rgba(255,255,255,.34);
+}
+
+.telegram-link:active{
+    transform:scale(.975);
+}
+
+.telegram-arrow{
+    display:grid;
+    place-items:center;
+
+    width:30px;
+    height:30px;
+
+    margin-left:12px;
+
+    border-radius:50%;
+
+    background:rgba(25,12,38,.12);
+
+    font-size:19px;
+}
+
+
+/* iPhone / узкие экраны */
+
+@media(max-width:420px){
+
+    .telegram-card{
+        padding:17px;
+        border-radius:21px;
+    }
+
+    .telegram-icon{
+        width:48px;
+        height:48px;
+        flex-basis:48px;
+
+        border-radius:15px;
+    }
+
+    .telegram-heading h3{
+        font-size:17px;
+    }
+
+    .telegram-link{
+        min-height:50px;
+        padding:0 14px;
+    }
+}
