@@ -418,11 +418,11 @@ const songs = [
     id: 41,
     title: "Ты лилия",
     artist: "MaDen",
-    release: null,
+    release: "2026-10-01",
     album: "Моя",
-    available: false,
-    audio: "songs/ты лилия.mp3",
-    cover: "covers/moya.png",
+    available: true,
+    audio: "songs/Ты лилия.mp3",
+    cover: "covers/Ты лилия.jpeg",
     lyrics: `
 Здесь будет текст песни "Ты лилия"
 `
