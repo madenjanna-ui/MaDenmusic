@@ -24,6 +24,19 @@ const albumMeta = {
 };
 
 const songs = [
+    {
+    id: 17,
+    title: "Песня гор",
+    artist: "MaDen",
+    release: "2026-10-01",
+    album: "Его невидимые качества",
+    available: true,
+    audio: "songs/Песня гор.mp3",
+    cover: "covers/Песня гор.png",
+    lyrics: `
+    Здесь будет текст песни "Песня гор"
+`
+  },
   {
     id: 58,
     title: "Из глубины - remix",
