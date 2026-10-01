@@ -533,7 +533,19 @@ function updatePlayerFavorite(){
 }
 
 function updatePlayerBackground(song){
-    playerBg.style.backgroundImage = `url("${song.cover}")`;
+    if(!song || !playerBg) return;
+
+    const metadata =
+        typeof albumMeta !== "undefined"
+            ? albumMeta[song.album]
+            : null;
+
+    const albumCover =
+        ALBUM_COVERS[song.album] ||
+        metadata?.cover ||
+        song.cover;
+
+    playerBg.style.backgroundImage = `url("${albumCover}")`;
 }
 
 function setPlayIcon(isPlaying){
