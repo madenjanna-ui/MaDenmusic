@@ -41,13 +41,33 @@ self.addEventListener("fetch", event => {
     // Never intercept audio/range requests: streaming and seeking stay native.
     if(request.headers.has("range") || request.destination === "audio") return;
     if(request.mode === "navigate" || coreURLs.has(url.origin + url.pathname)){
-        event.respondWith((async () => {
-            const cache = await caches.open(SHELL);
-            const key = request.mode === "navigate" ? absolute("index.html") : url.origin + url.pathname;
-            return await cache.match(key) || fetch(request);
-        })());
-        return;
-    }
+    event.respondWith((async () => {
+        const cache = await caches.open(SHELL);
+        const key = request.mode === "navigate"
+            ? absolute("index.html")
+            : url.origin + url.pathname;
+
+        // Каталог песен всегда пытаемся получить свежим.
+        if(url.pathname.endsWith("/songs.js")){
+            try{
+                const fresh = await fetch(
+                    new Request(request, { cache: "no-store" })
+                );
+
+                if(fresh.ok){
+                    await cache.put(key, fresh.clone());
+                    return fresh;
+                }
+            }catch{}
+
+            return await cache.match(key) ||
+                new Response("Offline", {status: 503});
+        }
+
+        return await cache.match(key) || fetch(request);
+    })());
+    return;
+}
     const relative = url.pathname.slice(new URL(self.registration.scope).pathname.length);
     if(!relative.startsWith("covers/") && !relative.startsWith("lyrics/")) return;
     // Viewed covers and lyrics remain usable offline; audio is not downloaded in bulk.
