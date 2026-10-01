@@ -500,11 +500,20 @@ main{
     position:absolute;
     inset:-12%;
     z-index:-3;
+
     background-position:center;
     background-size:cover;
-    filter:blur(52px) saturate(1.25);
-    transform:scale(1.12);
-    opacity:.34;
+    background-repeat:no-repeat;
+
+    filter:blur(38px) saturate(1.35);
+    transform:scale(1.14);
+    opacity:.46;
+
+    transition:
+        background-image .55s ease,
+        opacity .55s ease;
+
+    pointer-events:none;
 }
 
 .player-shade{
