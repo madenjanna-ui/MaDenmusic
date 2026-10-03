@@ -32,7 +32,7 @@ const songs = [
     album: "Remixes",
     available: true,
     audio: "songs/Песня гор (folk - rock remix).mp3",
-    cover: "covers/Песня гор (folk - rock remix).png",
+    cover: "covers/Песня гор (folk - rock remix).jpeg",
     lyrics: `
     Здесь будет текст песни "Песня гор (folk - rock remix)"
 `
@@ -45,7 +45,7 @@ const songs = [
     album: "Remixes",
     available: true,
     audio: "songs/Песня гор (rock edition).mp3",
-    cover: "covers/Песня гор (rock edition).png",
+    cover: "covers/Песня гор (rock edition).jpeg",
     lyrics: `
     Здесь будет текст песни "Песня гор (rock edition)"
 `
