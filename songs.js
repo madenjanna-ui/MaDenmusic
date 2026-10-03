@@ -25,6 +25,32 @@ const albumMeta = {
 
 const songs = [
     {
+    id: 60,
+    title: "Песня гор (folk - rock remix)",
+    artist: "MaDen",
+    release: "2026-09-30",
+    album: "Remixes",
+    available: true,
+    audio: "songs/Песня гор (folk - rock remix).mp3",
+    cover: "covers/Песня гор (folk - rock remix).png",
+    lyrics: `
+    Здесь будет текст песни "Песня гор (folk - rock remix)"
+`
+  },
+    {
+    id: 59,
+    title: "Песня гор (rock edition)",
+    artist: "MaDen",
+    release: "2026-09-30",
+    album: "Remixes",
+    available: true,
+    audio: "songs/Песня гор (rock edition).mp3",
+    cover: "covers/Песня гор (rock edition).png",
+    lyrics: `
+    Здесь будет текст песни "Песня гор (rock edition)"
+`
+  },
+    {
     id: 17,
     title: "Песня гор",
     artist: "MaDen",
