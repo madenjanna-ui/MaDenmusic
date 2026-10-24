@@ -31,7 +31,7 @@ const songs = [
     release: "2026-10-24",
     album: "Его невидимые качества",
     available: true,
-    audio: "songs/После духовной войны.mp3",
+    audio: "songs/24.10.mp3",
     cover: "covers/Качества.png",
     lyrics: `
     Здесь будет текст песни "После духовной войны"
