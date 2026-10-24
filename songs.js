@@ -25,6 +25,19 @@ const albumMeta = {
 
 const songs = [
     {
+    id: 61,
+    title: "После духовной войны",
+    artist: "MaDen",
+    release: "2026-10-24",
+    album: "Его невидимые качества",
+    available: true,
+    audio: "songs/После духовной войны.mp3",
+    cover: "covers/Качества.png",
+    lyrics: `
+    Здесь будет текст песни "После духовной войны"
+`
+  },
+    {
     id: 60,
     title: "Песня гор (folk - rock remix)",
     artist: "MaDen",
