@@ -25,7 +25,7 @@ const albumMeta = {
 
 const songs = [
     {
-    id: 61,
+    id: 62,
     title: "После духовной войны",
     artist: "MaDen",
     release: "2026-10-24",
