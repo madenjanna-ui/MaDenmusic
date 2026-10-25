@@ -38,6 +38,19 @@ const songs = [
 `
   },
     {
+    id: 61,
+    title: "Снова встретимся с тобой",
+    artist: "MaDen",
+    release: "2026-10-24",
+    album: "Его невидимые качества",
+    available: true,
+    audio: "songs/Meet you again.mp3",
+    cover: "covers/Качества.png",
+    lyrics: `
+    Здесь будет текст песни "Снова встретимся с тобой"
+`
+  },
+    {
     id: 60,
     title: "Песня гор (folk - rock remix)",
     artist: "MaDen",
