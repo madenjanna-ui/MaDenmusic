@@ -230,6 +230,12 @@ main{
     white-space:nowrap;
 }
 
+.song-description{margin-top:7px;color:#a6a8ba;font-size:12px;line-height:1.5;max-width:62ch}
+.song-new-badge{display:inline-block;vertical-align:middle;margin-left:8px;padding:4px 7px;border-radius:999px;background:rgba(180,104,255,.13);border:1px solid rgba(190,110,255,.24);color:#d4a9ff;font-size:10px;line-height:1;font-weight:750;letter-spacing:.02em}
+[data-theme="mist"] .song-description{color:var(--muted)}
+[data-theme="mist"] .song-new-badge{color:#653783;background:#e8dcf1;border-color:var(--line)}
+
+
 .hiddenPage{
     display:none;
 }

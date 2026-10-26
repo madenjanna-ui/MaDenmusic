@@ -4,6 +4,7 @@
 
 const albumOrder = [
     "Его невидимые качества",
+	"Мой выбор — это ты",
     "Remixes",
     "Моя",
     "Новый",
@@ -15,6 +16,7 @@ const albumOrder = [
 
 const albumMeta = {
     "Его невидимые качества": { "cover": "covers/Качества.png" },
+	"Мой выбор — это ты": { "cover": "covers/Мой выбор — это ты.png" },
     "Remixes": { "cover": "covers/Remixes.png" },
     "Моя": { "cover": "covers/moya.png" },
     "Новый": { "cover": "covers/novyi.png" },
@@ -660,5 +662,56 @@ const songs = [
     lyrics: `
 Здесь будет текст песни "Одно сердце"
 `
+  },
+  {
+    "id": 63,
+    "title": "Remix",
+    "artist": "MaDen",
+    "album": "Мой выбор — это ты",
+    "available": false,
+    "audio": "songs/my-choice-remix.mp3",
+    "cover": "covers/Мой выбор — это ты.png",
+    "description": "Динамичная ремикс-версия с обновлённым ритмом и акцентом на танцевальную энергию."
+  },
+  {
+    "id": 64,
+    "title": "Electronic",
+    "artist": "MaDen",
+    "album": "Мой выбор — это ты",
+    "available": false,
+    "audio": "songs/my-choice-electronic.mp3",
+    "cover": "covers/Мой выбор — это ты.png",
+    "description": "Электронное прочтение с синтезаторными текстурами, точным битом и атмосферным звучанием."
+  },
+  {
+    "id": 65,
+    "title": "French Touch",
+    "artist": "MaDen",
+    "album": "Мой выбор — это ты",
+    "available": false,
+    "audio": "songs/my-choice-french-touch.mp3",
+    "cover": "covers/Мой выбор — это ты.png",
+    "description": "Французский хаус с фильтрованными диско-сэмплами и упругим грувом; стилистический ориентир — Daft Punk."
+  },
+  {
+    "id": 66,
+    "title": "Rock Style",
+    "artist": "MaDen",
+    "album": "Мой выбор — это ты",
+    "available": false,
+    "audio": "songs/my-choice-rock-style.mp3",
+    "cover": "covers/Мой выбор — это ты.png",
+    "description": "Гитарная рок-аранжировка с лаконичной мелодической подачей; стилистический ориентир — Кино."
+  },
+  {
+    "id": 67,
+    "title": "MJ Style",
+    "artist": "MaDen",
+    "release": "2026-10-27",
+    "album": "Мой выбор — это ты",
+    "available": false,
+    "audio": "songs/my-choice-mj-style.mp3",
+    "cover": "covers/Мой выбор — это ты.png",
+    "description": "Поп-аранжировка с выразительным грувом, синкопированным басом и точными ударными; стилистический ориентир — Michael Jackson."
   }
 ];

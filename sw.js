@@ -1,6 +1,6 @@
 "use strict";
 // Change BUILD whenever any shell file changes. Paths are relative to this Pages project.
-const BUILD = "2.8-ae26220d10ac";
+const BUILD = "2.8-mvyet-20261027";
 const PREFIX = "madenmusic:" + encodeURIComponent(self.registration.scope) + ":";
 const SHELL = PREFIX + "shell:" + BUILD;
 const MEDIA = PREFIX + "assets:v1";

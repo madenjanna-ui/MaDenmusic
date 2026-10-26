@@ -256,6 +256,15 @@ function isPlayable(song){
     return Boolean(song && song.available !== false && song.audio);
 }
 
+function isWithinNewReleaseWindow(song){
+    if(!song?.release) return false;
+    const release = new Date(`${song.release}T00:00:00`);
+    const days = (new Date() - release) / 86400000;
+    return days >= -1 && days <= 14;
+}
+
+
+
 function songIndex(song){
     return songs.findIndex((item) => item.id === song.id);
 }
@@ -324,8 +333,9 @@ function createSongCard(song, queue, showAvailability = true){
     card.innerHTML = `
         <img src="${escapeHTML(song.cover)}" alt="Обложка: ${escapeHTML(song.title)}" loading="lazy">
         <div class="info">
-            <h2>${escapeHTML(song.title)}</h2>
+            <h2>${escapeHTML(song.title)}${song.album === "Мой выбор — это ты" && song.title === "MJ Style" && isWithinNewReleaseWindow(song) ? '<span class="song-new-badge">Новинка</span>' : ""}</h2>
             <p>${escapeHTML(song.artist || "MaDen")}</p>
+            ${song.description ? `<div class="song-description">${escapeHTML(song.description)}</div>` : ""}
             ${releaseText ? `<div class="songDate">${escapeHTML(releaseText)}</div>` : ""}
             ${showAvailability && !available ? '<span class="availability">Скоро будет</span>' : ""}
         </div>
