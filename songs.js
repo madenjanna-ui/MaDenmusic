@@ -48,7 +48,7 @@ const songs = [
     release: "2026-10-24",
     album: "Его невидимые качества",
     available: true,
-    audio: "songs/Meet you again.mp3",
+    audio: "songs/Meet you again (1).mp3",
     cover: "covers/Качества.png",
     lyrics: `
     Здесь будет текст песни "Снова встретимся с тобой"
