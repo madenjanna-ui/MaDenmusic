@@ -668,7 +668,7 @@ const songs = [
     "title": "Remix",
     "artist": "MaDen",
     "album": "Мой выбор — это ты",
-    "available": false,
+    "available": true,
     "audio": "songs/my-choice-remix.mp3",
     "cover": "covers/Мой выбор — это ты.png",
     "description": "Динамичная ремикс-версия с обновлённым ритмом и акцентом на танцевальную энергию."
@@ -678,7 +678,7 @@ const songs = [
     "title": "Electronic",
     "artist": "MaDen",
     "album": "Мой выбор — это ты",
-    "available": false,
+    "available": true,
     "audio": "songs/my-choice-electronic.mp3",
     "cover": "covers/Мой выбор — это ты.png",
     "description": "Электронное прочтение с синтезаторными текстурами, точным битом и атмосферным звучанием."
@@ -688,7 +688,7 @@ const songs = [
     "title": "French Touch",
     "artist": "MaDen",
     "album": "Мой выбор — это ты",
-    "available": false,
+    "available": true,
     "audio": "songs/my-choice-french-touch.mp3",
     "cover": "covers/Мой выбор — это ты.png",
     "description": "Французский хаус с фильтрованными диско-сэмплами и упругим грувом; стилистический ориентир — Daft Punk."
