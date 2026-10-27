@@ -709,7 +709,7 @@ const songs = [
     "artist": "MaDen",
     "release": "2026-10-27",
     "album": "Мой выбор — это ты",
-    "available": false,
+    "available": true,
     "audio": "songs/my-choice-mj-style.mp3",
     "cover": "covers/Мой выбор — это ты.png",
     "description": "Поп-аранжировка с выразительным грувом, синкопированным басом и точными ударными; стилистический ориентир — Michael Jackson."
