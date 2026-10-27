@@ -698,7 +698,7 @@ const songs = [
     "title": "Rock Style",
     "artist": "MaDen",
     "album": "Мой выбор — это ты",
-    "available": false,
+    "available": true,
     "audio": "songs/my-choice-rock-style.mp3",
     "cover": "covers/Мой выбор — это ты.png",
     "description": "Гитарная рок-аранжировка с лаконичной мелодической подачей; стилистический ориентир — Кино."
