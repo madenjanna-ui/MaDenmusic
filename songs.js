@@ -3,6 +3,7 @@
 // Недостающие позиции добавлены как available: false и отображаются в альбомах как «Скоро будет».
 
 const albumOrder = [
+    "Эксперимент"
     "Его невидимые качества",
 	"Мой выбор — это ты",
     "Remixes",
@@ -15,6 +16,7 @@ const albumOrder = [
 ];
 
 const albumMeta = {
+    "Эксперимент": { "cover": "covers/flame.jpeg" },
     "Его невидимые качества": { "cover": "covers/Качества.png" },
 	"Мой выбор — это ты": { "cover": "covers/Мой выбор — это ты.png" },
     "Remixes": { "cover": "covers/Remixes.png" },
@@ -713,5 +715,16 @@ const songs = [
     "audio": "songs/my-choice-mj-style.mp3",
     "cover": "covers/Мой выбор — это ты.png",
     "description": "Поп-аранжировка с выразительным грувом, синкопированным басом и точными ударными; стилистический ориентир — Michael Jackson."
+  }, 
+{
+    "id": 68,
+    "title": "Пока горит огонь",
+    "artist": "MaDen",
+    "release": "2026-10-27",
+    "album": "Эксперимент",
+    "available": true,
+    "audio": "songs/Just fire the flame.mp3",
+    "cover": "covers/flame.jpeg",
+    
   }
 ];
