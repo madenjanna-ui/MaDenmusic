@@ -3,7 +3,7 @@
 // Недостающие позиции добавлены как available: false и отображаются в альбомах как «Скоро будет».
 
 const albumOrder = [
-    "Эксперимент"
+    "Эксперимент",
     "Его невидимые качества",
 	"Мой выбор — это ты",
     "Remixes",
@@ -724,7 +724,7 @@ const songs = [
     "album": "Эксперимент",
     "available": true,
     "audio": "songs/Just fire the flame.mp3",
-    "cover": "covers/flame.jpeg",
+    "cover": "covers/flame.jpeg"
     
   }
 ];
