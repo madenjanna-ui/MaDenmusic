@@ -725,6 +725,16 @@ const songs = [
     "available": true,
     "audio": "songs/Just fire the flame.mp3",
     "cover": "covers/flame.jpeg"
-    
+  }, 
+{
+    "id": 69,
+    "title": "Внутри меня",
+    "artist": "MaDen",
+    "release": "2026-10-28",
+    "album": "Эксперимент",
+    "available": true,
+    "audio": "songs/into inside.mp3",
+    "cover": "covers/into inside.png",
+    "description": "Внутри нас живут разные эмоции и чувства, счастье которое нас эйфорией поднимает вверх, а иногда бывает что трудно описать что внутри нас."
   }
 ];
