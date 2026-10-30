@@ -510,15 +510,16 @@ const songs = [
 `
   },
   {
-    id: 44,
+    id: 70,
     title: "Танец жизни",
     artist: "MaDen",
-    release: null,
+    release: 2026-10-30,
     album: "Новый",
-    available: false,
-    audio: "songs/Танец жизни.mp3",
-    cover: "covers/novyi.png",
-    lyrics: `
+    available: true,
+    audio: "songs/Dance of life.mp3",
+    cover: "covers/Dance of life.png",
+    description: "Песня о любви, которая преодолевает разногласия и становится только крепче. Беречь свой общий танец жизни.",
+	lyrics: `
 Здесь будет текст песни "Танец жизни"
 `
   },
