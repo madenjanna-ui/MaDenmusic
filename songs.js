@@ -513,7 +513,7 @@ const songs = [
     id: 70,
     title: "Танец жизни",
     artist: "MaDen",
-    release: 2026-10-30,
+    release: "2026-10-30",
     album: "Новый",
     available: true,
     audio: "songs/Dance of life.mp3",
