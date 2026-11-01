@@ -3,7 +3,7 @@
 // Недостающие позиции добавлены как available: false и отображаются в альбомах как «Скоро будет».
 
 const albumOrder = [
-    "Эксперимент",
+    "Пока горит огонь",
     "Его невидимые качества",
 	"Мой выбор — это ты",
     "Remixes",
@@ -16,7 +16,7 @@ const albumOrder = [
 ];
 
 const albumMeta = {
-    "Эксперимент": { "cover": "covers/flame.jpeg" },
+    "Пока горит огонь": { "cover": "covers/flame.jpeg" },
     "Его невидимые качества": { "cover": "covers/Качества.png" },
 	"Мой выбор — это ты": { "cover": "covers/Мой выбор — это ты.png" },
     "Remixes": { "cover": "covers/Remixes.png" },
@@ -684,6 +684,7 @@ const songs = [
     "available": true,
     "audio": "songs/my-choice-electronic.mp3",
     "cover": "covers/Мой выбор — это ты.png",
+	"lyrics": "lyrics/64.txt",
     "description": "Электронное прочтение с синтезаторными текстурами, точным битом и атмосферным звучанием."
   },
   {
@@ -722,7 +723,7 @@ const songs = [
     "title": "Пока горит огонь",
     "artist": "MaDen",
     "release": "2026-10-27",
-    "album": "Эксперимент",
+    "album": "Пока горит огонь",
     "available": true,
     "audio": "songs/Just fire the flame.mp3",
     "cover": "covers/flame.jpeg"
@@ -732,10 +733,21 @@ const songs = [
     "title": "Внутри меня",
     "artist": "MaDen",
     "release": "2026-10-28",
-    "album": "Эксперимент",
+    "album": "Пока горит огонь",
     "available": true,
     "audio": "songs/into inside.mp3",
     "cover": "covers/into inside.png",
     "description": "Внутри нас живут разные эмоции и чувства, счастье которое нас эйфорией поднимает вверх, а иногда бывает что трудно описать что внутри нас."
+  },
+  {
+    "id": 71,
+    "title": "А, помнишь?",
+    "artist": "MaDen",
+    "release": "2026-11-01",
+    "album": "Пока горит огонь",
+    "available": true,
+    "audio": "songs/Remember.mp3",
+    "cover": "covers/Remember.png",
+	"description": "Как приятно вспоминать, то что с нами было, как всё начиналось, эти воспоминания дают сил и помогают понять сколько прошли."
   }
 ];

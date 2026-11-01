@@ -155,7 +155,7 @@ const audio = $("audio");
 const cover = $("cover");
 const playerBg = document.querySelector(".player-bg");
 const songTitle = $("songTitle");
-const songArtist = $("songArtist");
+const songAlbum = $("songAlbum");
 const playBtn = $("play");
 const playIcon = $("playIcon");
 const prevBtn = $("prev");
@@ -178,7 +178,7 @@ const toast = $("toast");
 const miniPlayer = $("miniPlayer");
 const miniCover = $("miniCover");
 const miniTitle = $("miniTitle");
-const miniArtist = $("miniArtist");
+const miniAlbum = $("miniAlbum");
 const miniEqualizer = $("miniEqualizer");
 const miniPlay = $("miniPlay");
 const miniOpen = $("miniOpen");
@@ -334,7 +334,9 @@ function createSongCard(song, queue, showAvailability = true){
         <img src="${escapeHTML(song.cover)}" alt="Обложка: ${escapeHTML(song.title)}" loading="lazy">
         <div class="info">
             <h2>${escapeHTML(song.title)}${song.album === "Мой выбор — это ты" && song.title === "MJ Style" && isWithinNewReleaseWindow(song) ? '<span class="song-new-badge">Новинка</span>' : ""}</h2>
-            <p>${escapeHTML(song.artist || "MaDen")}</p>
+            ${song.album
+                ? `<button class="song-album-link" type="button" data-album="${escapeHTML(song.album)}">${escapeHTML(song.album)}</button>`
+                : `<p>${escapeHTML(song.artist || "MaDen")}</p>`}
             ${song.description ? `<div class="song-description">${escapeHTML(song.description)}</div>` : ""}
             ${releaseText ? `<div class="songDate">${escapeHTML(releaseText)}</div>` : ""}
             ${showAvailability && !available ? '<span class="availability">Скоро будет</span>' : ""}
@@ -356,6 +358,14 @@ function createSongCard(song, queue, showAvailability = true){
         event.stopPropagation();
         toggleFavorite(song.id);
     });
+
+    const albumLink = card.querySelector(".song-album-link");
+    if(albumLink){
+        albumLink.addEventListener("click", (event) => {
+            event.stopPropagation();
+            openAlbum(song.album);
+        });
+    }
 
     return card;
 }
@@ -583,7 +593,7 @@ function updateMiniPlayer(){
     miniCover.src = song.cover;
     miniCover.alt = `Обложка: ${song.title}`;
     miniTitle.textContent = song.title;
-    miniArtist.textContent = song.artist || "MaDen";
+    miniAlbum.textContent = song.album || song.artist || "MaDen";
     miniPlay.textContent = audio.paused ? "▶" : "Ⅱ";
     miniPlay.setAttribute("aria-label", audio.paused ? "Воспроизвести" : "Пауза");
     miniPlayer.classList.remove("hidden-mini");
@@ -841,7 +851,7 @@ async function openSong(index, autoPlay = false, queue = null){
     cover.src = song.cover;
     cover.alt = `Обложка: ${song.title}`;
     songTitle.textContent = song.title;
-    songArtist.textContent = song.artist || "MaDen";
+    songAlbum.textContent = song.album || song.artist || "MaDen";
     updatePlayerBackground(song);
     updatePlayerFavorite();
     updateMediaMetadata(song);
@@ -923,6 +933,19 @@ $("backAlbums").addEventListener("click", openAlbums);
 $("playAllHome").addEventListener("click", () => startQueue(playableIndices(songs)));
 playAlbum.addEventListener("click", () => startQueue(playableIndices(albumSongs(currentAlbum))));
 lumeyaEnter.addEventListener("click", enterLumeya);
+songAlbum.addEventListener("click", () => {
+    const song = songs[currentSong];
+    if(song?.album){
+        openAlbum(song.album);
+        player.classList.add("hidden");
+        updateMiniPlayer();
+    }
+});
+miniAlbum.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const song = songs[currentSong];
+    if(song?.album) openAlbum(song.album);
+});
 
 document.querySelectorAll(".lumeya-word").forEach((button) => {
     button.setAttribute("aria-expanded", "false");
