@@ -1,753 +1,742 @@
-// MaDenMusic — единый каталог для альбомного вида
-// Реально выпущенные треки и их release/пути сохранены из рабочего songs.js.
-// Недостающие позиции добавлены как available: false и отображаются в альбомах как «Скоро будет».
-
+// MaDenMusic — каталог композиций. ID основных релизов отражает хронологию выпуска.
 const albumOrder = [
     "Пока горит огонь",
     "Его невидимые качества",
-	"Мой выбор — это ты",
+    "Мой выбор — это ты",
     "Remixes",
     "Моя",
     "Новый",
     "Мой ангел",
     "Новая веха",
     "Люмейя"
-    
 ];
 
 const albumMeta = {
-    "Пока горит огонь": { "cover": "covers/flame.jpeg" },
-    "Его невидимые качества": { "cover": "covers/Качества.png" },
-	"Мой выбор — это ты": { "cover": "covers/Мой выбор — это ты.png" },
-    "Remixes": { "cover": "covers/Remixes.png" },
-    "Моя": { "cover": "covers/moya.png" },
-    "Новый": { "cover": "covers/novyi.png" },
-    "Мой ангел": { "cover": "covers/My angel.PNG" },
-    "Новая веха": { "cover": "covers/Novaya veha.png" },
-    "Люмейя": { "cover": "covers/album_lumeya.jpeg" }
+    "Пока горит огонь": {
+        "cover": "covers/flame.jpeg"
+    },
+    "Его невидимые качества": {
+        "cover": "covers/Качества.png"
+    },
+    "Мой выбор — это ты": {
+        "cover": "covers/Мой выбор — это ты.png"
+    },
+    "Remixes": {
+        "cover": "covers/Remixes.png"
+    },
+    "Моя": {
+        "cover": "covers/moya.png"
+    },
+    "Новый": {
+        "cover": "covers/novyi.png"
+    },
+    "Мой ангел": {
+        "cover": "covers/My angel.PNG"
+    },
+    "Новая веха": {
+        "cover": "covers/Novaya veha.png"
+    },
+    "Люмейя": {
+        "cover": "covers/album_lumeya.jpeg"
+    }
 };
 
 const songs = [
     {
-    id: 62,
-    title: "После духовной войны",
-    artist: "MaDen",
-    release: "2026-10-24",
-    album: "Его невидимые качества",
-    available: true,
-    audio: "songs/24.10.mp3",
-    cover: "covers/Качества.png",
-    lyrics: `
-    Здесь будет текст песни "После духовной войны"
-`
-  },
+        "id": 50,
+        "title": "Двери времени",
+        "artist": "MaDen",
+        "release": "2026-11-06",
+        "album": "Пока горит огонь",
+        "available": true,
+        "audio": "songs/Doors of time.mp3",
+        "cover": "covers/Doors of time.png"
+    },
     {
-    id: 61,
-    title: "Снова встретимся с тобой",
-    artist: "MaDen",
-    release: "2026-10-24",
-    album: "Его невидимые качества",
-    available: true,
-    audio: "songs/Meet you again (1).mp3",
-    cover: "covers/Качества.png",
-    lyrics: `
-    Здесь будет текст песни "Снова встретимся с тобой"
-`
-  },
+        "order": 3,
+        "id": 49,
+        "title": "А, помнишь?",
+        "artist": "MaDen",
+        "release": "2026-11-01",
+        "album": "Пока горит огонь",
+        "available": true,
+        "audio": "songs/Remember.mp3",
+        "cover": "covers/Remember.png",
+        "description": "Как приятно вспоминать, то что с нами было, как всё начиналось, эти воспоминания дают сил и помогают понять сколько прошли."
+    },
     {
-    id: 60,
-    title: "Песня гор (folk - rock remix)",
-    artist: "MaDen",
-    release: "2026-09-30",
-    album: "Remixes",
-    available: true,
-    audio: "songs/Песня гор (folk - rock remix).mp3",
-    cover: "covers/Песня гор (folk - rock remix).jpeg",
-    lyrics: `
-    Здесь будет текст песни "Песня гор (folk - rock remix)"
-`
-  },
+        "order": 4,
+        "id": 48,
+        "title": "Танец жизни",
+        "artist": "MaDen",
+        "release": "2026-10-30",
+        "album": "Новый",
+        "available": true,
+        "audio": "songs/Dance of life.mp3",
+        "cover": "covers/Dance of life.png",
+        "description": "Песня о любви, которая преодолевает разногласия и становится только крепче. Беречь свой общий танец жизни.",
+        "lyrics": "\nЗдесь будет текст песни \"Танец жизни\"\n"
+    },
     {
-    id: 59,
-    title: "Песня гор (rock edition)",
-    artist: "MaDen",
-    release: "2026-09-30",
-    album: "Remixes",
-    available: true,
-    audio: "songs/Песня гор (rock edition).mp3",
-    cover: "covers/Песня гор (rock edition).jpeg",
-    lyrics: `
-    Здесь будет текст песни "Песня гор (rock edition)"
-`
-  },
+        "order": 2,
+        "id": 47,
+        "title": "Внутри меня",
+        "artist": "MaDen",
+        "release": "2026-10-28",
+        "album": "Пока горит огонь",
+        "available": true,
+        "audio": "songs/into inside.mp3",
+        "cover": "covers/into inside.png",
+        "description": "Внутри нас живут разные эмоции и чувства, счастье которое нас эйфорией поднимает вверх, а иногда бывает что трудно описать что внутри нас."
+    },
     {
-    id: 17,
-    title: "Песня гор",
-    artist: "MaDen",
-    release: "2026-10-01",
-    album: "Его невидимые качества",
-    available: true,
-    audio: "songs/Песня гор.mp3",
-    cover: "covers/Песня гор.png",
-    lyrics: `
-    Здесь будет текст песни "Песня гор"
-`
-  },
-  {
-    id: 58,
-    title: "Из глубины - remix",
-    artist: "MaDen",
-    release: "2026-09-30",
-    album: "Remixes",
-    available: true,
-    audio: "songs/Из глубины - ремикс.mp3",
-    cover: "covers/Из глубины - ремикс.png",
-    lyrics: `
-    Здесь будет текст песни "Из глубины - remix"
-`
-  },
-  {
-    id: 57,
-    title: "Из глубины",
-    artist: "MaDen",
-    release: "2026-09-29",
-    album: "Его невидимые качества",
-    available: true,
-    audio: "songs/Из глубины.mp3",
-    cover: "covers/Из глубины.png",
-    lyrics: `
-    Здесь будет текст песни "Из глубины"
-`
-  },
-  {
-    id: 56,
-    title: "Голос моря",
-    artist: "MaDen",
-    release: "2026-09-29",
-    album: "Его невидимые качества",
-    available: true,
-    audio: "songs/Голос моря.mp3",
-    cover: "covers/IMG_3977.jpeg",
-    lyrics: `
-    Здесь будет текст песни "Голос моря"
-`
-  },
-  {
-    id: 29,
-    title: "Жизнь...сила - remix",
-    artist: "MaDen",
-    release: "2026-09-05",
-    album: "Remixes",
-    available: true,
-    audio: "songs/life power remix.mp3",
-    cover: "covers/life power remix.png",
-    lyrics: `
-Здесь будет текст песни "Жизнь...сила - remix"
-`
-  },
-  {
-    id: 28,
-    title: "Как в океане",
-    artist: "MaDen",
-    release: "2026-09-04",
-    album: "Новая веха",
-    available: true,
-    audio: "songs/Как в океане .mp3",
-    cover: "covers/Novaya veha.png",
-    lyrics: `
-Здесь будет текст песни "Как в океане"
-`
-  },
-  {
-    id: 40,
-    title: "Ты - мой кофе - remix",
-    artist: "MaDen",
-    release: "2026-09-01",
-    album: "Remixes",
-    available: true,
-    audio: "songs/My coffe ремикс.mp3",
-    cover: "covers/My coffe ремикс.png",
-    lyrics: `
-Здесь будет текст песни "Ты - мой кофе - remix"
-`
-  },
-  {
-    id: 39,
-    title: "От Эдема ... remix",
-    artist: "MaDen",
-    release: "2026-08-28",
-    album: "Remixes",
-    available: true,
-    audio: "songs/От Эдема (ремикс).mp3",
-    cover: "covers/От Эдема (ремикс).png",
-    lyrics: `
-Текст песни "От Эдема ... remix" [Intro]
-`
-  },
-  {
-    id: 38,
-    title: "Твой взгляд (dance remix 70')",
-    artist: "MaDen",
-    release: "2026-08-28",
-    album: "Remixes",
-    available: true,
-    audio: "songs/Твой взгляд (remix).mp3",
-    cover: "covers/Твой взгляд (remix).png",
-    lyrics: `
-Здесь будет текст песни "Твой взгляд (dance remix 70')"
-`
-  },
-  {
-    id: 37,
-    title: "От Эдема до Нового дня",
-    artist: "MaDen",
-    release: "2026-08-25",
-    album: "Новая веха",
-    available: true,
-    audio: "songs/От Эдема до нового дня.mp3",
-    cover: "covers/От Эдема до нового дня.png",
-    lyrics: `
-Здесь будет текст песни "От Эдема до Нового дня"
-`
-  },
-  {
-    id: 36,
-    title: "Счастье нас обнимает",
-    artist: "MaDen",
-    release: "2026-08-24",
-    album: "Новая веха",
-    available: true,
-    audio: "songs/Счастье нас обнимает.mp3",
-    cover: "covers/Счастье нас обнимает.png",
-    lyrics: `
-Здесь будет текст песни "Счастье нас обнимает"
-`
-  },
-  {
-    id: 35,
-    title: "Одно сердце на двоих",
-    artist: "MaDen",
-    release: "2026-08-21",
-    album: "Новая веха",
-    available: true,
-    audio: "songs/odno-serdtse-na-dvoih.mp3",
-    cover: "covers/odno-serdtse-na-dvoih.png",
-    lyrics: `
-Здесь будет текст песни "Одно сердце на двоих"
-`
-  },
-  {
-    id: 34,
-    title: "Целуй меня нежно...",
-    artist: "MaDen",
-    release: "2026-08-17",
-    album: "Новая веха",
-    available: true,
-    audio: "songs/17.08-2.mp3",
-    cover: "covers/17.08-2.png",
-    lyrics: `
-Здесь будет текст песни "Целуй меня нежно..."
-`
-  },
-  {
-    id: 27,
-    title: "Одним воздухом дышать (Remix)",
-    artist: "MaDen",
-    release: "2026-08-13",
-    album: "Remixes",
-    available: true,
-    audio: "songs/13.08-2.mp3",
-    cover: "covers/album_remixes.png",
-    lyrics: `
-Здесь будет текст песни "Одним воздухом дышать (Remix)"
-`
-  },
-  {
-    id: 15,
-    title: "Мы растворяемся вдвоём (Remix)",
-    artist: "MaDen",
-    release: "2026-08-13",
-    album: "Remixes",
-    available: true,
-    audio: "songs/мы растворяемся вдвоём (remix).mp3",
-    cover: "covers/мы растворяемся вдвоём (remix).jpg",
-    lyrics: `
-Здесь будет текст песни "Мы растворяемся вдвоём (Remix)"
-`
-  },
-  {
-    id: 14,
-    title: "История любви (Nordic Remix)",
-    artist: "MaDen",
-    release: "2026-08-13",
-    album: "Remixes",
-    available: true,
-    audio: "songs/история любви (nordic remix).mp3",
-    cover: "covers/история любви (nordic remix).jpg",
-    lyrics: `
-Здесь будет текст песни "История любви (Nordic Remix)"
-`
-  },
-  {
-    id: 13,
-    title: "Мы растворяемся вдвоем",
-    artist: "MaDen",
-    release: "2026-08-06",
-    album: "Новая веха",
-    available: true,
-    audio: "songs/Растворяемся вдвоем.mp3",
-    cover: "covers/растворяемся.png",
-    lyrics: `
-Здесь будет текст песни "Мы растворяемся вдвоем"
-`
-  },
-  {
-    id: 12,
-    title: "Одним воздухом дышать",
-    artist: "MaDen",
-    release: "2026-08-05",
-    album: "Мой ангел",
-    available: true,
-    audio: "songs/Одним воздухом дышать.mp3",
-    cover: "covers/Одним воздухом дышать.png",
-    lyrics: `
-Здесь будет текст песни "Одним воздухом дышать"
-`
-  },
-  {
-    id: 11,
-    title: "Ты мой кофе",
-    artist: "MaDen",
-    release: "2026-08-05",
-    album: "Новый",
-    available: true,
-    audio: "kofe.mp3",
-    cover: "covers/kofe.jpg",
-    lyrics: `
-Здесь будет текст песни "Ты мой кофе"
-`
-  },
-  {
-    id: 10,
-    title: "Твой взгляд",
-    artist: "MaDen",
-    release: "2026-08-05",
-    album: "Новый",
-    available: true,
-    audio: "songs/tvoy vzglayd.mp3",
-    cover: "covers/Together.png",
-    lyrics: `
-Здесь будет текст песни "Твой взгляд"
-`
-  },
-  {
-    id: 9,
-    title: "Папина дочка",
-    artist: "MaDen",
-    release: "2026-08-04",
-    album: "Мой ангел",
-    available: true,
-    audio: "songs/Папина дочка.mp3",
-    cover: "covers/Папина дочка.png",
-    lyrics: `
-Здесь будет текст песни "Папина дочка"
-`
-  },
-  {
-    id: 8,
-    title: "Эсфирь",
-    artist: "MaDen",
-    release: "2026-08-03",
-    album: "Моя",
-    available: true,
-    audio: "songs/Моя – Эсфирь.mp3",
-    cover: "covers/Together.png",
-    lyrics: `
-Здесь будет текст песни "Эсфирь"
-`
-  },
-  {
-    id: 7,
-    title: "Жизнь моей души",
-    artist: "MaDen",
-    release: "2026-08-02",
-    album: "Моя",
-    available: true,
-    audio: "songs/Моя – Жизнь моей души.mp3",
-    cover: "covers/Together.png",
-    lyrics: `
-Здесь будет текст песни "Жизнь моей души"
-`
-  },
-  {
-    id: 6,
-    title: "Мой свет, гори 🔥",
-    artist: "MaDen",
-    release: "2026-08-01",
-    album: "Мой ангел",
-    available: true,
-    audio: "songs/Moy svet.mp3",
-    cover: "covers/Together.png",
-    lyrics: `
-Здесь будет текст песни "Мой свет, гори 🔥"
-`
-  },
-  {
-    id: 5,
-    title: "Мой ангел",
-    artist: "MaDen",
-    release: "2026-07-31",
-    album: "Мой ангел",
-    available: true,
-    audio: "songs/Мой ангел.mp3",
-    cover: "covers/Together.png",
-    lyrics: `
-Здесь будет текст песни "Мой ангел"
-`
-  },
-  {
-    id: 4,
-    title: "Комета",
-    artist: "MaDen",
-    release: "2026-07-30",
-    album: "Новый",
-    available: true,
-    audio: "songs/Комета.mp3",
-    cover: "covers/Comet.png",
-    lyrics: `
-Здесь будет текст песни "Комета"
-`
-  },
-  {
-    id: 3,
-    title: "Сегодня мы считаем звёзды",
-    artist: "MaDen",
-    release: "2026-07-20",
-    album: "Новая веха",
-    available: true,
-    audio: "songs/сегодня мы считаем звёзды.mp3",
-    cover: "covers/IMG_3387.jpeg",
-    lyrics: `
-Здесь будет текст песни "Сегодня мы считаем звёзды"
-`
-  },
-  {
-    id: 2,
-    title: "История Любви",
-    artist: "MaDen",
-    release: "2026-07-10",
-    album: "Новая веха",
-    available: true,
-    audio: "songs/История любви.mp3",
-    cover: "covers/Screenshot_20260803-134440-display-0.png.png",
-    lyrics: `
-Здесь будет текст песни "История Любви"
-`
-  },
-  {
-    id: 1,
-    title: "Ты лилия (Nordic Remix)",
-    artist: "MaDen",
-    release: "2026-07-01",
-    album: "Remixes",
-    available: true,
-    audio: "songs/ты лилия (nordic remix).mp3",
-    cover: "covers/IMG_1576.jpeg",
-    lyrics: `
-Здесь будет текст песни "Ты лилия (Nordic Remix)"
-`
-  },
-  {
-    id: 16,
-    title: "Наша жизнь — это сила",
-    artist: "MaDen",
-    release: "2026-09-02",
-    album: "Моя",
-    available: true,
-    audio: "songs/Наша жизнь — это сила.mp3",
-    cover: "covers/moya.png",
-    lyrics: `
-Здесь будет текст песни "Наша жизнь — это сила"
-`
-  },
-  {
-    id: 41,
-    title: "Ты лилия",
-    artist: "MaDen",
-    release: "2026-10-01",
-    album: "Моя",
-    available: true,
-    audio: "songs/Ты лилия.mp3",
-    cover: "covers/Ты лилия.jpeg",
-    lyrics: `
-Здесь будет текст песни "Ты лилия"
-`
-  },
-  {
-    id: 42,
-    title: "Смыслом жизнь полна",
-    artist: "MaDen",
-    release: null,
-    album: "Моя",
-    available: false,
-    audio: "songs/Смыслом жизнь полна.mp3",
-    cover: "covers/moya.png",
-    lyrics: `
-Здесь будет текст песни "Смыслом жизнь полна"
-`
-  },
-  {
-    id: 43,
-    title: "10.01",
-    artist: "MaDen",
-    release: null,
-    album: "Моя",
-    available: false,
-    audio: "songs/10.01.mp3",
-    cover: "covers/moya.png",
-    lyrics: `
-Здесь будет текст песни "10.01"
-`
-  },
-  {
-    id: 70,
-    title: "Танец жизни",
-    artist: "MaDen",
-    release: "2026-10-30",
-    album: "Новый",
-    available: true,
-    audio: "songs/Dance of life.mp3",
-    cover: "covers/Dance of life.png",
-    description: "Песня о любви, которая преодолевает разногласия и становится только крепче. Беречь свой общий танец жизни.",
-	lyrics: `
-Здесь будет текст песни "Танец жизни"
-`
-  },
-  {
-    id: 45,
-    title: "Взрыв далёкой звезды",
-    artist: "MaDen",
-    release: null,
-    album: "Новый",
-    available: false,
-    audio: "songs/Взрыв далекой звезды.mp3",
-    cover: "covers/novyi.png",
-    lyrics: `
-Здесь будет текст песни "Взрыв далёкой звезды"
-`
-  },
-  {
-    id: 46,
-    title: "Целого мира мало",
-    artist: "MaDen",
-    release: null,
-    album: "Новый",
-    available: false,
-    audio: "songs/Целого мира мало.mp3",
-    cover: "covers/novyi.png",
-    lyrics: `
-Здесь будет текст песни "Целого мира мало"
-`
-  },
-  {
-    id: 47,
-    title: "Моих желаний аромат",
-    artist: "MaDen",
-    release: null,
-    album: "Новый",
-    available: false,
-    audio: "songs/Моих желаний аромат.mp3",
-    cover: "covers/novyi.png",
-    lyrics: `
-Здесь будет текст песни "Моих желаний аромат"
-`
-  },
-  {
-    id: 48,
-    title: "Петербург — город любви",
-    artist: "MaDen",
-    release: null,
-    album: "Мой ангел",
-    available: false,
-    audio: "songs/Петербург — город любви.mp3",
-    cover: "covers/My angel.PNG",
-    lyrics: `
-Здесь будет текст песни "Петербург — город любви"
-`
-  },
-  {
-    id: 49,
-    title: "Когда мы вместе",
-    artist: "MaDen",
-    release: null,
-    album: "Новая веха",
-    available: false,
-    audio: "songs/Когда мы вместе.mp3",
-    cover: "covers/Novaya veha.png",
-    lyrics: `
-Здесь будет текст песни "Когда мы вместе"
-`
-  },
-  {
-    id: 50,
-    title: "Гармония",
-    artist: "MaDen",
-    release: null,
-    album: "Новая веха",
-    available: false,
-    audio: "songs/Гармония.mp3",
-    cover: "covers/Novaya veha.png",
-    lyrics: `
-Здесь будет текст песни "Гармония"
-`
-  },
-  {
-    id: 51,
-    title: "Ритмы Люмейя",
-    artist: "MaDen",
-    release: "2026-07-01",
-    album: "Люмейя",
-    available: true,
-    audio: "songs/Ритмы Люмейя.mp3",
-    cover: "covers/album_lumeya.jpeg",
-    lyrics: `
-Здесь будет текст песни "Ритмы Люмейя"
-`
-  },
-  {
-    id: 52,
-    title: "Народ Люмейя",
-    artist: "MaDen",
-    release: "2026-07-01",
-    album: "Люмейя",
-    available: true,
-    audio: "songs/Народ Люмейя.mp3",
-    cover: "covers/album_lumeya.jpeg",
-    lyrics: `
-Здесь будет текст песни "Народ Люмейя"
-`
-  },
-  {
-    id: 53,
-    title: "Lum",
-    artist: "MaDen",
-    release: "2026-07-01",
-    album: "Люмейя",
-    available: true,
-    audio: "songs/Lum.mp3",
-    cover: "covers/album_lumeya.jpeg",
-    lyrics: `
-Здесь будет текст песни "Lum"
-`
-  },
-  {
-    id: 54,
-    title: "Soliah",
-    artist: "MaDen",
-    release: "2026-07-01",
-    album: "Люмейя",
-    available: true,
-    audio: "songs/soliah.mp3",
-    cover: "covers/album_lumeya.jpeg",
-    lyrics: `
-Здесь будет текст песни "Soliah"
-`
-  },
-  {
-    id: 55,
-    title: "Одно сердце",
-    artist: "MaDen",
-    release: "2026-07-01",
-    album: "Люмейя",
-    available: true,
-    audio: "songs/Одно сердце.mp3",
-    cover: "covers/album_lumeya.jpeg",
-    lyrics: `
-Здесь будет текст песни "Одно сердце"
-`
-  },
-  {
-    "id": 63,
-    "title": "Remix",
-    "artist": "MaDen",
-    "album": "Мой выбор — это ты",
-    "available": true,
-    "audio": "songs/my-choice-remix.mp3",
-    "cover": "covers/Мой выбор — это ты.png",
-    "description": "Динамичная ремикс-версия с обновлённым ритмом и акцентом на танцевальную энергию."
-  },
-  {
-    "id": 64,
-    "title": "Electronic",
-    "artist": "MaDen",
-    "album": "Мой выбор — это ты",
-    "available": true,
-    "audio": "songs/my-choice-electronic.mp3",
-    "cover": "covers/Мой выбор — это ты.png",
-	"lyrics": "lyrics/64.txt",
-    "description": "Электронное прочтение с синтезаторными текстурами, точным битом и атмосферным звучанием."
-  },
-  {
-    "id": 65,
-    "title": "French Touch",
-    "artist": "MaDen",
-    "album": "Мой выбор — это ты",
-    "available": true,
-    "audio": "songs/my-choice-french-touch.mp3",
-    "cover": "covers/Мой выбор — это ты.png",
-    "description": "Французский хаус с фильтрованными диско-сэмплами и упругим грувом; стилистический ориентир — Daft Punk."
-  },
-  {
-    "id": 66,
-    "title": "Rock Style",
-    "artist": "MaDen",
-    "album": "Мой выбор — это ты",
-    "available": true,
-    "audio": "songs/my-choice-rock-style.mp3",
-    "cover": "covers/Мой выбор — это ты.png",
-    "description": "Гитарная рок-аранжировка с лаконичной мелодической подачей; стилистический ориентир — Кино."
-  },
-  {
-    "id": 67,
-    "title": "MJ Style",
-    "artist": "MaDen",
-    "release": "2026-10-27",
-    "album": "Мой выбор — это ты",
-    "available": true,
-    "audio": "songs/my-choice-mj-style.mp3",
-    "cover": "covers/Мой выбор — это ты.png",
-    "description": "Поп-аранжировка с выразительным грувом, синкопированным басом и точными ударными; стилистический ориентир — Michael Jackson."
-  }, 
-{
-    "id": 68,
-    "title": "Пока горит огонь",
-    "artist": "MaDen",
-    "release": "2026-10-27",
-    "album": "Пока горит огонь",
-    "available": true,
-    "audio": "songs/Just fire the flame.mp3",
-    "cover": "covers/flame.jpeg"
-  }, 
-{
-    "id": 69,
-    "title": "Внутри меня",
-    "artist": "MaDen",
-    "release": "2026-10-28",
-    "album": "Пока горит огонь",
-    "available": true,
-    "audio": "songs/into inside.mp3",
-    "cover": "covers/into inside.png",
-    "description": "Внутри нас живут разные эмоции и чувства, счастье которое нас эйфорией поднимает вверх, а иногда бывает что трудно описать что внутри нас."
-  },
-  {
-    "id": 71,
-    "title": "А, помнишь?",
-    "artist": "MaDen",
-    "release": "2026-11-01",
-    "album": "Пока горит огонь",
-    "available": true,
-    "audio": "songs/Remember.mp3",
-    "cover": "covers/Remember.png",
-	"description": "Как приятно вспоминать, то что с нами было, как всё начиналось, эти воспоминания дают сил и помогают понять сколько прошли."
-  }
+        "order": 1,
+        "id": 41,
+        "title": "Пока горит огонь",
+        "artist": "MaDen",
+        "release": "2026-10-27",
+        "album": "Пока горит огонь",
+        "available": true,
+        "audio": "songs/Just fire the flame.mp3",
+        "cover": "covers/flame.jpeg"
+    },
+    {
+        "order": 2,
+        "id": 40,
+        "title": "Снова встретимся с тобой",
+        "artist": "MaDen",
+        "release": "2026-10-24",
+        "album": "Его невидимые качества",
+        "available": true,
+        "audio": "songs/Meet you again (1).mp3",
+        "cover": "covers/Качества.png",
+        "lyrics": "\n    Здесь будет текст песни \"Снова встретимся с тобой\"\n"
+    },
+    {
+        "order": 1,
+        "id": 39,
+        "title": "После духовной войны",
+        "artist": "MaDen",
+        "release": "2026-10-24",
+        "album": "Его невидимые качества",
+        "available": true,
+        "audio": "songs/24.10.mp3",
+        "cover": "covers/Качества.png",
+        "lyrics": "\n    Здесь будет текст песни \"После духовной войны\"\n"
+    },
+    {
+        "order": 4,
+        "id": 38,
+        "title": "Ты лилия",
+        "artist": "MaDen",
+        "release": "2026-10-01",
+        "album": "Моя",
+        "available": true,
+        "audio": "songs/Ты лилия.mp3",
+        "cover": "covers/Ты лилия.jpeg",
+        "lyrics": "\nЗдесь будет текст песни \"Ты лилия\"\n"
+    },
+    {
+        "order": 3,
+        "id": 37,
+        "title": "Песня гор",
+        "artist": "MaDen",
+        "release": "2026-10-01",
+        "album": "Его невидимые качества",
+        "available": true,
+        "audio": "songs/Песня гор.mp3",
+        "cover": "covers/Песня гор.png",
+        "lyrics": "\n    Здесь будет текст песни \"Песня гор\"\n"
+    },
+    {
+        "order": 3,
+        "id": 36,
+        "title": "Из глубины - remix",
+        "artist": "MaDen",
+        "release": "2026-09-30",
+        "album": "Remixes",
+        "available": true,
+        "audio": "songs/Из глубины - ремикс.mp3",
+        "cover": "covers/Из глубины - ремикс.png",
+        "lyrics": "\n    Здесь будет текст песни \"Из глубины - remix\"\n"
+    },
+    {
+        "order": 2,
+        "id": 35,
+        "title": "Песня гор (rock edition)",
+        "artist": "MaDen",
+        "release": "2026-09-30",
+        "album": "Remixes",
+        "available": true,
+        "audio": "songs/Песня гор (rock edition).mp3",
+        "cover": "covers/Песня гор (rock edition).jpeg",
+        "lyrics": "\n    Здесь будет текст песни \"Песня гор (rock edition)\"\n"
+    },
+    {
+        "order": 1,
+        "id": 34,
+        "title": "Песня гор (folk - rock remix)",
+        "artist": "MaDen",
+        "release": "2026-09-30",
+        "album": "Remixes",
+        "available": true,
+        "audio": "songs/Песня гор (folk - rock remix).mp3",
+        "cover": "covers/Песня гор (folk - rock remix).jpeg",
+        "lyrics": "\n    Здесь будет текст песни \"Песня гор (folk - rock remix)\"\n"
+    },
+    {
+        "order": 5,
+        "id": 33,
+        "title": "Голос моря",
+        "artist": "MaDen",
+        "release": "2026-09-29",
+        "album": "Его невидимые качества",
+        "available": true,
+        "audio": "songs/Голос моря.mp3",
+        "cover": "covers/IMG_3977.jpeg",
+        "lyrics": "\n    Здесь будет текст песни \"Голос моря\"\n"
+    },
+    {
+        "order": 4,
+        "id": 32,
+        "title": "Из глубины",
+        "artist": "MaDen",
+        "release": "2026-09-29",
+        "album": "Его невидимые качества",
+        "available": true,
+        "audio": "songs/Из глубины.mp3",
+        "cover": "covers/Из глубины.png",
+        "lyrics": "\n    Здесь будет текст песни \"Из глубины\"\n"
+    },
+    {
+        "order": 4,
+        "id": 31,
+        "title": "Жизнь...сила - remix",
+        "artist": "MaDen",
+        "release": "2026-09-05",
+        "album": "Remixes",
+        "available": true,
+        "audio": "songs/life power remix.mp3",
+        "cover": "covers/life power remix.png",
+        "lyrics": "\nЗдесь будет текст песни \"Жизнь...сила - remix\"\n"
+    },
+    {
+        "order": 1,
+        "id": 30,
+        "title": "Как в океане",
+        "artist": "MaDen",
+        "release": "2026-09-04",
+        "album": "Новая веха",
+        "available": true,
+        "audio": "songs/Как в океане .mp3",
+        "cover": "covers/Novaya veha.png",
+        "lyrics": "\nЗдесь будет текст песни \"Как в океане\"\n"
+    },
+    {
+        "order": 3,
+        "id": 29,
+        "title": "Наша жизнь — это сила",
+        "artist": "MaDen",
+        "release": "2026-09-02",
+        "album": "Моя",
+        "available": true,
+        "audio": "songs/Наша жизнь — это сила.mp3",
+        "cover": "covers/moya.png",
+        "lyrics": "\nЗдесь будет текст песни \"Наша жизнь — это сила\"\n"
+    },
+    {
+        "order": 5,
+        "id": 28,
+        "title": "Ты - мой кофе - remix",
+        "artist": "MaDen",
+        "release": "2026-09-01",
+        "album": "Remixes",
+        "available": true,
+        "audio": "songs/My coffe ремикс.mp3",
+        "cover": "covers/My coffe ремикс.png",
+        "lyrics": "\nЗдесь будет текст песни \"Ты - мой кофе - remix\"\n"
+    },
+    {
+        "order": 7,
+        "id": 27,
+        "title": "Твой взгляд (dance remix 70')",
+        "artist": "MaDen",
+        "release": "2026-08-28",
+        "album": "Remixes",
+        "available": true,
+        "audio": "songs/Твой взгляд (remix).mp3",
+        "cover": "covers/Твой взгляд (remix).png",
+        "lyrics": "\nЗдесь будет текст песни \"Твой взгляд (dance remix 70')\"\n"
+    },
+    {
+        "order": 6,
+        "id": 26,
+        "title": "От Эдема ... remix",
+        "artist": "MaDen",
+        "release": "2026-08-28",
+        "album": "Remixes",
+        "available": true,
+        "audio": "songs/От Эдема (ремикс).mp3",
+        "cover": "covers/От Эдема (ремикс).png",
+        "lyrics": "\nТекст песни \"От Эдема ... remix\" [Intro]\n"
+    },
+    {
+        "order": 2,
+        "id": 25,
+        "title": "От Эдема до Нового дня",
+        "artist": "MaDen",
+        "release": "2026-08-25",
+        "album": "Новая веха",
+        "available": true,
+        "audio": "songs/От Эдема до нового дня.mp3",
+        "cover": "covers/От Эдема до нового дня.png",
+        "lyrics": "\nЗдесь будет текст песни \"От Эдема до Нового дня\"\n"
+    },
+    {
+        "order": 3,
+        "id": 24,
+        "title": "Счастье нас обнимает",
+        "artist": "MaDen",
+        "release": "2026-08-24",
+        "album": "Новая веха",
+        "available": true,
+        "audio": "songs/Счастье нас обнимает.mp3",
+        "cover": "covers/Счастье нас обнимает.png",
+        "lyrics": "\nЗдесь будет текст песни \"Счастье нас обнимает\"\n"
+    },
+    {
+        "order": 4,
+        "id": 23,
+        "title": "Одно сердце на двоих",
+        "artist": "MaDen",
+        "release": "2026-08-21",
+        "album": "Новая веха",
+        "available": true,
+        "audio": "songs/odno-serdtse-na-dvoih.mp3",
+        "cover": "covers/odno-serdtse-na-dvoih.png",
+        "lyrics": "\nЗдесь будет текст песни \"Одно сердце на двоих\"\n"
+    },
+    {
+        "order": 5,
+        "id": 22,
+        "title": "Целуй меня нежно...",
+        "artist": "MaDen",
+        "release": "2026-08-17",
+        "album": "Новая веха",
+        "available": true,
+        "audio": "songs/17.08-2.mp3",
+        "cover": "covers/17.08-2.png",
+        "lyrics": "\nЗдесь будет текст песни \"Целуй меня нежно...\"\n"
+    },
+    {
+        "order": 10,
+        "id": 21,
+        "title": "История любви (Nordic Remix)",
+        "artist": "MaDen",
+        "release": "2026-08-13",
+        "album": "Remixes",
+        "available": true,
+        "audio": "songs/история любви (nordic remix).mp3",
+        "cover": "covers/история любви (nordic remix).jpg",
+        "lyrics": "\nЗдесь будет текст песни \"История любви (Nordic Remix)\"\n"
+    },
+    {
+        "order": 9,
+        "id": 20,
+        "title": "Мы растворяемся вдвоём (Remix)",
+        "artist": "MaDen",
+        "release": "2026-08-13",
+        "album": "Remixes",
+        "available": true,
+        "audio": "songs/мы растворяемся вдвоём (remix).mp3",
+        "cover": "covers/мы растворяемся вдвоём (remix).jpg",
+        "lyrics": "\nЗдесь будет текст песни \"Мы растворяемся вдвоём (Remix)\"\n"
+    },
+    {
+        "order": 8,
+        "id": 19,
+        "title": "Одним воздухом дышать (Remix)",
+        "artist": "MaDen",
+        "release": "2026-08-13",
+        "album": "Remixes",
+        "available": true,
+        "audio": "songs/13.08-2.mp3",
+        "cover": "covers/album_remixes.png",
+        "lyrics": "\nЗдесь будет текст песни \"Одним воздухом дышать (Remix)\"\n"
+    },
+    {
+        "order": 6,
+        "id": 18,
+        "title": "Мы растворяемся вдвоем",
+        "artist": "MaDen",
+        "release": "2026-08-06",
+        "album": "Новая веха",
+        "available": true,
+        "audio": "songs/Растворяемся вдвоем.mp3",
+        "cover": "covers/растворяемся.png",
+        "lyrics": "\nЗдесь будет текст песни \"Мы растворяемся вдвоем\"\n"
+    },
+    {
+        "order": 2,
+        "id": 17,
+        "title": "Твой взгляд",
+        "artist": "MaDen",
+        "release": "2026-08-05",
+        "album": "Новый",
+        "available": true,
+        "audio": "songs/tvoy vzglayd.mp3",
+        "cover": "covers/Together.png",
+        "lyrics": "\nЗдесь будет текст песни \"Твой взгляд\"\n"
+    },
+    {
+        "order": 1,
+        "id": 16,
+        "title": "Ты мой кофе",
+        "artist": "MaDen",
+        "release": "2026-08-05",
+        "album": "Новый",
+        "available": true,
+        "audio": "kofe.mp3",
+        "cover": "covers/kofe.jpg",
+        "lyrics": "\nЗдесь будет текст песни \"Ты мой кофе\"\n"
+    },
+    {
+        "order": 1,
+        "id": 15,
+        "title": "Одним воздухом дышать",
+        "artist": "MaDen",
+        "release": "2026-08-05",
+        "album": "Мой ангел",
+        "available": true,
+        "audio": "songs/Одним воздухом дышать.mp3",
+        "cover": "covers/Одним воздухом дышать.png",
+        "lyrics": "\nЗдесь будет текст песни \"Одним воздухом дышать\"\n"
+    },
+    {
+        "order": 2,
+        "id": 14,
+        "title": "Папина дочка",
+        "artist": "MaDen",
+        "release": "2026-08-04",
+        "album": "Мой ангел",
+        "available": true,
+        "audio": "songs/Папина дочка.mp3",
+        "cover": "covers/Папина дочка.png",
+        "lyrics": "\nЗдесь будет текст песни \"Папина дочка\"\n"
+    },
+    {
+        "order": 1,
+        "id": 13,
+        "title": "Эсфирь",
+        "artist": "MaDen",
+        "release": "2026-08-03",
+        "album": "Моя",
+        "available": true,
+        "audio": "songs/Моя – Эсфирь.mp3",
+        "cover": "covers/Together.png",
+        "lyrics": "\nЗдесь будет текст песни \"Эсфирь\"\n"
+    },
+    {
+        "order": 2,
+        "id": 12,
+        "title": "Жизнь моей души",
+        "artist": "MaDen",
+        "release": "2026-08-02",
+        "album": "Моя",
+        "available": true,
+        "audio": "songs/Моя – Жизнь моей души.mp3",
+        "cover": "covers/Together.png",
+        "lyrics": "\nЗдесь будет текст песни \"Жизнь моей души\"\n"
+    },
+    {
+        "order": 3,
+        "id": 11,
+        "title": "Мой свет, гори 🔥",
+        "artist": "MaDen",
+        "release": "2026-08-01",
+        "album": "Мой ангел",
+        "available": true,
+        "audio": "songs/Moy svet.mp3",
+        "cover": "covers/Together.png",
+        "lyrics": "\nЗдесь будет текст песни \"Мой свет, гори 🔥\"\n"
+    },
+    {
+        "order": 4,
+        "id": 10,
+        "title": "Мой ангел",
+        "artist": "MaDen",
+        "release": "2026-07-31",
+        "album": "Мой ангел",
+        "available": true,
+        "audio": "songs/Мой ангел.mp3",
+        "cover": "covers/Together.png",
+        "lyrics": "\nЗдесь будет текст песни \"Мой ангел\"\n"
+    },
+    {
+        "order": 3,
+        "id": 9,
+        "title": "Комета",
+        "artist": "MaDen",
+        "release": "2026-07-30",
+        "album": "Новый",
+        "available": true,
+        "audio": "songs/Комета.mp3",
+        "cover": "covers/Comet.png",
+        "lyrics": "\nЗдесь будет текст песни \"Комета\"\n"
+    },
+    {
+        "order": 7,
+        "id": 8,
+        "title": "Сегодня мы считаем звёзды",
+        "artist": "MaDen",
+        "release": "2026-07-20",
+        "album": "Новая веха",
+        "available": true,
+        "audio": "songs/сегодня мы считаем звёзды.mp3",
+        "cover": "covers/IMG_3387.jpeg",
+        "lyrics": "\nЗдесь будет текст песни \"Сегодня мы считаем звёзды\"\n"
+    },
+    {
+        "order": 8,
+        "id": 7,
+        "title": "История Любви",
+        "artist": "MaDen",
+        "release": "2026-07-10",
+        "album": "Новая веха",
+        "available": true,
+        "audio": "songs/История любви.mp3",
+        "cover": "covers/Screenshot_20260803-134440-display-0.png.png",
+        "lyrics": "\nЗдесь будет текст песни \"История Любви\"\n"
+    },
+    {
+        "order": 5,
+        "id": 6,
+        "title": "Одно сердце",
+        "artist": "MaDen",
+        "release": "2026-07-01",
+        "album": "Люмейя",
+        "available": true,
+        "audio": "songs/Одно сердце.mp3",
+        "cover": "covers/album_lumeya.jpeg",
+        "lyrics": "\nЗдесь будет текст песни \"Одно сердце\"\n"
+    },
+    {
+        "order": 4,
+        "id": 5,
+        "title": "Soliah",
+        "artist": "MaDen",
+        "release": "2026-07-01",
+        "album": "Люмейя",
+        "available": true,
+        "audio": "songs/soliah.mp3",
+        "cover": "covers/album_lumeya.jpeg",
+        "lyrics": "\nЗдесь будет текст песни \"Soliah\"\n"
+    },
+    {
+        "order": 3,
+        "id": 4,
+        "title": "Lum",
+        "artist": "MaDen",
+        "release": "2026-07-01",
+        "album": "Люмейя",
+        "available": true,
+        "audio": "songs/Lum.mp3",
+        "cover": "covers/album_lumeya.jpeg",
+        "lyrics": "\nЗдесь будет текст песни \"Lum\"\n"
+    },
+    {
+        "order": 2,
+        "id": 3,
+        "title": "Народ Люмейя",
+        "artist": "MaDen",
+        "release": "2026-07-01",
+        "album": "Люмейя",
+        "available": true,
+        "audio": "songs/Народ Люмейя.mp3",
+        "cover": "covers/album_lumeya.jpeg",
+        "lyrics": "\nЗдесь будет текст песни \"Народ Люмейя\"\n"
+    },
+    {
+        "order": 1,
+        "id": 2,
+        "title": "Ритмы Люмейя",
+        "artist": "MaDen",
+        "release": "2026-07-01",
+        "album": "Люмейя",
+        "available": true,
+        "audio": "songs/Ритмы Люмейя.mp3",
+        "cover": "covers/album_lumeya.jpeg",
+        "lyrics": "\nЗдесь будет текст песни \"Ритмы Люмейя\"\n"
+    },
+    {
+        "order": 11,
+        "id": 1,
+        "title": "Ты лилия (Nordic Remix)",
+        "artist": "MaDen",
+        "release": "2026-07-01",
+        "album": "Remixes",
+        "available": true,
+        "audio": "songs/ты лилия (nordic remix).mp3",
+        "cover": "covers/IMG_1576.jpeg",
+        "lyrics": "\nЗдесь будет текст песни \"Ты лилия (Nordic Remix)\"\n"
+    },
+    {
+        "order": 1,
+        "title": "Remix",
+        "artist": "MaDen",
+        "album": "Мой выбор — это ты",
+        "available": true,
+        "audio": "songs/my-choice-remix.mp3",
+        "cover": "covers/Мой выбор — это ты.png",
+        "description": "Динамичная ремикс-версия с обновлённым ритмом и акцентом на танцевальную энергию.",
+        "albumOnly": true,
+        "release": "2026-10-27",
+        "showOnHome": false,
+        "id": 42
+    },
+    {
+        "order": 2,
+        "title": "Electronic",
+        "artist": "MaDen",
+        "album": "Мой выбор — это ты",
+        "available": true,
+        "audio": "songs/my-choice-electronic.mp3",
+        "cover": "covers/Мой выбор — это ты.png",
+        "lyrics": "lyrics/64.txt",
+        "description": "Электронное прочтение с синтезаторными текстурами, точным битом и атмосферным звучанием.",
+        "albumOnly": true,
+        "release": "2026-10-27",
+        "showOnHome": false,
+        "id": 43
+    },
+    {
+        "order": 3,
+        "title": "French Touch",
+        "artist": "MaDen",
+        "album": "Мой выбор — это ты",
+        "available": true,
+        "audio": "songs/my-choice-french-touch.mp3",
+        "cover": "covers/Мой выбор — это ты.png",
+        "description": "Французский хаус с фильтрованными диско-сэмплами и упругим грувом; стилистический ориентир — Daft Punk.",
+        "albumOnly": true,
+        "release": "2026-10-27",
+        "showOnHome": false,
+        "id": 44
+    },
+    {
+        "order": 4,
+        "title": "Rock Style",
+        "artist": "MaDen",
+        "album": "Мой выбор — это ты",
+        "available": true,
+        "audio": "songs/my-choice-rock-style.mp3",
+        "cover": "covers/Мой выбор — это ты.png",
+        "description": "Гитарная рок-аранжировка с лаконичной мелодической подачей; стилистический ориентир — Кино.",
+        "albumOnly": true,
+        "release": "2026-10-27",
+        "showOnHome": false,
+        "id": 45
+    },
+    {
+        "order": 5,
+        "title": "MJ Style",
+        "artist": "MaDen",
+        "release": "2026-10-27",
+        "album": "Мой выбор — это ты",
+        "available": true,
+        "audio": "songs/my-choice-mj-style.mp3",
+        "cover": "covers/Мой выбор — это ты.png",
+        "description": "Поп-аранжировка с выразительным грувом, синкопированным басом и точными ударными; стилистический ориентир — Michael Jackson.",
+        "albumOnly": true,
+        "showOnHome": true,
+        "id": 46
+    },
+    {
+        "order": 5,
+        "title": "Смыслом жизнь полна",
+        "artist": "MaDen",
+        "release": null,
+        "album": "Моя",
+        "available": false,
+        "audio": "songs/Смыслом жизнь полна.mp3",
+        "cover": "covers/moya.png",
+        "lyrics": "\nЗдесь будет текст песни \"Смыслом жизнь полна\"\n"
+    },
+    {
+        "order": 6,
+        "title": "10.01",
+        "artist": "MaDen",
+        "release": null,
+        "album": "Моя",
+        "available": false,
+        "audio": "songs/10.01.mp3",
+        "cover": "covers/moya.png",
+        "lyrics": "\nЗдесь будет текст песни \"10.01\"\n"
+    },
+    {
+        "order": 5,
+        "title": "Взрыв далёкой звезды",
+        "artist": "MaDen",
+        "release": null,
+        "album": "Новый",
+        "available": false,
+        "audio": "songs/Взрыв далекой звезды.mp3",
+        "cover": "covers/novyi.png",
+        "lyrics": "\nЗдесь будет текст песни \"Взрыв далёкой звезды\"\n"
+    },
+    {
+        "order": 6,
+        "title": "Целого мира мало",
+        "artist": "MaDen",
+        "release": null,
+        "album": "Новый",
+        "available": false,
+        "audio": "songs/Целого мира мало.mp3",
+        "cover": "covers/novyi.png",
+        "lyrics": "\nЗдесь будет текст песни \"Целого мира мало\"\n"
+    },
+    {
+        "order": 7,
+        "title": "Моих желаний аромат",
+        "artist": "MaDen",
+        "release": null,
+        "album": "Новый",
+        "available": false,
+        "audio": "songs/Моих желаний аромат.mp3",
+        "cover": "covers/novyi.png",
+        "lyrics": "\nЗдесь будет текст песни \"Моих желаний аромат\"\n"
+    },
+    {
+        "order": 5,
+        "title": "Петербург — город любви",
+        "artist": "MaDen",
+        "release": null,
+        "album": "Мой ангел",
+        "available": false,
+        "audio": "songs/Петербург — город любви.mp3",
+        "cover": "covers/My angel.PNG",
+        "lyrics": "\nЗдесь будет текст песни \"Петербург — город любви\"\n"
+    },
+    {
+        "order": 9,
+        "title": "Когда мы вместе",
+        "artist": "MaDen",
+        "release": null,
+        "album": "Новая веха",
+        "available": false,
+        "audio": "songs/Когда мы вместе.mp3",
+        "cover": "covers/Novaya veha.png",
+        "lyrics": "\nЗдесь будет текст песни \"Когда мы вместе\"\n"
+    },
+    {
+        "order": 10,
+        "title": "Гармония",
+        "artist": "MaDen",
+        "release": null,
+        "album": "Новая веха",
+        "available": false,
+        "audio": "songs/Гармония.mp3",
+        "cover": "covers/Novaya veha.png",
+        "lyrics": "\nЗдесь будет текст песни \"Гармония\"\n"
+    }
 ];
