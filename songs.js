@@ -43,6 +43,18 @@ const albumMeta = {
 
 const songs = [
     {
+          "id": 51,
+        "order": 5,
+        "title": "Смыслом жизнь полна",
+        "artist": "MaDen",
+        "release": "2026-11-10",
+        "album": "Моя",
+        "available": true,
+        "audio": "songs/Lifi is good everything.mp3",
+        "cover": "covers/moya.png",
+        "lyrics": "\nЗдесь будет текст песни \"Смыслом жизнь полна\"\n"
+    },
+    {
         "id": 50,
         "title": "Двери времени",
         "artist": "MaDen",
@@ -651,17 +663,7 @@ const songs = [
         "showOnHome": true,
         "id": 46
     },
-    {
-        "order": 5,
-        "title": "Смыслом жизнь полна",
-        "artist": "MaDen",
-        "release": null,
-        "album": "Моя",
-        "available": false,
-        "audio": "songs/Смыслом жизнь полна.mp3",
-        "cover": "covers/moya.png",
-        "lyrics": "\nЗдесь будет текст песни \"Смыслом жизнь полна\"\n"
-    },
+    
     {
         "order": 6,
         "title": "10.01",
