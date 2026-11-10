@@ -43,7 +43,7 @@ const albumMeta = {
 
 const songs = [
     {
-          "id": 51,
+        "id": 51,
         "order": 5,
         "title": "Смыслом жизнь полна",
         "artist": "MaDen",
