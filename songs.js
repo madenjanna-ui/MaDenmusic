@@ -50,7 +50,7 @@ const songs = [
         "release": "2026-11-10",
         "album": "Моя",
         "available": true,
-        "audio": "songs/Lifi is good everything.mp3",
+        "audio": "songs/Life is good everything.mp3",
         "cover": "covers/moya.png",
         "lyrics": "\nЗдесь будет текст песни \"Смыслом жизнь полна\"\n"
     },
