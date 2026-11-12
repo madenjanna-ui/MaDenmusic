@@ -3,6 +3,7 @@ const albumOrder = [
     "Пока горит огонь",
     "Его невидимые качества",
     "Мой выбор — это ты",
+    "Remixes 2",
     "Remixes",
     "Моя",
     "Новый",
@@ -20,6 +21,9 @@ const albumMeta = {
     },
     "Мой выбор — это ты": {
         "cover": "covers/Мой выбор — это ты.png"
+    },
+    "Remixes 2": {
+        "cover": "covers/Dont rewind.png"
     },
     "Remixes": {
         "cover": "covers/Remixes.png"
@@ -42,6 +46,18 @@ const albumMeta = {
 };
 
 const songs = [
+    {
+        "id": 52,
+        "order": 1,
+        "title": "Не перематывай",
+        "artist": "MaDen",
+        "release": "2026-11-12",
+        "album": "Remixes 2",
+        "available": true,
+        "audio": "songs/Dont rewind.mp3",
+        "cover": "covers/Dont rewind.png",
+        "lyrics": "\nЗдесь будет текст песни \"Не перематывай\"\n"
+    },
     {
         "id": 51,
         "order": 5,
