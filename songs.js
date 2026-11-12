@@ -47,6 +47,17 @@ const albumMeta = {
 
 const songs = [
     {
+        "id": 53,
+         "order": 2,
+        "title": "Вместе навсегда ремикс",
+        "artist": "MaDen",
+        "release": "2026-11-12",
+        "album": "Remixes 2",
+        "available": true,
+        "audio": "songs/Together always.mp3",
+        "cover": "covers/Dont rewind.png"
+    },
+    {
         "id": 52,
         "order": 1,
         "title": "Не перематывай",
